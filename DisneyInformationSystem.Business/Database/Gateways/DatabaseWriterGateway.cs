@@ -27,72 +27,21 @@ namespace DisneyInformationSystem.Business.Database.Gateways
         /// </summary>
         private static readonly IDatabaseWriter _databaseWriter = new DatabaseWriter(_connectionString, _dapperWriterWrapper);
 
-        #region Admin
-        /// <inheritdoc />
-        public void DeleteAdmin(Admin admin)
+        public void Delete(GenericRecord record)
         {
-            _databaseWriter.Delete(admin);
+            _databaseWriter.Delete(record);
         }
 
         /// <inheritdoc />
-        public void InsertNewAdmin(Admin admin)
+        public void Insert(GenericRecord record)
         {
-            _databaseWriter.Insert(admin);
+            _databaseWriter.Insert(record);
         }
 
         /// <inheritdoc />
-        public void UpdateAdmin(Admin admin)
+        public void Update(GenericRecord record)
         {
-            _databaseWriter.Update(admin);
+            _databaseWriter.Update(record);
         }
-        #endregion
-
-        #region User
-        /// <inheritdoc />
-        public void DeleteUser(User user)
-        {
-            _databaseWriter.Delete(user);
-        }
-
-        /// <inheritdoc />
-        public void InsertNewUser(User user)
-        {
-            _databaseWriter.Insert(user);
-        }
-
-        /// <inheritdoc />
-        public void UpdateUser(User user)
-        {
-            _databaseWriter.Update(user);
-        }
-        #endregion
-
-        #region Resort
-        /// <inheritdoc />
-        public void InsertNewResort(Resort resort)
-        {
-            _databaseWriter.Insert(resort);
-        }
-
-        /// <inheritdoc />
-        public void UpdateResort(Resort resort)
-        {
-            _databaseWriter.Update(resort);
-        }
-        #endregion
-
-        #region Theme Park
-        /// <inheritdoc />
-        public void InsertNewThemePark(ThemePark themePark)
-        {
-            _databaseWriter.Insert(themePark);
-        }
-
-        /// <inheritdoc />
-        public void UpdateThemePark(ThemePark themePark)
-        {
-            _databaseWriter.Update(themePark);
-        }
-        #endregion
     }
 }

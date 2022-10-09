@@ -10,7 +10,6 @@ namespace DisneyInformationSystem.ConsoleUI.Updaters
         /// <summary>
         /// Updates information for the give record.
         /// </summary>
-        /// <param name="recordToUpdate">Record to update.</param>
-        public void Update(GenericRecord recordToUpdate);
+        public void Update();
     }
 }

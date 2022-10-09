@@ -262,7 +262,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Registrations
             ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
 
             var admin = new Admin(It.IsAny<string>(), adminTypeCode, firstName, lastName, email, password, It.IsAny<int>());
-            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.InsertNewAdmin(admin));
+            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Insert(admin));
 
             var assessmentManager = new AssessmentManager(_mockConsole.Object, "./Assessments/");
             var adminRegistration = new AdminRegistration(

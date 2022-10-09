@@ -148,7 +148,7 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
                         openingDateTime,
                         closingDateTime);
 
-                    _databaseWriterGateway.InsertNewThemePark(themePark);
+                    _databaseWriterGateway.Insert(themePark);
 
                     _console.ForegroundColor(DisColors.Green);
                     _console.WriteLine("The theme park was added to the database successfully!");
