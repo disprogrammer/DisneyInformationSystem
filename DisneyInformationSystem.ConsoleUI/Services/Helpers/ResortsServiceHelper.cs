@@ -53,7 +53,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services.Helpers
             {
                 case "1":
                     var themeParkService = new ThemeParkService(_console);
-                    themeParkService.Options(_resort.PIN);
+                    themeParkService.Options(_resort);
                     break;
 
                 case "":

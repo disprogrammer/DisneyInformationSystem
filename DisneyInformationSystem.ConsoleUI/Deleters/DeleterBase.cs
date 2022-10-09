@@ -1,4 +1,5 @@
 ﻿using DisneyInformationSystem.Business.Database.Gateways;
+using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using System.Linq;
@@ -56,12 +57,7 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
             var listOfThemeParks = _databaseReaderGateway.RetrieveListOfThemeParks().Where(themePark => themePark.ResortID == resortPin).ToList();
             foreach (var themePark in listOfThemeParks)
             {
-                var propertyToUpdate = themePark.GetType().GetProperty("Operating");
-                propertyToUpdate.SetValue(themePark, false, null);
-                _databaseWriterGateway.Update(themePark);
-
-                _console.ForegroundColor(DisColors.Green);
-                _console.WriteLine($"Theme Park has successfully been updated. The operating value is now {propertyToUpdate.GetValue(themePark, null)}.");
+                DeleteThemePark(themePark);
             }
         }
 
@@ -75,6 +71,20 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
         public void DeleteWaterParks(string resortPin)
         {
             // Method intentionally left empty.
+        }
+
+        /// <summary>
+        /// Deletes a single theme park from a resort.
+        /// </summary>
+        /// <param name="themePark">Theme park.</param>
+        public void DeleteThemePark(ThemePark themePark)
+        {
+            var propertyToUpdate = themePark.GetType().GetProperty("Operating");
+            propertyToUpdate.SetValue(themePark, false, null);
+            _databaseWriterGateway.Update(themePark);
+
+            _console.ForegroundColor(DisColors.Green);
+            _console.WriteLine($"Theme Park has successfully been updated. The operating value is now {propertyToUpdate.GetValue(themePark, null)}.");
         }
     }
 }
