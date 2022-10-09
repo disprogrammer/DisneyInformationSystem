@@ -26,7 +26,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         /// <summary>
         /// Resort object.
         /// </summary>
-        private readonly Resort _resort;
+        private Resort _resort;
 
         /// <summary>
         /// Use of the <see cref="DatabaseReaderGateway"/> object.
@@ -177,18 +177,33 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         {
             _console.ForegroundColor(DisColors.White);
             _console.WriteLine($"The resort, {_resort.ResortName}, will be NOT be removed, but will set the 'Operating' field to FALSE.");
+            _console.WriteLine($"The resorts closing date will be set to today's date.");
             _console.WriteLine("This will also set all the parks, resort hotels, attractions, etc. to FALSE as well.");
             Thread.Sleep(2000);
 
             var matchingResort = _databaseReaderGateway.RetrieveResortByPin(_resort.PIN);
             _console.WriteLine($"Setting resort, {matchingResort.ResortName}, to not operating...");
 
-            var propertyToUpdate = _resort.GetType().GetProperty("Operating");
-            propertyToUpdate.SetValue(_resort, false, null);
+            _resort = new Resort(
+                _resort.PIN,
+                _resort.ResortName,
+                _resort.AddressOfResort,
+                _resort.Phone,
+                _resort.NumberOfThemeParks,
+                _resort.NumberOfResortHotels,
+                _resort.NumberOfPartnerHotels,
+                _resort.NumberOfWaterParks,
+                _resort.NumberOfEntertainmentVenues,
+                false,
+                _resort.OpeningDate,
+                DateTime.Today);
             _databaseWriterGateway.UpdateResort(_resort);
 
             _console.ForegroundColor(DisColors.Green);
-            _console.WriteLine($"Resort has successfully been updated. The operating value is now {propertyToUpdate.GetValue(_resort, null)}.");
+            if (!_resort.Operating)
+            {
+                _console.WriteLine($"Resort has successfully been updated. The operating value is now FALSE.");
+            }
 
             _console.ForegroundColor(DisColors.White);
             _console.WriteLine($"Setting everything within {_resort.ResortName} as NOT operating...");

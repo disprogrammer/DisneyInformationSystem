@@ -316,7 +316,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Managers.Admins
             topAdminManager.UpdateCore();
 
             // Assert
-            Assert.IsFalse(listOfResorts.First().Operating, AssertMessage.ExpectFalse);
+            StringAssert.Contains(_outputString, "Resort has successfully been updated. The operating value is now FALSE.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
     }
 }
