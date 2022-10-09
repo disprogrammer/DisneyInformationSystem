@@ -205,7 +205,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Registrations
             ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
 
             var user = new User(It.IsAny<string>(), firstName, lastName, phoneNumber, email, password, address);
-            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.InsertNewUser(user));
+            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Insert(user));
 
             var userRegistration = new UserRegistration(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 

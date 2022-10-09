@@ -7,6 +7,7 @@ using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Deleters;
 using DisneyInformationSystem.ConsoleUI.Helpers;
 using DisneyInformationSystem.ConsoleUI.Services.Helpers;
+using DisneyInformationSystem.ConsoleUI.Updaters;
 using System;
 using System.Linq;
 using System.Threading;
@@ -150,7 +151,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                         openingDateTime,
                         closingDateTime);
 
-                    _databaseWriterGateway.InsertNewResort(resort);
+                    _databaseWriterGateway.Insert(resort);
 
                     _console.ForegroundColor(DisColors.Green);
                     _console.WriteLine("The resort was added to the database successfully!");
@@ -197,7 +198,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                 false,
                 _resort.OpeningDate,
                 DateTime.Today);
-            _databaseWriterGateway.UpdateResort(_resort);
+            _databaseWriterGateway.Update(_resort);
 
             _console.ForegroundColor(DisColors.Green);
             if (!_resort.Operating)
@@ -220,7 +221,6 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         public void Update()
         {
             _console.ForegroundColor(DisColors.White);
-            var resortsServiceHelper = new ResortsServiceHelper(_console, _resort, _databaseWriterGateway);
             var updatingResortInformationDecision = _console.Prompt("Updating resort information? (Y/N): ").ToLower();
             if (updatingResortInformationDecision == "y")
             {
@@ -237,14 +237,17 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                     $"Number of Water Parks: {_resort.NumberOfWaterParks}\n" +
                     $"Number of Entertainment Venues: {_resort.NumberOfEntertainmentVenues}\n" +
                     $"Operating: {_resort.Operating}\n" +
-                    $"Opening Date: {_resort.OpeningDate}");
+                    $"Opening Date: {_resort.OpeningDate}\n" +
+                    $"Closing Date: {_resort.ClosingDate}");
 
-                resortsServiceHelper.UpdateResortValues();
+                var updater = new Updater(_console, _resort, _databaseWriterGateway);
+                updater.Update();
             }
             else if (updatingResortInformationDecision == "n")
             {
                 _console.ForegroundColor(DisColors.Yellow);
                 _console.TypeString($"Select what else you would like to update in the options below for resort {_resort.ResortName}.\n");
+                var resortsServiceHelper = new ResortsServiceHelper(_console, _resort);
                 resortsServiceHelper.AdditionalResortInformationOptions();
             }
             else

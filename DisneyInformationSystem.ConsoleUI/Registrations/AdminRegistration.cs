@@ -144,7 +144,7 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
                     _console.WriteLine($"Congratulations! You passed the assessment with the score of {assessmentScore}.");
                     _console.WriteLine($"You are now a {adminTypeName}! To get started, you can sign in on the main menu.");
                     admin = new Admin(pin, adminTypeDesired, firstName, lastName, emailAddress, hashedPassword, _assessmentManager.AssessmentScore);
-                    _databaseWriterGateway.InsertNewAdmin(admin);
+                    _databaseWriterGateway.Insert(admin);
                 }
                 else
                 {

@@ -122,7 +122,7 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
                 var generatedPin = RandomGenerator.RetrieveRandomGeneratedPin(listOfPins);
                 var pin = $"U{generatedPin}";
                 user = new User(pin, firstName, lastName, formattedPhoneNumber, emailAddress, hashedPassword, homeAddress);
-                _databaseWriterGateway.InsertNewUser(user);
+                _databaseWriterGateway.Insert(user);
             }
             catch (PhoneNumberInvalidException exception)
             {

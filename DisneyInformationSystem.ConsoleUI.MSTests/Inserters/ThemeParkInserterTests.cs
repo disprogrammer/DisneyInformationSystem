@@ -333,7 +333,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Inserters
                 Convert.ToDateTime(openingDate),
                 DateTime.MaxValue);
 
-            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.InsertNewThemePark(themePark));
+            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Insert(themePark));
 
             var themeParkInserter = new ThemeParkInserter(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object, "WDW");
 
@@ -383,7 +383,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Inserters
                 Convert.ToDateTime(openingDate),
                 DateTime.MaxValue);
 
-            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.InsertNewThemePark(themePark));
+            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Insert(themePark));
 
             var themeParkInserter = new ThemeParkInserter(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object, "WDW");
 

@@ -332,7 +332,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
                 Convert.ToDateTime(opening),
                 DateTime.MaxValue);
 
-            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.InsertNewResort(resort));
+            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Insert(resort));
 
             var resortsService = new ResortsService(_mockConsole.Object, new Resort(), _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
