@@ -50,7 +50,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Updaters
             updater.Update();
 
             // Assert
-            StringAssert.Contains(_outputString, "You did not provide a field name to update, so no changes were made to the resort.", ConsoleUiTestHelper.ExpectStringInOutput);
+            StringAssert.Contains(_outputString, "You did not provide a field name to update, so no changes were made to the record.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
@@ -66,7 +66,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Updaters
             updater.Update();
 
             // Assert
-            StringAssert.Contains(_outputString, "Inputted field name MagicKingdom is not a field in the Resorts table.", ConsoleUiTestHelper.ExpectStringInOutput);
+            StringAssert.Contains(_outputString, "Inputted field name MagicKingdom is not a field in the table.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
@@ -99,7 +99,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Updaters
             updater.Update();
 
             // Assert
-            StringAssert.Contains(_outputString, "Resort was successfully updated. ResortName new value is: Disney World Resort.", ConsoleUiTestHelper.ExpectStringInOutput);
+            StringAssert.Contains(_outputString, "Record was successfully updated. ResortName new value is: Disney World Resort.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
