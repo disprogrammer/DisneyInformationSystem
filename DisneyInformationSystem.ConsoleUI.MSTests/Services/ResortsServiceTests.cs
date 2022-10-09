@@ -405,8 +405,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             resortsService.Delete();
 
             // Assert
-            Assert.IsFalse(resort.Operating, AssertMessage.ExpectFalse);
-            StringAssert.Contains(_outputString, "Resort has successfully been updated. The operating value is now False.", ConsoleUiTestHelper.ExpectStringInOutput);
+            StringAssert.Contains(_outputString, "Resort has successfully been updated. The operating value is now FALSE.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
         private void DatabaseReaderGatewaySetup()
