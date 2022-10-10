@@ -33,11 +33,11 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         /// Initializes a new instance of the <see cref="ThemeParkService"/> class.
         /// </summary>
         /// <param name="console">Console interface.</param>
-        public ThemeParkService(IConsole console)
+        public ThemeParkService(IConsole console, IDatabaseReaderGateway databaseReaderGateway, IDatabaseWriterGateway databaseWriterGateway)
         {
             _console = console;
-            _databaseReaderGateway = new DatabaseReaderGateway();
-            _databaseWriterGateway = new DatabaseWriterGateway();
+            _databaseReaderGateway = databaseReaderGateway;
+            _databaseWriterGateway = databaseWriterGateway;
         }
 
         /// <summary>
@@ -74,9 +74,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                         break;
 
                     case "3":
-                        var themeParkToDelete = RetrieveThemePark(resort);
-                        var deleter = new DeleterBase(_console, _databaseReaderGateway, _databaseWriterGateway);
-                        deleter.DeleteThemePark(themeParkToDelete);
+                        DeleteThemePark(resort);
                         break;
 
                     case "":
@@ -88,6 +86,24 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                         _console.WriteLine("This is not a valid option. Please try again.");
                         break;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Deletes theme park by setting Operating to False.
+        /// </summary>
+        /// <param name="resort">Resort.</param>
+        private void DeleteThemePark(Resort resort)
+        {
+            var themeParkToDelete = RetrieveThemePark(resort);
+            if (themeParkToDelete != null)
+            {
+                var deleter = new DeleterBase(_console, _databaseReaderGateway, _databaseWriterGateway);
+                deleter.DeleteThemePark(themeParkToDelete);
+            }
+            else
+            {
+                NotValidThemeParkMessage();
             }
         }
 
@@ -105,8 +121,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             }
             else
             {
-                _console.ForegroundColor(DisColors.Red);
-                _console.WriteLine("A valid theme park was not selected. Please try again.");
+                NotValidThemeParkMessage();
             }
         }
 
@@ -119,7 +134,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         {
             var themeParks = _databaseReaderGateway.RetrieveListOfThemeParks().Where(park => park.ResortID == resort.PIN);
             _console.ForegroundColor(DisColors.Yellow);
-            _console.WriteLine("\nSelect a theme park below to update.");
+            _console.WriteLine("\nSelect a theme park below.");
             _console.ForegroundColor(DisColors.White);
             foreach (var themePark in themeParks)
             {
@@ -128,6 +143,15 @@ namespace DisneyInformationSystem.ConsoleUI.Services
 
             var parkDecision = _console.Prompt(">> ").ToLower();
             return themeParks.FirstOrDefault(themePark => themePark.ParkName.ToLower().Contains(parkDecision));
+        }
+
+        /// <summary>
+        /// Prints not valid theme park selected message.
+        /// </summary>
+        private void NotValidThemeParkMessage()
+        {
+            _console.ForegroundColor(DisColors.Red);
+            _console.WriteLine("A valid theme park was not selected. Please try again.");
         }
     }
 }
