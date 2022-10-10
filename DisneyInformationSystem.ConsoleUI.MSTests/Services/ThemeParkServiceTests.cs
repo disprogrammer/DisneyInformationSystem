@@ -132,7 +132,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
         public void ThemeParkService_Options_WhenOptionIsDeleteAndNotSelectingValidPark_ShouldDisplayCorrectMessage()
         {
             // Arrange
-            var consoleInput = new[] { "2", "Orlando", "" };
+            var consoleInput = new[] { "3", "Orlando", "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
             var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
