@@ -1,4 +1,5 @@
-﻿using DisneyInformationSystem.Business.Database.Records;
+﻿using DisneyInformationSystem.Business.Database.Gateways;
+using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 
@@ -52,7 +53,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services.Helpers
             switch (decision)
             {
                 case "1":
-                    var themeParkService = new ThemeParkService(_console);
+                    var themeParkService = new ThemeParkService(_console, new DatabaseReaderGateway(), new DatabaseWriterGateway());
                     themeParkService.Options(_resort);
                     break;
 
