@@ -2,7 +2,6 @@
 using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
-using DisneyInformationSystem.ConsoleUI.Inserters;
 using DisneyInformationSystem.ConsoleUI.Services.Helpers;
 
 namespace DisneyInformationSystem.ConsoleUI.Services
