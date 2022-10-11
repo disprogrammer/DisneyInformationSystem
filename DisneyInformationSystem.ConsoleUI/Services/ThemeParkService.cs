@@ -4,6 +4,7 @@ using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Deleters;
 using DisneyInformationSystem.ConsoleUI.Inserters;
+using DisneyInformationSystem.ConsoleUI.Services.Helpers;
 using DisneyInformationSystem.ConsoleUI.Updaters;
 using System.Linq;
 
@@ -49,18 +50,8 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             var finished = false;
             while (!finished)
             {
-                _console.Clear();
-                _console.ForegroundColor(DisColors.Cyan);
-                _console.WriteLine("===== Theme Park Service =====");
-
-                _console.ForegroundColor(DisColors.Yellow);
-                _console.WriteLine("Select an option below that you would like to do.");
-
-                _console.ForegroundColor(DisColors.White);
-                var decision = _console.Prompt("1. Add\n" +
-                    "2. Update\n" +
-                    "3. Delete\n" +
-                    "> ");
+                var resortsServiceHelper = new ResortsServiceHelper(_console, resort);
+                var decision = resortsServiceHelper.RetrieveServiceDecision("===== Theme Park Service =====");
 
                 switch (decision)
                 {
@@ -116,6 +107,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             var themeParkToUpdate = RetrieveThemePark(resort);
             if (themeParkToUpdate != null)
             {
+                // TODO: Print the properties of the theme park.
                 var updater = new Updater(_console, themeParkToUpdate, _databaseWriterGateway);
                 updater.Update();
             }
