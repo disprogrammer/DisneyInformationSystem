@@ -211,5 +211,31 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
             // Assert
             Assert.IsTrue(returnValue == 4, AssertMessage.ExpectTrue);
         }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        [ExpectedException(typeof(FormatException))]
+        public void ExceptionHandler_CheckDateTime_WhenInputIsNotDateTimeType_ShouldThrowFormatException()
+        {
+            // Arrange
+            var dateTimeString = "abc";
+
+            // Act
+            _ = ExceptionHandler.CheckDateTime(dateTimeString);
+
+            // Assert
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ExceptionHandler_CheckDateTime_WhenInputIsDateTimeType_ShouldReturnDateTime()
+        {
+            // Arrange
+            var expectedDateTime = new DateTime(1955, 07, 17);
+            var userInputDate = "1955-07-17";
+
+            // Act
+            var actualDateTime = ExceptionHandler.CheckDateTime(userInputDate);
+
+            Assert.AreEqual(expectedDateTime, actualDateTime, AssertMessage.ExpectValuesToBeEqual);
+        }
     }
 }

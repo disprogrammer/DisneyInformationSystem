@@ -1,4 +1,5 @@
-﻿using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
+﻿using DisneyInformationSystem.Business.Utilities;
+using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using System;
 
@@ -44,7 +45,7 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
         public DateTime RetrieveOpeningDate()
         {
             var openingDate = _console.Prompt("Opening Date (YYYY-MM-DD): ");
-            return CheckDateTime(openingDate);
+            return ExceptionHandler.CheckDateTime(openingDate);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
             }
 
             var closingDate = _console.Prompt("Closing Date (YYYY-MM-DD): ");
-            return CheckDateTime(closingDate);
+            return ExceptionHandler.CheckDateTime(closingDate);
         }
 
         /// <summary>
@@ -81,23 +82,6 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
                 _console.ForegroundColor(DisColors.Green);
                 _console.WriteLine("Thank you for your contributions to the Disney Information System!");
             }
-        }
-
-        /// <summary>
-        /// Checks if the date string is a valid date.
-        /// </summary>
-        /// <param name="dateString">Date string.</param>
-        /// <returns>Date time if no exception is thrown.</returns>
-        /// <exception cref="FormatException">Format exception.</exception>
-        private static DateTime CheckDateTime(string dateString)
-        {
-            var isValidDateTime = DateTime.TryParse(dateString, out var dateTime);
-            if (!isValidDateTime)
-            {
-                throw new FormatException("Format for date was invalid. Must be YYYY-MM-DD.");
-            }
-
-            return dateTime;
         }
     }
 }

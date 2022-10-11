@@ -110,5 +110,22 @@ namespace DisneyInformationSystem.Business.Utilities
 
             return Convert.ToInt32(input);
         }
+
+        /// <summary>
+        /// Checks if the date string is a valid date.
+        /// </summary>
+        /// <param name="dateString">Date string.</param>
+        /// <returns>Date time if no exception is thrown.</returns>
+        /// <exception cref="FormatException">Format exception.</exception>
+        public static DateTime CheckDateTime(string dateString)
+        {
+            var isValidDateTime = DateTime.TryParse(dateString, out var dateTime);
+            if (!isValidDateTime)
+            {
+                throw new FormatException("Format for date was invalid. Must be YYYY-MM-DD.");
+            }
+
+            return dateTime;
+        }
     }
 }
