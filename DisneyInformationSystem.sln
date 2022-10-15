@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisneyInformationSystem.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyInformationSystem.WindowsForm", "DisneyInformationSystem.WindowsForm\DisneyInformationSystem.WindowsForm.csproj", "{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyInformationSystem.WindowsForm.MSTests", "DisneyInformationSystem.WindowsForm.MSTests\DisneyInformationSystem.WindowsForm.MSTests.csproj", "{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{992D5B15-424E-4573-B37A-B0028BB909C3} = {2A81E8EA-9453-4BE4-A932-5C8490F0DB74}
 		{CFFF780F-21CE-4946-A78A-DEEDD44FFC4F} = {3B787139-B6EE-4B1F-AEB6-780765D8473C}
 		{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D} = {A795C173-80F0-4581-B615-7E8E89660455}
+		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E} = {3B787139-B6EE-4B1F-AEB6-780765D8473C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {14EFA380-460A-409F-81D6-507AE9489D59}
