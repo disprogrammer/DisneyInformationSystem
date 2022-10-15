@@ -1,5 +1,4 @@
-﻿using DisneyInformationSystem.WindowsForm;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace DisneyInformationSystem.WindowsForm.MSTests
 {
