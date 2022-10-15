@@ -15,4 +15,9 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DisneyInformationSystem.WindowsForm\DisneyInformationSystem.WindowsForm.csproj" />
+    <ProjectReference Include="..\Testing.Shared\Testing.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
