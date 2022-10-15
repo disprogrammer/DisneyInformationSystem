@@ -84,7 +84,7 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
             _databaseWriterGateway.Update(themePark);
 
             _console.ForegroundColor(DisColors.Green);
-            _console.WriteLine($"Theme Park has successfully been updated. The operating value is now {propertyToUpdate.GetValue(themePark, null)}.");
+            _console.WriteLine($"Theme Park: {themePark.ParkName} has successfully been updated. The operating value is now {propertyToUpdate.GetValue(themePark, null)}.");
         }
     }
 }
