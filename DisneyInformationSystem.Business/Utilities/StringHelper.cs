@@ -15,13 +15,13 @@ namespace DisneyInformationSystem.Business.Utilities
         /// </summary>
         /// <param name="exception">Exception</param>
         /// <returns>Split exception type string.</returns>
-        public static string ExceptionTypeStringSplit(Exception exception)
+        public static string SplitObjectsAndPropertiesWords(string name)
         {
             var regexCapitalLetters = new Regex(@"
                 (?<=[A-Z])(?=[A-Z][a-z]) |
                  (?<=[^A-Z])(?=[A-Z]) |
                  (?<=[A-Za-z])(?=[^A-Za-z])", RegexOptions.IgnorePatternWhitespace);
-            return regexCapitalLetters.Replace(exception.GetType().Name, " ");
+            return regexCapitalLetters.Replace(name, " ");
         }
 
         /// <summary>

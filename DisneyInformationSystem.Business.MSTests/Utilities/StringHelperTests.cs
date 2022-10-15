@@ -1,5 +1,4 @@
-﻿using DisneyInformationSystem.Business.Database.Records;
-using DisneyInformationSystem.Business.Exceptions.Technical;
+﻿using DisneyInformationSystem.Business.Exceptions.Technical;
 using DisneyInformationSystem.Business.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
@@ -12,14 +11,14 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
     public class StringHelperTests
     {
         [TestMethod, TestCategory("Business Test")]
-        public void StringHelper_ExceptionTypeStringSplit_WhenProvidedWithAnyDisneyApplicationException_ShouldSplitExceptionTypeString()
+        public void StringHelper_SplitObjectsAndPropertiesWords_WhenProvidedWithAnyDisneyApplicationException_ShouldSplitExceptionTypeString()
         {
             // Arrange
             var expectedExceptionTypeString = "Hashed Password Not Supported Exception";
             var exception = new HashedPasswordNotSupportedException();
 
             // Act
-            var actualExceptionTypeString = StringHelper.ExceptionTypeStringSplit(exception);
+            var actualExceptionTypeString = StringHelper.SplitObjectsAndPropertiesWords(exception.GetType().Name);
 
             // Assert
             Assert.AreEqual(expectedExceptionTypeString, actualExceptionTypeString, AssertMessage.ExpectValuesToBeEqual);

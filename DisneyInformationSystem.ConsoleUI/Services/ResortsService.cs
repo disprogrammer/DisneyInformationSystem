@@ -217,17 +217,10 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                 _console.WriteLine("\n=== Resort Information ===");
 
                 _console.ForegroundColor(DisColors.White);
-                _console.WriteLine($"Resort Name: {_resort.ResortName}\n" +
-                    $"Resort Address: {_resort.AddressOfResort}\n" +
-                    $"Phone: {_resort.Phone}\n" +
-                    $"Number of Theme Parks: {_resort.NumberOfThemeParks}\n" +
-                    $"Number of Resort Hotels: {_resort.NumberOfResortHotels}\n" +
-                    $"Number of Partner Hotels: {_resort.NumberOfPartnerHotels}\n" +
-                    $"Number of Water Parks: {_resort.NumberOfWaterParks}\n" +
-                    $"Number of Entertainment Venues: {_resort.NumberOfEntertainmentVenues}\n" +
-                    $"Operating: {_resort.Operating}\n" +
-                    $"Opening Date: {_resort.OpeningDate}\n" +
-                    $"Closing Date: {_resort.ClosingDate}");
+                foreach (var propertyValuePair in RecordHelper<Resort>.RetrieveListOfPropertiesAndValues(_resort))
+                {
+                    _console.WriteLine(propertyValuePair);
+                }
 
                 var updater = new Updater(_console, _resort, _databaseWriterGateway);
                 updater.Update();

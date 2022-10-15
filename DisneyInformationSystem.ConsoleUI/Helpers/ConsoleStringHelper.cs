@@ -16,7 +16,7 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
         /// <param name="exception">Exception being thrown.</param>
         public static void PrintExceptionMessage(IConsole console, Exception exception)
         {
-            var exceptionType = StringHelper.ExceptionTypeStringSplit(exception);
+            var exceptionType = StringHelper.SplitObjectsAndPropertiesWords(exception.GetType().Name);
             console.ForegroundColor(DisColors.Red);
             console.WriteLine($"Exception Type: {exceptionType}\n" +
                               $"Exception Message: {exception.Message}\n" +

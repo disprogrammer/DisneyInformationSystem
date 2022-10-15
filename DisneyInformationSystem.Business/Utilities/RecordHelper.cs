@@ -55,6 +55,26 @@ namespace DisneyInformationSystem.Business.Utilities
         }
 
         /// <summary>
+        /// Retrieves a list of properties and their values.
+        /// </summary>
+        /// <param name="record">Record.</param>
+        /// <returns>List of strings.</returns>
+        public static List<string> RetrieveListOfPropertiesAndValues(T record)
+        {
+            var listOfPropertiesAndValues = new List<string>();
+            var recordType = record.GetType();
+            var properties = recordType.GetProperties().Where(prop => prop.Name != "PIN" && !prop.Name.Contains("ID"));
+
+            foreach (var property in properties)
+            {
+                var propertyName = StringHelper.SplitObjectsAndPropertiesWords(property.Name);
+                listOfPropertiesAndValues.Add($"{propertyName}: {property.GetValue(record)}");
+            }
+
+            return listOfPropertiesAndValues;
+        }
+
+        /// <summary>
         /// Retrieves the person logging in.
         /// </summary>
         /// <param name="emailAddress">Email address.</param>

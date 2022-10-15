@@ -128,5 +128,21 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
             Assert.AreEqual(expectedUser, actualUser, AssertMessage.ExpectValuesToBeEqual);
             Assert.IsTrue(returnValue.Item2, AssertMessage.ExpectTrue);
         }
+
+        [TestMethod, TestCategory("Business Test")]
+        public void RecordHelper_RetrieveListOfPropertiesAndValues_WhenProvidedWithRecord_ShouldReturnListOfStrings()
+        {
+            // Arrange
+            var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
+            var expectedNumberOfValues = 13;
+
+            // Act
+            var listOfStrings = RecordHelper<ThemePark>.RetrieveListOfPropertiesAndValues(themePark);
+
+            // Assert
+            Assert.AreEqual(expectedNumberOfValues, listOfStrings.Count, AssertMessage.ExpectValuesToBeEqual);
+            Assert.IsTrue(listOfStrings.First().Contains("Name"), AssertMessage.ExpectTrue);
+            Assert.IsTrue(listOfStrings.Last().Contains("Closing"), AssertMessage.ExpectTrue);
+        }
     }
 }

@@ -88,7 +88,7 @@ namespace DisneyInformationSystem.ConsoleUI.DomainFacade
                 }
                 catch (InvalidConsoleExploreMenuStringException exception)
                 {
-                    var exceptionType = StringHelper.ExceptionTypeStringSplit(exception);
+                    var exceptionType = StringHelper.SplitObjectsAndPropertiesWords(exception.GetType().Name);
                     exceptionIsThrown = true;
 
                     _console.ForegroundColor(DisColors.Red);

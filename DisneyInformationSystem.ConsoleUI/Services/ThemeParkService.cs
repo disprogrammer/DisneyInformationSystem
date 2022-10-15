@@ -1,5 +1,6 @@
 ﻿using DisneyInformationSystem.Business.Database.Gateways;
 using DisneyInformationSystem.Business.Database.Records;
+using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Deleters;
@@ -107,7 +108,12 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             var themeParkToUpdate = RetrieveThemePark(resort);
             if (themeParkToUpdate != null)
             {
-                // TODO: Print the properties of the theme park.
+                _console.ForegroundColor(DisColors.White);
+                foreach (var propertyValuePair in RecordHelper<ThemePark>.RetrieveListOfPropertiesAndValues(themeParkToUpdate))
+                {
+                    _console.WriteLine(propertyValuePair);
+                }
+
                 var updater = new Updater(_console, themeParkToUpdate, _databaseWriterGateway);
                 updater.Update();
             }

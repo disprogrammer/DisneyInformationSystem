@@ -64,10 +64,12 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services.Helpers
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ResortsServiceHelper_AdditionalResortInformationOptions_WhenThemeParkIsSelected_ShouldDisplayAppropriateMessages()
+        [DataRow("1", "===== Theme Park Service =====")]
+        [DataRow("2", "===== Resort Hotels Service =====")]
+        public void ResortsServiceHelper_AdditionalResortInformationOptions_WhenAppropriateOptionsAreSelected_ShouldDisplayAppropriateMessages(string input, string outputSubstring)
         {
             // Arrange
-            var consoleInput = new[] { "1", "" };
+            var consoleInput = new[] { input, "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
             var resortsServiceHelper = new ResortsServiceHelper(_mockConsole.Object, DatabaseMockers.MockSetupListOfResorts().First());
@@ -76,7 +78,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services.Helpers
             resortsServiceHelper.AdditionalResortInformationOptions();
 
             // Assert
-            StringAssert.Contains(_outputString, "===== Theme Park Service =====", ConsoleUiTestHelper.ExpectStringInOutput);
+            StringAssert.Contains(_outputString, outputSubstring, ConsoleUiTestHelper.ExpectStringInOutput);
         }
     }
 }
