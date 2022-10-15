@@ -1,0 +1,32 @@
+﻿C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Assessments\AssessmentManagerTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\ConsoleSetup\DisColorsTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\ConsoleSetup\Interfaces\ExtensionMethodsForIConsoleTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\ConsoleUiTestHelper.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Deleters\DeleterBaseTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\DisneyInformationSystemConsoleUiTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\DomainFacade\AdminDomainFacadeTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\DomainFacade\ExploreDomainFacadeTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Helpers\ConsoleStringHelperTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Helpers\ServicesHelperTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Helpers\SignInHelperTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Inserters\ThemeParkInserterTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Managers\Admins\AdminManagerHelperTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Managers\Admins\DestinationsAndEntertainmentAdminManagerTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Managers\Admins\ResortsAdminManagerTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Managers\Admins\TopAdminManagerTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Registrations\AdminRegistrationTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Registrations\RegistrationHelperTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Registrations\UserRegistrationTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Services\Helpers\ResortsServiceHelperTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Services\ResortsServiceTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Services\ThemeParkServiceTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Updaters\UpdaterTests.cs
+C:\Users\mckin\.nuget\packages\microsoft.net.test.sdk\17.0.0\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\mckin\.nuget\packages\microsoft.testplatform.testhost\17.0.0\build\netcoreapp2.1\x64\testhost.exe
+C:\Users\mckin\.nuget\packages\microsoft.testplatform.testhost\17.0.0\build\netcoreapp2.1\x64\testhost.dll
+C:\Users\mckin\.nuget\packages\microsoft.testplatform.testhost\17.0.0\build\netcoreapp2.1\x64\Microsoft.TestPlatform.PlatformAbstractions.dll
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\App.config
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\coverage.opencover.xml
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\TestResults\8f17b009-3aa1-4d44-a95a-5228f5f82f90\coverage.cobertura.xml
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\TestResults\f299e2ad-ac52-4fc6-9d8e-23906b42ba3b\coverage.cobertura.xml
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\TestResults\f98a8218-6305-4e1f-9026-2f3b9ac8b233\coverage.cobertura.xml

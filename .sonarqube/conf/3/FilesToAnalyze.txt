@@ -1,25 +1,3 @@
-﻿C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\BusinessTestHelper.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\ConfigurationTestingHelper.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Readers\DatabaseReaderTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Records\AdminTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Records\AdminTypesTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Records\GenericRecordTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Records\PersonTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Records\ResortsTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Records\ThemeParkTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Records\UserTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Wrappers\DapperWriterWrapperTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Database\Writers\DatabaseWriterTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Utilities\ConfigurationHelperTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Utilities\ExceptionHandlerTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Utilities\SecurePasswordHasherTests.cs
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\Utilities\StringHelperTests.cs
-C:\Users\mckin\.nuget\packages\microsoft.net.test.sdk\17.0.0\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.cs
-C:\Users\mckin\.nuget\packages\microsoft.testplatform.testhost\17.0.0\build\netcoreapp2.1\x64\testhost.exe
-C:\Users\mckin\.nuget\packages\microsoft.testplatform.testhost\17.0.0\build\netcoreapp2.1\x64\testhost.dll
-C:\Users\mckin\.nuget\packages\microsoft.testplatform.testhost\17.0.0\build\netcoreapp2.1\x64\Microsoft.TestPlatform.PlatformAbstractions.dll
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\App.config
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\coverage.opencover.xml
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\TestResults\59569153-a651-4d16-901d-3c24f7aae811\coverage.cobertura.xml
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\TestResults\99a3a79d-c0df-4ebd-b754-39c7228ee8bb\coverage.cobertura.xml
-C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\TestResults\aa9d5a43-8999-4877-959d-7118ccb9d9fa\coverage.cobertura.xml
+﻿C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\Testing.Shared\AssertMessage.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\Testing.Shared\DatabaseMockers.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\Testing.Shared\App.config
