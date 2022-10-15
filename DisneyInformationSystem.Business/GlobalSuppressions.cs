@@ -2,7 +2,3 @@
 // attributes that are applied to this project.
 // Project-level suppressions either have no target or are given
 // a specific target and scoped to a namespace, type, member, etc.
-
-using System.Diagnostics.CodeAnalysis;
-
-[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Will be used from initialization of the class.", Scope = "member", Target = "~M:DisneyInformationSystem.Business.Database.Readers.AdminDatabaseReader.GetByPin(System.String)~DisneyInformationSystem.Business.Database.Records.Admin")]

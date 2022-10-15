@@ -6,7 +6,6 @@ using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Helpers;
 using System;
-using System.Linq;
 
 namespace DisneyInformationSystem.ConsoleUI.Inserters
 {
@@ -70,8 +69,8 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
                         break;
                     }
 
-                    var listOfThemeParkPins = _databaseReaderGateway.RetrieveListOfThemeParks().Select(themePark => themePark.PIN).ToList();
-                    if (listOfThemeParkPins.Contains(themeParkAcronym))
+                    var acronymAlreadyInUse = RecordHelper<ThemePark>.AcronymIsAlreadyInUse(_databaseReaderGateway.RetrieveListOfThemeParks(), themeParkAcronym);
+                    if (acronymAlreadyInUse)
                     {
                         _console.ForegroundColor(DisColors.Red);
                         _console.WriteLine("The provided acronym is already used for another theme park. Please try again.");
@@ -109,24 +108,12 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
                     _console.TypeString("For the entries of inputting numbers, 0 is defaulted if nothing is entered.\n");
 
                     _console.ForegroundColor(DisColors.White);
-                    var numberOfLands = _console.Prompt("Number of Lands (number only): ");
-                    var numberOfLandsInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfLands);
-
-                    var numberOfAttractions = _console.Prompt("Number of Attractions (number only): ");
-                    var numberOfAttractionsInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfAttractions);
-
-                    var numberOfShops = _console.Prompt("Number of Shops (number only): ");
-                    var numberOfShopsInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfShops);
-
-                    var numberOfRestaurants = _console.Prompt("Number of Restaurants (number only): ");
-                    var numberOfRestaurantsInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfRestaurants);
-
-                    var numberOfTours = _console.Prompt("Number of Tours (number only): ");
-                    var numberOfToursInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfTours);
-
-                    var numberOfRestrooms = _console.Prompt("Number of Restrooms (number only): ");
-                    var numberOfRestroomsInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfRestrooms);
-
+                    var numberOfLandsInteger = servicesHelper.RetrieveNumber("Number of Lands (number only): ");
+                    var numberOfAttractionsInteger = servicesHelper.RetrieveNumber("Number of Attractions (number only): ");
+                    var numberOfShopsInteger = servicesHelper.RetrieveNumber("Number of Shops (number only): ");
+                    var numberOfRestaurantsInteger = servicesHelper.RetrieveNumber("Number of Restaurants (number only): ");
+                    var numberOfToursInteger = servicesHelper.RetrieveNumber("Number of Tours (number only): ");
+                    var numberOfRestroomsInteger = servicesHelper.RetrieveNumber("Number of Restrooms (number only): ");
                     var operatingValue = servicesHelper.RetrieveOperatingValue("theme park");
                     var openingDateTime = servicesHelper.RetrieveOpeningDate();
                     var closingDateTime = servicesHelper.RetrieveClosingDate(operatingValue);

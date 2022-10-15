@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DisneyInformationSystem.Business.Database.Records;
+using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -31,6 +32,31 @@ namespace DisneyInformationSystem.Business.Utilities
         public static string ToTitleCase(this string title)
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(title.ToLower());
+        }
+
+        /// <summary>
+        /// Gets the person signed in and creates string for the console title.
+        /// </summary>
+        /// <returns>Person signed in string.</returns>
+        public static string PersonTitleString(Person personSignedIn)
+        {
+            string signInTitleString = null;
+            if (personSignedIn == null)
+            {
+                return "No one signed in.";
+            }
+            else if (personSignedIn.PIN.StartsWith("A"))
+            {
+                Admin admin = (Admin)personSignedIn;
+                signInTitleString = $"{admin.PIN}: {admin.FirstName} {admin.LastName}";
+            }
+            else if (personSignedIn.PIN.StartsWith("U"))
+            {
+                User user = (User)personSignedIn;
+                signInTitleString = $"{user.PIN}: {user.FirstName} {user.LastName}";
+            }
+
+            return signInTitleString;
         }
     }
 }

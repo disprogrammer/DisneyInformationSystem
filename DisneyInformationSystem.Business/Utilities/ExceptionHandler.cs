@@ -83,12 +83,12 @@ namespace DisneyInformationSystem.Business.Utilities
         {
             if (!acronym.All(char.IsLetter))
             {
-                throw new AcronymInvalidException("The resort acronym should consist only letters.");
+                throw new AcronymInvalidException("The acronym should consist of only letters.");
             }
 
             if (acronym.Length > 3 || acronym.Length < 3)
             {
-                throw new AcronymInvalidException("The resort acronym is less than or greater than three letters long.");
+                throw new AcronymInvalidException("The acronym is less than or greater than three letters long.");
             }
         }
 

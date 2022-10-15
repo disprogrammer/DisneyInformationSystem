@@ -9,7 +9,6 @@ using DisneyInformationSystem.ConsoleUI.Helpers;
 using DisneyInformationSystem.ConsoleUI.Services.Helpers;
 using DisneyInformationSystem.ConsoleUI.Updaters;
 using System;
-using System.Linq;
 using System.Threading;
 
 namespace DisneyInformationSystem.ConsoleUI.Services
@@ -81,8 +80,8 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                         break;
                     }
 
-                    var resortPins = _databaseReaderGateway.RetrieveListOfResorts().Select(resort => resort.PIN).ToList();
-                    if(resortPins.Contains(resortAcronym))
+                    var acronymAlreadyInUse = RecordHelper<Resort>.AcronymIsAlreadyInUse(_databaseReaderGateway.RetrieveListOfResorts(), resortAcronym);
+                    if (acronymAlreadyInUse)
                     {
                         _console.ForegroundColor(DisColors.Red);
                         _console.WriteLine("The provided acronym is already used for another resort. Please try again.");
@@ -118,21 +117,11 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                     _console.TypeString("For the entries of inputting numbers, 0 is defaulted if nothing is entered.\n");
 
                     _console.ForegroundColor(DisColors.White);
-                    var numberOfThemeParks = _console.Prompt("Number of Theme Parks (number only): ");
-                    var numberOfThemeParksInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfThemeParks);
-
-                    var numberOfResortHotels = _console.Prompt("Number of Resort Hotels (number only): ");
-                    var numberOfResortHotelsInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfResortHotels);
-
-                    var numberOfPartnerHotels = _console.Prompt("Number of Partner Hotels (number only): ");
-                    var numberOfPartnerHotelsInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfPartnerHotels);
-
-                    var numberOfWaterParks = _console.Prompt("Number of Water Parks (number only): ");
-                    var numberOfWaterParksInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfWaterParks);
-
-                    var numberOfEntertainmentVenues = _console.Prompt("Number of Entertainment Venues (number only): ");
-                    var numberOfEntertainmentVenuesInteger = ExceptionHandler.CheckIfInputIsNumber(numberOfEntertainmentVenues);
-
+                    var numberOfThemeParksInteger = servicesHelper.RetrieveNumber("Number of Theme Parks (number only): ");
+                    var numberOfResortHotelsInteger = servicesHelper.RetrieveNumber("Number of Resort Hotels (number only): ");
+                    var numberOfPartnerHotelsInteger = servicesHelper.RetrieveNumber("Number of Partner Hotels (number only): ");
+                    var numberOfWaterParksInteger = servicesHelper.RetrieveNumber("Number of Water Parks (number only): ");
+                    var numberOfEntertainmentVenuesInteger = servicesHelper.RetrieveNumber("Number of Entertainment Venues (number only): ");
                     var operatingValue = servicesHelper.RetrieveOperatingValue("resort");
                     var openingDateTime = servicesHelper.RetrieveOpeningDate();
                     var closingDateTime = servicesHelper.RetrieveClosingDate(operatingValue);

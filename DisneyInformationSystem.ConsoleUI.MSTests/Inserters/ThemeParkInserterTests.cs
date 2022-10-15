@@ -80,9 +80,9 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Inserters
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        [DataRow("MK1", "The resort acronym should consist only letters.")]
-        [DataRow("MK", "The resort acronym is less than or greater than three letters long.")]
-        [DataRow("MKPP", "The resort acronym is less than or greater than three letters long.")]
+        [DataRow("MK1", "The acronym should consist of only letters.")]
+        [DataRow("MK", "The acronym is less than or greater than three letters long.")]
+        [DataRow("MKPP", "The acronym is less than or greater than three letters long.")]
         public void ThemeParkInserter_Add_WhenAcronymIsInvalid_ShouldNotAddThemeParkToDatabase(string input, string expectedOutputString)
         {
             // Arrange

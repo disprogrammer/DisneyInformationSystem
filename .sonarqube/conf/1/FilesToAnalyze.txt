@@ -31,6 +31,7 @@ C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationS
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI\Registrations\UserRegistration.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI\Services\Helpers\ResortsServiceHelper.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI\Services\IServiceBase.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI\Services\ResortHotelsService.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI\Services\ResortsService.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI\Services\ThemeParkService.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI\Updaters\IUpdater.cs

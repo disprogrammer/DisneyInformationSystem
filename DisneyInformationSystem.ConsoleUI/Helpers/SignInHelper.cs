@@ -5,7 +5,6 @@ using DisneyInformationSystem.Business.Exceptions.Technical;
 using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
-using System;
 using System.Threading;
 
 namespace DisneyInformationSystem.ConsoleUI.Helpers
@@ -75,13 +74,15 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
                     switch (userAdmin)
                     {
                         case "admin":
-                            var adminSignIn = AdminSignIn(emailAddress, password);
+                            var admin = _databaseReaderGateway.RetrieveAdminByEmail(emailAddress);
+                            var adminSignIn = RecordHelper<Admin>.AdminSignIn(admin, emailAddress, password);
                             personSigningIn = adminSignIn.Item1;
                             successfullySignedIn = adminSignIn.Item2;
                             break;
 
                         case "user":
-                            var userSignIn = UserSignIn(emailAddress, password);
+                            var user = _databaseReaderGateway.RetrieveUserByEmail(emailAddress);
+                            var userSignIn = RecordHelper<User>.UserSignIn(user, emailAddress, password);
                             personSigningIn = userSignIn.Item1;
                             successfullySignedIn = userSignIn.Item2;
                             break;
@@ -121,52 +122,6 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
             }
 
             return personSigningIn;
-        }
-
-        /// <summary>
-        /// Signs in the admin.
-        /// </summary>
-        /// <param name="emailAddress">Email Address.</param>
-        /// <param name="password">Password.</param>
-        /// <returns>Admin.</returns>
-        private Tuple<Admin, bool> AdminSignIn(string emailAddress, string password)
-        {
-            var admin = _databaseReaderGateway.RetrieveAdminByEmail(emailAddress);
-            if (admin == null)
-            {
-                throw new EmailNotFoundException($"{emailAddress} was not found in our database. Please try again.");
-            }
-
-            var passwordsMatch = SecurePasswordHasher.Verify(password, admin.Password);
-            if (!passwordsMatch)
-            {
-                throw new InvalidPasswordException($"{password} is invalid and does not match our records.");
-            }
-
-            return new Tuple<Admin, bool>(admin, true);
-        }
-
-        /// <summary>
-        /// Signs in the user.
-        /// </summary>
-        /// <param name="emailAddress">Email Address.</param>
-        /// <param name="password">Password.</param>
-        /// <returns>User.</returns>
-        private Tuple<User, bool> UserSignIn(string emailAddress, string password)
-        {
-            var user = _databaseReaderGateway.RetrieveUserByEmail(emailAddress);
-            if (user == null)
-            {
-                throw new EmailNotFoundException($"{emailAddress} was not found in our database. Please try again.");
-            }
-
-            var passwordsMatch = SecurePasswordHasher.Verify(password, user.Password);
-            if (!passwordsMatch)
-            {
-                throw new InvalidPasswordException($"{password} is invalid and does not match our records.");
-            }
-
-            return new Tuple<User, bool>(user, true);
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using DisneyInformationSystem.Business.Database.Gateways;
 using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.Business.Exceptions.Business;
+using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.Assessments;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
@@ -76,7 +77,7 @@ namespace DisneyInformationSystem.ConsoleUI
                     _console.WriteLine("Type 'sign in' to sign into your account or 'register' to create a new account!");
                     _console.WriteLine("Type 'log out' to sign out of your account.");
                     var mainMenuUserDecision = _console.Prompt("Explore, Book, List, Music, Games, Sports, Admin, or Exit: ").ToLower();
-                    var personString = PersonTitleString();
+                    var personString = StringHelper.PersonTitleString(PersonSignedIn);
 
                     switch (mainMenuUserDecision)
                     {
@@ -287,31 +288,6 @@ namespace DisneyInformationSystem.ConsoleUI
                 _console.WriteLine("This application will close in three seconds...");
                 Thread.Sleep(3000);
             }
-        }
-
-        /// <summary>
-        /// Gets the person signed in and creates string for the console title.
-        /// </summary>
-        /// <returns>Person signed in string.</returns>
-        private string PersonTitleString()
-        {
-            string signInTitleString = null;
-            if (PersonSignedIn == null)
-            {
-                return "No one signed in.";
-            }
-            else if (PersonSignedIn.PIN.StartsWith("A"))
-            {
-                Admin admin = (Admin)PersonSignedIn;
-                signInTitleString = $"{admin.PIN}: {admin.FirstName} {admin.LastName}";
-            }
-            else if (PersonSignedIn.PIN.StartsWith("U"))
-            {
-                User user = (User)PersonSignedIn;
-                signInTitleString = $"{user.PIN}: {user.FirstName} {user.LastName}";
-            }
-
-            return signInTitleString;
         }
     }
 }

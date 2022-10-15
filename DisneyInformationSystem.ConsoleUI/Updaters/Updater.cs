@@ -108,14 +108,7 @@ namespace DisneyInformationSystem.ConsoleUI.Updaters
 
                 _console.ForegroundColor(DisColors.White);
                 var continueUpdating = _console.Prompt("Would you like to update another value? (Y/N): ").ToLower();
-                if (continueUpdating == "y" || continueUpdating == "yes")
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return continueUpdating == "y" || continueUpdating == "yes";
             }
             else
             {

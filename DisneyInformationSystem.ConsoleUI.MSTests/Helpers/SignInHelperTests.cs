@@ -129,45 +129,6 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void SignInHelper_SignIn_WhenAdminButEmailIsNotFound_ShouldThrowEmailNotFoundException()
-        {
-            // Arrange
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfAdmins()).Returns(DatabaseMockers.MockSetupListOfAdmins);
-            var input = new[] { "EpcotCenter@gmail.com", "Password", "admin", "" };
-            ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
-
-            var signInHelper = new SignInHelper(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
-
-            // Act
-            _ = signInHelper.SignIn();
-
-            // Assert
-            StringAssert.Contains(
-                _outputString,
-                "EpcotCenter@gmail.com was not found in our database. Please try again.",
-                ConsoleUiTestHelper.ExpectStringInOutput);
-        }
-
-        [TestMethod, TestCategory("Console User Interface Test")]
-        public void SignInHelper_SignIn_WhenAdminButPasswordIsIncorrect_ShouldThrowInvalidPasswordException()
-        {
-            // Arrange
-            var admin = DatabaseMockers.MockSetupListOfAdmins()[0];
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveAdminByEmail(admin.EmailAddress)).Returns(DatabaseMockers.MockSetupListOfAdmins().First());
-
-            var input = new[] { admin.EmailAddress, "Password1", "admin", "" };
-            ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
-
-            var signInHelper = new SignInHelper(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
-
-            // Act
-            _ = signInHelper.SignIn();
-
-            // Assert
-            StringAssert.Contains(_outputString, "Password1 is invalid and does not match our records.", ConsoleUiTestHelper.ExpectStringInOutput);
-        }
-
-        [TestMethod, TestCategory("Console User Interface Test")]
         public void SignInHelper_SignIn_WhenAdmin_ShouldReturnThatPerson()
         {
             // Arrange
@@ -187,47 +148,6 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
             Assert.IsTrue(value is Admin, AssertMessage.ExpectTrue);
             StringAssert.Contains(_outputString, $"Admin, {admin.FirstName} {admin.LastName}, was successfully signed in.", ConsoleUiTestHelper.ExpectStringInOutput);
             StringAssert.Contains(_outputString, "You will be returned to the main menu...", ConsoleUiTestHelper.ExpectStringInOutput);
-        }
-
-        [TestMethod, TestCategory("Console User Interface Test")]
-        public void SignInHelper_SignIn_WhenUserButEmailIsNotFound_ShouldThrowEmailNotFoundException()
-        {
-            // Arrange
-            var email = "EpcotCenter@gmail.com";
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfUsers()).Returns(DatabaseMockers.MockSetupListOfUsers);
-
-            var input = new[] { email, "Password", "user", "" };
-            ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
-
-            var signInHelper = new SignInHelper(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
-
-            // Act
-            _ = signInHelper.SignIn();
-
-            // Assert
-            StringAssert.Contains(
-                _outputString,
-                "EpcotCenter@gmail.com was not found in our database. Please try again.",
-                ConsoleUiTestHelper.ExpectStringInOutput);
-        }
-
-        [TestMethod, TestCategory("Console User Interface Test")]
-        public void SignInHelper_SignIn_WhenUserButPasswordIsIncorrect_ShouldThrowInvalidPasswordException()
-        {
-            // Arrange
-            var user = DatabaseMockers.MockSetupListOfUsers()[0];
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveUserByEmail(user.EmailAddress)).Returns(DatabaseMockers.MockSetupListOfUsers().First());
-
-            var input = new[] { user.EmailAddress, "Waltdisney19951", "user", "" };
-            ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
-
-            var signInHelper = new SignInHelper(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
-
-            // Act
-            _ = signInHelper.SignIn();
-
-            // Assert
-            StringAssert.Contains(_outputString, "Waltdisney19951 is invalid and does not match our records.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]

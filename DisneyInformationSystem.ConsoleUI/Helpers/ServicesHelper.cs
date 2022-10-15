@@ -65,6 +65,17 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
         }
 
         /// <summary>
+        /// Retrieves a integer value if the input is a number.
+        /// </summary>
+        /// <param name="prompt">Prompt.</param>
+        /// <returns>Integer if input is number, exception if not.</returns>
+        public int RetrieveNumber(string prompt)
+        {
+            var number = _console.Prompt(prompt);
+            return ExceptionHandler.CheckIfInputIsNumber(number);
+        }
+
+        /// <summary>
         /// Checks if an exception is thrown or if the admin is finished.
         /// </summary>
         /// <param name="exceptionIsThrown">Exception is thrown exception.</param>

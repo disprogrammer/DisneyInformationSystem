@@ -36,7 +36,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         [DataRow("1", false)]
         [DataRow("%", false)]
         [DataRow("y", true)]
-        public void ServicseHelper_RetrieveOperatingValue_WhenProvidingValue_ShouldReturnCorrectBoolean(string input, bool expectedOutput)
+        public void ServicesHelper_RetrieveOperatingValue_WhenProvidingValue_ShouldReturnCorrectBoolean(string input, bool expectedOutput)
         {
             // Arrange
             var consoleInput = new[] { input };
@@ -68,7 +68,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ServicseHelper_RetrieveOpeningDate_WhenInputIsValid_ShouldReturnDate()
+        public void ServicesHelper_RetrieveOpeningDate_WhenInputIsValid_ShouldReturnDate()
         {
             // Arrange
             var input = new[] { "1971-10-01" };
@@ -131,7 +131,57 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ServicseHelper_CheckIfFinsihedOrExceptionIsThrown_WhenExceptionIsThrown_ShouldSetFinishedToFalseAndDisplayMessage()
+        public void ServicesHelper_RetrieveNumber_WhenInputIsNotProvided_ShouldReturnZero()
+        {
+            // Arrange
+            var expectedValue = 0;
+            var input = new[] { "" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
+
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            var actualValue = servicesHelper.RetrieveNumber("Provide number: ");
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue, AssertMessage.ExpectValuesToBeEqual);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_RetrieveNumber_WhenInputIsProvided_ShouldReturnNumber()
+        {
+            // Arrange
+            var expectedValue = 4;
+            var input = new[] { "4" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
+
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            var actualValue = servicesHelper.RetrieveNumber("Provide number: ");
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue, AssertMessage.ExpectValuesToBeEqual);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        [ExpectedException(typeof(FormatException))]
+        public void ServicesHelper_RetrieveNumber_WhenInputIsNotNumber_ShouldThrowFormatException()
+        {
+            // Arrange
+            var input = new[] { "WDW" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
+
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            _ = servicesHelper.RetrieveNumber("Provide number: ");
+
+            // Assert
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_CheckIfFinsihedOrExceptionIsThrown_WhenExceptionIsThrown_ShouldSetFinishedToFalseAndDisplayMessage()
         {
             // Arrange
             var servicesHelper = new ServicesHelper(_mockConsole.Object);
@@ -144,7 +194,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ServicseHelper_CheckIfFinishedOrExceptionIsThrown_WhenFinsihedIsTrue_ShouldDisplayAppropriateMessage()
+        public void ServicesHelper_CheckIfFinishedOrExceptionIsThrown_WhenFinsihedIsTrue_ShouldDisplayAppropriateMessage()
         {
             // Arrange
             var servicesHelper = new ServicesHelper(_mockConsole.Object);

@@ -1,7 +1,9 @@
-﻿using DisneyInformationSystem.Business.Exceptions.Technical;
+﻿using DisneyInformationSystem.Business.Database.Records;
+using DisneyInformationSystem.Business.Exceptions.Technical;
 using DisneyInformationSystem.Business.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Utilities
@@ -39,6 +41,47 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
 
             // Assert
             Assert.AreEqual(expectedValue, actualValue, AssertMessage.ExpectValuesToBeEqual);
+        }
+
+        [TestMethod, TestCategory("Business Test")]
+        public void StringHelper_PersonTitleString_WhenPersonIsNull_ShouldReturnAppropriateString()
+        {
+            // Arrange
+            var expectedString = "No one signed in.";
+
+            // Act
+            var actualString = StringHelper.PersonTitleString(null);
+
+            // Assert
+            Assert.AreEqual(expectedString, actualString, AssertMessage.ExpectValuesToBeEqual);
+        }
+
+        [TestMethod, TestCategory("Business Test")]
+        public void StringHelper_PersonTitleString_WhenPersonIsUser_ShouldReturnAppropriateString()
+        {
+            // Arrange
+            var user = DatabaseMockers.MockSetupListOfUsers().First();
+            var expectedString = $"{user.PIN}: {user.FirstName} {user.LastName}";
+
+            // Act
+            var actualString = StringHelper.PersonTitleString(user);
+
+            // Assert
+            Assert.AreEqual(expectedString, actualString, AssertMessage.ExpectValuesToBeEqual);
+        }
+
+        [TestMethod, TestCategory("Business Test")]
+        public void StringHelper_PersonTitleString_WhenPersonIsAdmin_ShouldReturnAppropriateString()
+        {
+            // Arrange
+            var admin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var expectedString = $"{admin.PIN}: {admin.FirstName} {admin.LastName}";
+
+            // Act
+            var actualString = StringHelper.PersonTitleString(admin);
+
+            // Assert
+            Assert.AreEqual(expectedString, actualString, AssertMessage.ExpectValuesToBeEqual);
         }
     }
 }

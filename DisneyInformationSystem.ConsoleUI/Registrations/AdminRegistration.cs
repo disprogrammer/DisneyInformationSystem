@@ -152,8 +152,6 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
                     _console.WriteLine($"We are sorry. You did not pass the assessment. Your final score was {assessmentScore}.");
                     _console.WriteLine("Please come back and try again anytime.");
                 }
-
-                
             }
             catch (AdminTypeInvalidException exception)
             {

@@ -5,7 +5,7 @@ namespace DisneyInformationSystem.ConsoleUI.Managers
     /// <summary>
     /// Destinations Manager for the Disney Information System console application.
     /// </summary>
-    public class DestinationsManager
+    public class DestinationsManager : IManager
     {
         /// <summary>
         /// Use of the <see cref="IConsole"/> interface.
@@ -21,6 +21,7 @@ namespace DisneyInformationSystem.ConsoleUI.Managers
             _console = console;
         }
 
+        /// <inheritdoc />
         public void Explore()
         {
             _console.WriteLine("Under construction.");

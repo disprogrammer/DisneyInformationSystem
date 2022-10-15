@@ -63,9 +63,9 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        [DataRow("WD1", "The resort acronym should consist only letters.")]
-        [DataRow("WD", "The resort acronym is less than or greater than three letters long.")]
-        [DataRow("WDWR", "The resort acronym is less than or greater than three letters long.")]
+        [DataRow("WD1", "The acronym should consist of only letters.")]
+        [DataRow("WD", "The acronym is less than or greater than three letters long.")]
+        [DataRow("WDWR", "The acronym is less than or greater than three letters long.")]
         public void ResortsService_Add_WhenAcronymIsNotValid_ShouldThrowResortAcronymInvalidException(string input, string exceptionMessage)
         {
             // Arrange
