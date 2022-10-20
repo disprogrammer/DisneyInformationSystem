@@ -3,7 +3,7 @@
   <Settings>
     <Setting>
       <Key>sonar.cs.opencover.reportsPaths</Key>
-      <Value>DisneyInformationSystem.Business.MSTests\coverage.opencover.xml, DisneyInformationSystem.ConsoleUI.MSTests\coverage.opencover.xml</Value>
+      <Value>DisneyInformationSystem.Business.MSTests\coverage.opencover.xml, DisneyInformationSystem.ConsoleUI.MSTests\coverage.opencover.xml, DisneyInformationSystem.WindowsForm.MSTests\coverage.opencover.xml</Value>
     </Setting>
     <Setting>
       <Key>sonar.cs.ignoreHeaderComments</Key>

@@ -1,3 +1,4 @@
+using Castle.Components.DictionaryAdapter.Xml;
 using System.Diagnostics.CodeAnalysis;
 using Testing.Shared;
 
@@ -11,9 +12,10 @@ namespace DisneyInformationSystem.WindowsForm.MSTests
         {
             // Arrange
             var expectedFormTitle = "Disney Information System - Home";
+            var home = new Home();
 
             // Act
-            var home = new Home();
+            home.Dispose();
 
             // Assert
             var actualFormTitle = home.Text;
