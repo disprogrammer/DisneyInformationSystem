@@ -18,6 +18,7 @@ C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationS
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Registrations\RegistrationHelperTests.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Registrations\UserRegistrationTests.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Services\Helpers\ResortsServiceHelperTests.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Services\ResortHotelsServiceTests.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Services\ResortsServiceTests.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Services\ThemeParkServiceTests.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\Updaters\UpdaterTests.cs

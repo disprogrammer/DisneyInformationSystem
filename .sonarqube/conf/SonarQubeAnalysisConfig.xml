@@ -101,7 +101,7 @@
     <Property Name="sonaranalyzer-vbnet.pluginKey">vbnet</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
     <Property Name="sonar.core.id">BF41A1F2-AX0Wz96oKzzkEg0EsqZr</Property>
-    <Property Name="sonar.core.startTime">10/19/2022 9:47:45 PM</Property>
+    <Property Name="sonar.core.startTime">10/21/2022 7:31:52 PM</Property>
     <Property Name="sonar.cs.opencover.it.reportsPaths">"C:\Users\mckin\Documents\Visual Studio 2019\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\coverage.opencover.xml","C:\Users\mckin\Documents\Visual Studio 2019\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\coverage.opencover.xml"</Property>
   </ServerSettings>
   <LocalSettings>
