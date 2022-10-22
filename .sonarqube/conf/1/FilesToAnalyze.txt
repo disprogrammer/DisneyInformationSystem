@@ -10,6 +10,7 @@ C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationS
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Records\GenericRecord.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Records\Person.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Records\Resort.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Records\ResortHotel.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Records\ThemePark.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Records\User.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Wrappers\DapperReaderWrapper.cs
@@ -18,6 +19,7 @@ C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationS
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Wrappers\IDapperWriterWrapper.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Writers\DatabaseWriter.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Database\Writers\IDatabaseWriter.cs
+C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Enums\ResortType.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Exceptions\Business\DisApplicationBusinessException.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Exceptions\Business\EmailNotFoundException.cs
 C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business\Exceptions\Business\InvalidConsoleExploreMenuStringException.cs
