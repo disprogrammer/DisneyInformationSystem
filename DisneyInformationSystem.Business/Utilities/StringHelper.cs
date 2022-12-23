@@ -8,7 +8,7 @@ namespace DisneyInformationSystem.Business.Utilities
     /// <summary>
     /// Helper class to implement changes to strings.
     /// </summary>
-    public static class StringHelper
+    public static partial class StringHelper
     {
         /// <summary>
         /// Takes an exception and splits the type name by capital letters.
@@ -17,10 +17,7 @@ namespace DisneyInformationSystem.Business.Utilities
         /// <returns>Split exception type string.</returns>
         public static string SplitObjectsAndPropertiesWords(string name)
         {
-            var regexCapitalLetters = new Regex(@"
-                (?<=[A-Z])(?=[A-Z][a-z]) |
-                 (?<=[^A-Z])(?=[A-Z]) |
-                 (?<=[A-Za-z])(?=[^A-Za-z])", RegexOptions.IgnorePatternWhitespace);
+            var regexCapitalLetters = RetrievesCapitalWordsFromString();
             return regexCapitalLetters.Replace(name, " ");
         }
 
@@ -58,5 +55,12 @@ namespace DisneyInformationSystem.Business.Utilities
 
             return signInTitleString;
         }
+
+        /// <summary>
+        /// Retrieves the words with capital letters.
+        /// </summary>
+        /// <returns>String of capital words.</returns>
+        [GeneratedRegex("(?<=[A-Z])(?=[A-Z][a-z]) | (?<=[^A-Z])(?=[A-Z]) | (?<=[A-Za-z])(?=[^A-Za-z])", RegexOptions.IgnorePatternWhitespace)]
+        private static partial Regex RetrievesCapitalWordsFromString();
     }
 }
