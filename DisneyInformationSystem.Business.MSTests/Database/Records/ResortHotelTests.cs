@@ -32,8 +32,8 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Records
             Assert.IsNull(resortHotel.CheckOutTime, AssertMessage.ExpectNullValue);
             Assert.IsNull(resortHotel.RoomTypes, AssertMessage.ExpectNullValue);
             Assert.IsNull(resortHotel.Transportation, AssertMessage.ExpectNullValue);
-            Assert.IsNull(resortHotel.ParkingCost, AssertMessage.ExpectNullValue);
-            Assert.IsNull(resortHotel.ValetCost, AssertMessage.ExpectNullValue);
+            Assert.IsTrue(resortHotel.ParkingCost == 0.00m, AssertMessage.ExpectTrue);
+            Assert.IsTrue(resortHotel.ValetCost == 0.00m, AssertMessage.ExpectTrue);
             Assert.IsFalse(resortHotel.HasInRoomDining, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.HasBeach, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.HasPetServices, AssertMessage.ExpectFalse);
