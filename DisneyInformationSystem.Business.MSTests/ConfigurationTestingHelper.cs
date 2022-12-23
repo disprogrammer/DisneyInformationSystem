@@ -7,7 +7,7 @@ namespace DisneyInformationSystem.Business.MSTests
     /// Configuration Testing Helper class.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    internal class ConfigurationTestingHelper
+    internal static class ConfigurationTestingHelper
     {
         /// <summary>
         /// Gets the configuration file for testing projects.

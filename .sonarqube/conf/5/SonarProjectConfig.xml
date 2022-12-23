@@ -5,5 +5,5 @@
   <FilesToAnalyzePath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\.sonarqube\conf\5\FilesToAnalyze.txt</FilesToAnalyzePath>
   <OutPath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\.sonarqube\out\5</OutPath>
   <ProjectType>Test</ProjectType>
-  <TargetFramework>net6.0</TargetFramework>
+  <TargetFramework>net7.0</TargetFramework>
 </SonarProjectConfig>
