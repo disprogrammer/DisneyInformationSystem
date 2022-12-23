@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
+	<NoWarn>$(NoWarn);SYSLIB0041</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
     /// <summary>
     /// Allows person to register as a user.
     /// </summary>
-    public class UserRegistration : IRegister<User>
+    public partial class UserRegistration : IRegister<User>
     {
         /// <summary>
         /// Use of the <see cref="IConsole"/> interface.
@@ -89,7 +89,7 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
                 }
 
                 ExceptionHandler.CheckIfPhoneNumberIsValid(phoneNumber);
-                var formattedPhoneNumber = Regex.Replace(phoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
+                var formattedPhoneNumber = PlaceDashesIntoPhoneNumber().Replace(phoneNumber, "$1-$2-$3");
 
                 var emailAddress = _console.Prompt("Email Address: ");
                 if (string.IsNullOrWhiteSpace(emailAddress))
@@ -146,5 +146,8 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
 
             return user;
         }
+
+        [GeneratedRegex("(\\d{3})(\\d{3})(\\d{4})")]
+        private static partial Regex PlaceDashesIntoPhoneNumber();
     }
 }
