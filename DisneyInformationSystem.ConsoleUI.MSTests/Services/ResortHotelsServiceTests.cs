@@ -59,5 +59,21 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             // Assert
             StringAssert.Contains(_outputString, message, ConsoleUiTestHelper.ExpectStringInOutput);
         }
+
+        [TestMethod]
+        public void ResortHotelsService_Options_WhenSelectingToAdd_ShouldDisplayAppropriateMessages()
+        {
+            // Arrange
+            var consoleInput = new[] { "1", "" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
+
+            var resortHotelsService = new ResortHotelsService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+
+            // Act
+            resortHotelsService.Options(DatabaseMockers.MockSetupListOfResorts().First());
+
+            // Assert
+            StringAssert.Contains(_outputString, "1. Add", ConsoleUiTestHelper.ExpectStringInOutput);
+        }
     }
 }
