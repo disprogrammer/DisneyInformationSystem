@@ -2,8 +2,8 @@
 <SonarProjectConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/analyzer/2021/1">
   <AnalysisConfigPath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\.sonarqube\conf\SonarQubeAnalysisConfig.xml</AnalysisConfigPath>
   <ProjectPath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\DisneyInformationSystem.ConsoleUI.MSTests.csproj</ProjectPath>
-  <FilesToAnalyzePath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\.sonarqube\conf\6\FilesToAnalyze.txt</FilesToAnalyzePath>
-  <OutPath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\.sonarqube\out\6</OutPath>
+  <FilesToAnalyzePath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\.sonarqube\conf\17\FilesToAnalyze.txt</FilesToAnalyzePath>
+  <OutPath>C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\.sonarqube\out\17</OutPath>
   <ProjectType>Test</ProjectType>
   <TargetFramework>net7.0</TargetFramework>
 </SonarProjectConfig>
