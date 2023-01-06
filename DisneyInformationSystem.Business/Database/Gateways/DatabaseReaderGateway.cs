@@ -24,7 +24,6 @@ namespace DisneyInformationSystem.Business.Database.Gateways
         /// </summary>
         private static readonly IDapperReaderWrapper _dapperReaderWrapper = new DapperReaderWrapper();
 
-        #region Admin and Users
         /// <inheritdoc />
         public Admin RetrieveAdminByEmail(string email)
         {
@@ -72,9 +71,7 @@ namespace DisneyInformationSystem.Business.Database.Gateways
             var databaseReader = new DatabaseReader<User>(_connectionString, _dapperReaderWrapper);
             return databaseReader.GetById(StoredProcedureNames.UserByPin, id);
         }
-        #endregion
 
-        #region Resorts
         /// <inheritdoc />
         public List<Resort> RetrieveListOfResorts()
         {
@@ -95,15 +92,12 @@ namespace DisneyInformationSystem.Business.Database.Gateways
             var databaseReader = new DatabaseReader<Resort>(_connectionString, _dapperReaderWrapper);
             return databaseReader.GetById(StoredProcedureNames.ResortByPin, id);
         }
-        #endregion
 
-        #region Theme Park
         /// <inheritdoc />
         public List<ThemePark> RetrieveListOfThemeParks()
         {
             var databaseReader = new DatabaseReader<ThemePark>(_connectionString, _dapperReaderWrapper);
             return databaseReader.GetAll(StoredProcedureNames.AllThemeParks);
         }
-        #endregion
     }
 }

@@ -61,9 +61,9 @@ namespace DisneyInformationSystem.ConsoleUI.Updaters
 
                     var upperCaseWordsInDecsion = decision.ToTitleCase();
                     var decisionWithoutSpaces = upperCaseWordsInDecsion.Replace(" ", "");
-                    var resortHasProperty = _record.GetType().GetProperties().Any(property => property.Name == decisionWithoutSpaces);
+                    var recordHasProperty = _record.GetType().GetProperties().Any(property => property.Name == decisionWithoutSpaces);
 
-                    doneUpdating = CheckIfResortHasSelectedProperty(resortHasProperty, decisionWithoutSpaces);
+                    doneUpdating = CheckIfPropertyIsValid(recordHasProperty, decisionWithoutSpaces);
                 }
                 catch (InvalidPropertyTypeException exception)
                 {
@@ -79,17 +79,17 @@ namespace DisneyInformationSystem.ConsoleUI.Updaters
         }
 
         /// <summary>
-        /// Checks if the selected property is in the resort.
+        /// Checks if the selected property is in the record.
         /// If it is, admin can update the properties value.
         /// Otherwise, it will throw an exception.
         /// </summary>
-        /// <param name="resortHasProperty">Resort has property.</param>
+        /// <param name="recordHasProperty">Record has property.</param>
         /// <param name="decisionWithoutSpaces">Decision without spaces.</param>
         /// <returns>True if admin is done, false, otherwise.</returns>
         /// <exception cref="InvalidPropertyTypeException">Invalid property type exception.</exception>
-        private bool CheckIfResortHasSelectedProperty(bool resortHasProperty, string decisionWithoutSpaces)
+        private bool CheckIfPropertyIsValid(bool recordHasProperty, string decisionWithoutSpaces)
         {
-            if (resortHasProperty)
+            if (recordHasProperty)
             {
                 var propertyToUpdate = _record.GetType().GetProperty(decisionWithoutSpaces);
                 var newValue = _console.Prompt($"New Value for {propertyToUpdate.Name}: ");

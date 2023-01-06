@@ -14,7 +14,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
     /// <summary>
     /// Theme park service class.
     /// </summary>
-    public class ThemeParkService
+    public class ThemeParkService : IResortServiceBase
     {
         /// <summary>
         /// Use of the <see cref="IConsole"/> interface.
@@ -42,10 +42,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             _databaseWriterGateway = databaseWriterGateway;
         }
 
-        /// <summary>
-        /// Gives the user the option to add, update, or delete a theme park.
-        /// </summary>
-        /// <param name="resort">Resort.</param>
+        /// <inheritdoc />
         public void Options(Resort resort)
         {
             var finished = false;

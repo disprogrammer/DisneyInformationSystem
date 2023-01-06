@@ -9,7 +9,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
     /// <summary>
     /// Resort hotels service.
     /// </summary>
-    public class ResortHotelsService
+    public class ResortHotelsService : IResortServiceBase
     {
         /// <summary>
         /// Use of the <see cref="IConsole"/> interface.
@@ -37,10 +37,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             _databaseWriterGateway = databaseWriterGateway;
         }
 
-        /// <summary>
-        /// Gives the user the option to add, update, or delete a resort hotel.
-        /// </summary>
-        /// <param name="resort"></param>
+        /// <inheritdoc />
         public void Options(Resort resort)
         {
             var finished = false;
@@ -55,9 +52,11 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                         break;
 
                     case "2":
+                        UpdateResortHotel(resort);
                         break;
 
                     case "3":
+                        DeleteResortHotel(resort);
                         break;
 
                     case "":
@@ -70,6 +69,34 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates a resort hotel record.
+        /// </summary>
+        /// <param name="resort">Resort record.</param>
+        private void UpdateResortHotel(Resort resort)
+        {
+            
+        }
+
+        /// <summary>
+        /// Deletes a resort hotel record.
+        /// </summary>
+        /// <param name="resort">Resort record.</param>
+        private void DeleteResortHotel(Resort resort)
+        {
+            
+        }
+
+        /// <summary>
+        /// Retrieves the resort hotel to use.
+        /// </summary>
+        /// <param name="resort">Resort record.</param>
+        /// <returns>Resort hotel record.</returns>
+        private ResortHotel RetrieveResortHotel(Resort resort)
+        {
+            return new ResortHotel();
         }
     }
 }

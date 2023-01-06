@@ -16,7 +16,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
     /// <summary>
     /// Resorts service class.
     /// </summary>
-    public class ResortsService : IServiceBase
+    public class ResortsService
     {
         /// <summary>
         /// Use of the <see cref="IConsole"/> interface.
@@ -112,33 +112,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                     }
 
                     ExceptionHandler.CheckIfPhoneNumberIsValid(phoneNumber);
-
-                    _console.ForegroundColor(DisColors.Yellow);
-                    _console.TypeString("For the entries of inputting numbers, 0 is defaulted if nothing is entered.\n");
-
-                    _console.ForegroundColor(DisColors.White);
-                    var numberOfThemeParksInteger = servicesHelper.RetrieveNumber("Number of Theme Parks (number only): ");
-                    var numberOfResortHotelsInteger = servicesHelper.RetrieveNumber("Number of Resort Hotels (number only): ");
-                    var numberOfPartnerHotelsInteger = servicesHelper.RetrieveNumber("Number of Partner Hotels (number only): ");
-                    var numberOfWaterParksInteger = servicesHelper.RetrieveNumber("Number of Water Parks (number only): ");
-                    var numberOfEntertainmentVenuesInteger = servicesHelper.RetrieveNumber("Number of Entertainment Venues (number only): ");
-                    var operatingValue = servicesHelper.RetrieveOperatingValue("resort");
-                    var openingDateTime = servicesHelper.RetrieveOpeningDate();
-                    var closingDateTime = servicesHelper.RetrieveClosingDate(operatingValue);
-
-                    var resort = new Resort(
-                        resortAcronym,
-                        resortName,
-                        addressOfResort,
-                        phoneNumber,
-                        numberOfThemeParksInteger,
-                        numberOfResortHotelsInteger,
-                        numberOfPartnerHotelsInteger,
-                        numberOfWaterParksInteger,
-                        numberOfEntertainmentVenuesInteger,
-                        operatingValue,
-                        openingDateTime,
-                        closingDateTime);
+                    var resort = RetrieveNumberAndBooleanPropertiesAndCreateResortRecord(servicesHelper, resortAcronym, resortName, addressOfResort, phoneNumber);
 
                     _databaseWriterGateway.Insert(resort);
 
@@ -237,6 +211,51 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                 _console.ForegroundColor(DisColors.Red);
                 _console.WriteLine("Yes or No was not inputted. No information was updated.");
             }
+        }
+
+        /// <summary>
+        /// Retrieve remainder of resort values and create record.
+        /// </summary>
+        /// <param name="servicesHelper">Services helper.</param>
+        /// <param name="resortAcronym">Resort acronym.</param>
+        /// <param name="resortName">Resort name.</param>
+        /// <param name="addressOfResort">Address of resort.</param>
+        /// <param name="phoneNumber">Phone number.</param>
+        /// <returns>Resort record.</returns>
+        private Resort RetrieveNumberAndBooleanPropertiesAndCreateResortRecord(
+            ServicesHelper servicesHelper,
+            string resortAcronym,
+            string resortName,
+            string addressOfResort,
+            string phoneNumber)
+        {
+            _console.ForegroundColor(DisColors.Yellow);
+            _console.TypeString("For the entries of inputting numbers, 0 is defaulted if nothing is entered.\n");
+
+            _console.ForegroundColor(DisColors.White);
+            var numberOfThemeParksInteger = servicesHelper.RetrieveNumber("Number of Theme Parks (number only): ");
+            var numberOfResortHotelsInteger = servicesHelper.RetrieveNumber("Number of Resort Hotels (number only): ");
+            var numberOfPartnerHotelsInteger = servicesHelper.RetrieveNumber("Number of Partner Hotels (number only): ");
+            var numberOfWaterParksInteger = servicesHelper.RetrieveNumber("Number of Water Parks (number only): ");
+            var numberOfEntertainmentVenuesInteger = servicesHelper.RetrieveNumber("Number of Entertainment Venues (number only): ");
+            var operatingValue = servicesHelper.RetrieveOperatingValue("resort");
+            var openingDateTime = servicesHelper.RetrieveOpeningDate();
+            var closingDateTime = servicesHelper.RetrieveClosingDate(operatingValue);
+
+            var resort = new Resort(
+                resortAcronym,
+                resortName,
+                addressOfResort,
+                phoneNumber,
+                numberOfThemeParksInteger,
+                numberOfResortHotelsInteger,
+                numberOfPartnerHotelsInteger,
+                numberOfWaterParksInteger,
+                numberOfEntertainmentVenuesInteger,
+                operatingValue,
+                openingDateTime,
+                closingDateTime);
+            return resort;
         }
     }
 }
