@@ -146,5 +146,40 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
             _console.ForegroundColor(DisColors.Red);
             _console.WriteLine($"A valid {type} was not selected. Please try again.");
         }
+
+        /// <summary>
+        /// Shows the initial messages for adding a record.
+        /// </summary>
+        public void InitialMessages(string recordType)
+        {
+            _console.ForegroundColor(DisColors.Cyan);
+            _console.WriteLine($"\n===== Adding {recordType} =====");
+
+            _console.ForegroundColor(DisColors.Yellow);
+            _console.TypeString($"Provide the information below to add a {recordType.ToLower()} to the database.\n");
+
+            _console.ForegroundColor(DisColors.DarkGray);
+            _console.WriteLine("If you do not provide any information for the data fields, you will lose your inputs.");
+        }
+
+        /// <summary>
+        /// Retrieves the transportation to the .
+        /// </summary>
+        /// <returns>Transportation string.</returns>
+        public string RetrieveTransportation()
+        {
+            _console.ForegroundColor(DisColors.Yellow);
+            _console.WriteLine("\nFor transportation, separate each type of transportation by a comma.");
+            _console.WriteLine("NOTE: Not providing anything will set it to 'Car' only.");
+
+            _console.ForegroundColor(DisColors.White);
+            var transportation = _console.Prompt("Transportation: ");
+            if (string.IsNullOrWhiteSpace(transportation))
+            {
+                transportation = "Car";
+            }
+
+            return transportation;
+        }
     }
 }

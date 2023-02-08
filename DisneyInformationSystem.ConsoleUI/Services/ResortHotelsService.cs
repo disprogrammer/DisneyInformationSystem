@@ -1,8 +1,11 @@
 ﻿using DisneyInformationSystem.Business.Database.Gateways;
 using DisneyInformationSystem.Business.Database.Records;
+using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
+using DisneyInformationSystem.ConsoleUI.Deleters;
 using DisneyInformationSystem.ConsoleUI.Helpers;
+using DisneyInformationSystem.ConsoleUI.Inserters;
 using System.Linq;
 
 namespace DisneyInformationSystem.ConsoleUI.Services
@@ -44,14 +47,25 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                 switch (decision)
                 {
                     case "1":
+                        var resortHotelInserter = new ResortHotelInserter(_console, _databaseReaderGateway, new DatabaseWriterGateway(), resort.PIN);
+                        resortHotelInserter.Add();
                         break;
 
                     case "2":
-                        UpdateResortHotel(resort);
+                        var resortHotelToUpdate = RetrieveResortHotel(resort);
+                        if (resortHotelToUpdate != null)
+                        {
+                            var recordPropertiesAndValues = RecordHelper<ResortHotel>.RetrieveListOfPropertiesAndValues(resortHotelToUpdate);
+                            servicesHelper.UpdateRecord(resortHotelToUpdate, recordPropertiesAndValues);
+                        }
+                        else
+                        {
+                            servicesHelper.NotValidMessage("resort hotel");
+                        }
                         break;
 
                     case "3":
-                        DeleteResortHotel(resort);
+                        DeleteResortHotel(resort, servicesHelper);
                         break;
 
                     case "":
@@ -67,21 +81,23 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         }
 
         /// <summary>
-        /// Updates a resort hotel record.
-        /// </summary>
-        /// <param name="resort">Resort record.</param>
-        private void UpdateResortHotel(Resort resort)
-        {
-            var resortHotelToDelete = RetrieveResortHotel(resort);
-        }
-
-        /// <summary>
         /// Deletes a resort hotel record.
         /// </summary>
         /// <param name="resort">Resort record.</param>
-        private void DeleteResortHotel(Resort resort)
+        /// <param name="servicesHelper">Services helper.</param>
+        private void DeleteResortHotel(Resort resort, ServicesHelper servicesHelper)
         {
-            
+            var resortHotelToDelete = RetrieveResortHotel(resort);
+            if (resortHotelToDelete != null)
+            {
+                var deleter = new DeleterBase(_console, _databaseReaderGateway, new DatabaseWriterGateway());
+                var closingDate = servicesHelper.RetrieveClosingDate(false);
+                deleter.DeleteResortHotel(resortHotelToDelete, closingDate);
+            }
+            else
+            {
+                servicesHelper.NotValidMessage("resort hotel");
+            }
         }
 
         /// <summary>

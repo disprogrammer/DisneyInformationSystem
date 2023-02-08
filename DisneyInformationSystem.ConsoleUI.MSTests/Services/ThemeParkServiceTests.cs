@@ -3,6 +3,7 @@ using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Testing.Shared;
@@ -110,12 +111,27 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        [DataRow("2", "Magic")]
-        [DataRow("3", "Magic")]
-        public void ThemeParkService_Options_WhenOptionIsUpdateOrDeleteAndSelectingValidPark_ShouldDisplayCorrectMessage(string option, string park)
+        public void ThemeParkService_Options_WhenOptionIsUpdateAndSelectingValidPark_ShouldDisplayCorrectMessage()
         {
             // Arrange
-            var consoleInput = new[] { option, park, "", "" };
+            var consoleInput = new[] { "2", "Magic", "", "" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
+
+            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID("WDW")).Returns(DatabaseMockers.MockSetupListOfThemeParks());
+
+            // Act
+            themeParkService.Options(DatabaseMockers.MockSetupListOfResorts().First());
+
+            // Assert
+            StringAssert.Contains(_outputString, "Select a theme park below.", ConsoleUiTestHelper.ExpectStringInOutput);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ThemeParkService_Options_WhenOptionIsDeleteAndSelectingValidPark_ShouldDisplayCorrectMessage()
+        {
+            // Arrange
+            var consoleInput = new[] { "3", "Magic", DateTime.Today.ToString(), "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
             var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);

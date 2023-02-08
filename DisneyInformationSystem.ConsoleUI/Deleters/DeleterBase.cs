@@ -2,7 +2,7 @@
 using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
-using System.Linq;
+using System;
 
 namespace DisneyInformationSystem.ConsoleUI.Deleters
 {
@@ -46,18 +46,22 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
         }
 
         /// <inheritdoc />
-        public void DeleteResortHotels(string resortPin)
+        public void DeleteResortHotels(string resortPin, DateTime closingDate)
         {
-            // Method intentionally left empty.
+            var listOfResortHotels = _databaseReaderGateway.RetrieveResortHotelsByResortID(resortPin);
+            foreach (var resortHotel in listOfResortHotels)
+            {
+                DeleteResortHotel(resortHotel, closingDate);
+            }
         }
 
         /// <inheritdoc />
-        public void DeleteThemeParks(string resortPin)
+        public void DeleteThemeParks(string resortPin, DateTime closingDate)
         {
             var listOfThemeParks = _databaseReaderGateway.RetrieveThemeParksByResortID(resortPin);
             foreach (var themePark in listOfThemeParks)
             {
-                DeleteThemePark(themePark);
+                DeleteThemePark(themePark, closingDate);
             }
         }
 
@@ -77,16 +81,42 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
         /// Deletes a single theme park from a resort.
         /// </summary>
         /// <param name="themePark">Theme park.</param>
-        public void DeleteThemePark(ThemePark themePark)
+        /// <param name="closingDate">Closing date.</param>
+        public void DeleteThemePark(ThemePark themePark, DateTime closingDate)
         {
-            var propertyToUpdate = themePark.GetType().GetProperty("Operating");
-            propertyToUpdate.SetValue(themePark, false, null);
+            var operatingProperty = themePark.GetType().GetProperty("Operating");
+            operatingProperty.SetValue(themePark, false, null);
+            var closingProperty = themePark.GetType().GetProperty("ClosingDate");
+            closingProperty.SetValue(themePark, closingDate, null);
             _databaseWriterGateway.Update(themePark);
 
             _console.ForegroundColor(DisColors.Green);
-            _console.WriteLine($"Theme Park: {themePark.ParkName} has successfully been updated. The operating value is now {propertyToUpdate.GetValue(themePark, null)}.");
+            _console.WriteLine($"Theme Park: {themePark.ParkName} has successfully been updated.\n" +
+                $"- The operating value is now {operatingProperty.GetValue(themePark, null)}.\n" +
+                $"- The closing date value is not {closingProperty.GetValue(themePark, null)}.");
 
             // TODO: Delete attractions, restaurants, guest services, etc.
+        }
+
+        /// <summary>
+        /// Deletes a single resort hotel from a resort.
+        /// </summary>
+        /// <param name="resortHotel">Resort hotel.</param>
+        /// <param name="closingDate">Closing date.</param>
+        public void DeleteResortHotel(ResortHotel resortHotel, DateTime closingDate)
+        {
+            var operatingProperty = resortHotel.GetType().GetProperty("Operating");
+            operatingProperty.SetValue(resortHotel, false, null);
+            var closingProperty = resortHotel.GetType().GetProperty("ClosingDate");
+            closingProperty.SetValue(resortHotel, closingDate, null);
+            _databaseWriterGateway.Update(resortHotel);
+
+            _console.ForegroundColor(DisColors.Green);
+            _console.WriteLine($"Resort Hotel: {resortHotel.ResortHotelName} has successfully been updated.\n" +
+                $"- The operating value is now {operatingProperty.GetValue(resortHotel, null)}.\n" +
+                $"- The closing date value is now {closingProperty.GetValue(resortHotel, null)}.");
+
+            // TODO: Delete restaurants, shops, guest services, etc.
         }
     }
 }

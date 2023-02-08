@@ -1,9 +1,12 @@
-﻿using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
+﻿using DisneyInformationSystem.Business.Database.Records;
+using DisneyInformationSystem.Business.Utilities;
+using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Testing.Shared;
 
 namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
@@ -204,6 +207,50 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
 
             // Assert
             StringAssert.Contains(_outputString, "Thank you for your contributions to the Disney Information System!", ConsoleUiTestHelper.ExpectStringInOutput);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_RetrieveServiceDecision_WhenCalled_ShouldDisplayCorrectMessages()
+        {
+            // Arrange
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            servicesHelper.RetrieveServiceDecision("===== Some Title =====");
+
+            // Assert
+            StringAssert.Contains(_outputString, "Select an option below that you would like to do.", ConsoleUiTestHelper.ExpectStringInOutput);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_UpdateRecord_WhenCalled_ShouldDisplayRecordPropertiesAndValues()
+        {
+            // Arrange
+            var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
+            var propertiesAndValues = RecordHelper<ThemePark>.RetrieveListOfPropertiesAndValues(themePark);
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            servicesHelper.UpdateRecord(themePark, propertiesAndValues);
+
+            // Assert
+            foreach (var propertyValuePair in propertiesAndValues)
+            {
+                StringAssert.Contains(_outputString, propertyValuePair, ConsoleUiTestHelper.ExpectStringInOutput);
+            }
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_NotValidMessage_WhenCalled_ShouldPrintMessage()
+        {
+            // Arrange
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            servicesHelper.NotValidMessage("theme park");
+
+            // Assert
+            StringAssert.Contains(_outputString, "A valid theme park was not selected. Please try again.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
     }
 }

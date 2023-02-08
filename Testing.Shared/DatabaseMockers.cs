@@ -1,4 +1,5 @@
 ﻿using DisneyInformationSystem.Business.Database.Records;
+using DisneyInformationSystem.Business.Enums;
 using DisneyInformationSystem.Business.Utilities;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,44 @@ namespace Testing.Shared
                     Operating = true,
                     OpeningDate = new DateTime(1971, 10, 01),
                     ClosingDate = DateTime.MaxValue
+                }
+            };
+        }
+
+        public static List<ResortHotel> MockSetupListOfResortHotels()
+        {
+            return new List<ResortHotel>
+            {
+                new ResortHotel
+                {
+                    PIN = "WLR",
+                    ResortID = "WDW",
+                    ResortHotelName = "Disney's Wilderness Lodge Resort",
+                    ResortType = ResortType.Deluxe.ToString(),
+                    Area = "Magic Kingdom Park Resort Area",
+                    Theme = "Pacific Northwest",
+                    Description = "This is a description",
+                    Address = "456 Wilderness Drive, Orlando, FL 67890",
+                    PhoneNumber = "098-765-4321",
+                    NumberOfRooms = 700,
+                    CheckInTime = "3:00 PM",
+                    CheckOutTime = "11:00 AM",
+                    RoomTypes = "Room Types",
+                    Transportation = "Car, Boat",
+                    NumberOfBusStops = 1,
+                    ParkingCost = 0.0m,
+                    ValetCost = 20.00m,
+                    HasInRoomDining = true,
+                    HasBeach = true,
+                    HasPetServices = false,
+                    HasFishing = false,
+                    HasCampfire = true,
+                    HasShoppingDelivery = true,
+                    HasChildCenter = false,
+                    IsConventionResort = false,
+                    OpeningDate = new DateTime(1994, 05, 28),
+                    ClosingDate = DateTime.MaxValue,
+                    Operating = true
                 }
             };
         }

@@ -173,8 +173,8 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             _console.WriteLine($"Setting everything within {_resort.ResortName} as NOT operating...");
 
             var deleter = new DeleterBase(_console, _databaseReaderGateway, _databaseWriterGateway);
-            deleter.DeleteThemeParks(_resort.PIN);
-            deleter.DeleteResortHotels(_resort.PIN);
+            deleter.DeleteThemeParks(_resort.PIN, _resort.ClosingDate);
+            deleter.DeleteResortHotels(_resort.PIN, _resort.ClosingDate);
             deleter.DeleteTransportation(_resort.PIN);
             deleter.DeleteEntertainmentVenues(_resort.PIN);
             deleter.DeleteWaterParks(_resort.PIN);

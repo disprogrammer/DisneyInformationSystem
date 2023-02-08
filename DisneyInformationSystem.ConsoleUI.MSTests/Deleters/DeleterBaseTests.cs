@@ -4,6 +4,7 @@ using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Deleters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -53,7 +54,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
             var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
             // Act
-            deleterBase.DeleteThemeParks("DLR");
+            deleterBase.DeleteThemeParks("DLR", DateTime.Today);
 
             // Assert
             Assert.IsFalse(ThemeParksAreSetToFalse(themeParks), AssertMessage.ExpectFalse);
@@ -68,14 +69,14 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
             var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
             // Act
-            deleterBase.DeleteThemeParks("WDW");
+            deleterBase.DeleteThemeParks("WDW", DateTime.Today);
 
             // Assert
             Assert.IsTrue(ThemeParksAreSetToFalse(themeParks), AssertMessage.ExpectTrue);
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void DeleterBase_DeleteThemePark_WhenProvidingWithThemePark_ShouldSetOperatingPropertyToFalse()
+        public void DeleterBase_DeleteThemePark_WhenProvidingWithThemePark_ShouldSetOperatingAndClosingDate()
         {
             // Arrange
             var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
@@ -83,21 +84,67 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
             var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
             // Act
-            deleterBase.DeleteThemePark(themePark);
+            deleterBase.DeleteThemePark(themePark, DateTime.Today);
 
             // Assert
-            Assert.IsTrue(ThemeParkIsSetToFalse(themePark), AssertMessage.ExpectTrue);
+            Assert.IsFalse(themePark.Operating, AssertMessage.ExpectFalse);
+            Assert.AreEqual(DateTime.Today, themePark.ClosingDate, AssertMessage.ExpectValuesToBeEqual);
             StringAssert.Contains(
                 _outputString,
-                $"Theme Park: {themePark.ParkName} has successfully been updated. The operating value is now False.",
+                $"Theme Park: {themePark.ParkName} has successfully been updated.\n- The operating value is now False.",
                 ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
-        /// <summary>
-        /// Checks if the Operating property has been set or not for each theme park.
-        /// </summary>
-        /// <param name="themeParks">List of theme parks.</param>
-        /// <returns>True if Operating has been set to False for each theme park; false otherwise.</returns>
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void DeleterBase_DeleteResortHotels_WhenThereAreNoResortHotelsToDelete_ShouldStillHaveTrueForResortHotelOperatingProperty()
+        {
+            // Arrange
+            var resortHotels = DatabaseMockers.MockSetupListOfResortHotels();
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortHotelsByResortID("DLR")).Returns(new List<ResortHotel>());
+            var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+
+            // Act
+            deleterBase.DeleteResortHotels("DLR", DateTime.Today);
+
+            // Assert
+            Assert.IsFalse(ResortHotelsAreSetToFalse(resortHotels), AssertMessage.ExpectFalse);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void DeleterBase_DeleteResortHotels_WhenThereAreResortHotelsToDelete_ShouldSetFalseForOperatingProperty()
+        {
+            // Arrange
+            var resortHotels = DatabaseMockers.MockSetupListOfResortHotels();
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortHotelsByResortID("WDW")).Returns(resortHotels);
+            var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+
+            // Act
+            deleterBase.DeleteResortHotels("WDW", DateTime.Today);
+
+            // Assert
+            Assert.IsTrue(ResortHotelsAreSetToFalse(resortHotels), AssertMessage.ExpectTrue);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void DeleterBase_DeleteResortHotel_WhenProvidingWithResortHotel_ShouldSetOperatingAndClosingDate()
+        {
+            // Arrange
+            var resortHotel = DatabaseMockers.MockSetupListOfResortHotels().First();
+            _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Update(resortHotel));
+            var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+
+            // Act
+            deleterBase.DeleteResortHotel(resortHotel, DateTime.Today);
+
+            // Assert
+            Assert.IsFalse(resortHotel.Operating, AssertMessage.ExpectFalse);
+            Assert.AreEqual(DateTime.Today, resortHotel.ClosingDate, AssertMessage.ExpectValuesToBeEqual);
+            StringAssert.Contains(
+                _outputString,
+                $"Resort Hotel: {resortHotel.ResortHotelName} has successfully been updated.\n- The operating value is now False.",
+                ConsoleUiTestHelper.ExpectStringInOutput);
+        }
+
         private static bool ThemeParksAreSetToFalse(List<ThemePark> themeParks)
         {
             foreach (var themePark in themeParks)
@@ -111,16 +158,14 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
             return true;
         }
 
-        /// <summary>
-        /// Checks if a theme park's Operating property has been set to False.
-        /// </summary>
-        /// <param name="themePark">Theme park.</param>
-        /// <returns>True if the Operating property has been set to False; false otherwise.</returns>
-        private static bool ThemeParkIsSetToFalse(ThemePark themePark)
+        private static bool ResortHotelsAreSetToFalse(List<ResortHotel> resortHotels)
         {
-            if (themePark.Operating)
+            foreach (var resortHotel in resortHotels)
             {
-                return false;
+                if (resortHotel.Operating)
+                {
+                    return false;
+                }
             }
 
             return true;

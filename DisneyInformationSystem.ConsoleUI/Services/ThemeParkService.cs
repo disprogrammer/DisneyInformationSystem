@@ -91,7 +91,8 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             if (themeParkToDelete != null)
             {
                 var deleter = new DeleterBase(_console, _databaseReaderGateway, new DatabaseWriterGateway());
-                deleter.DeleteThemePark(themeParkToDelete);
+                var closingDate = servicesHelper.RetrieveClosingDate(false);
+                deleter.DeleteThemePark(themeParkToDelete, closingDate);
             }
             else
             {

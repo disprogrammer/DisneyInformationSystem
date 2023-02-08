@@ -59,7 +59,7 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
             {
                 try
                 {
-                    InitialMessages();
+                    servicesHelper.InitialMessages("Theme Park");
 
                     _console.ForegroundColor(DisColors.White);
                     var themeParkAcronym = _console.Prompt("Theme Park Acronym (3 letters): ").ToUpper();
@@ -102,7 +102,7 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
 
                     ExceptionHandler.CheckIfPhoneNumberIsValid(phoneNumber);
 
-                    var transportation = RetrieveTransportationToThemePark();
+                    var transportation = servicesHelper.RetrieveTransportation();
 
                     _console.ForegroundColor(DisColors.Yellow);
                     _console.TypeString("For the entries of inputting numbers, 0 is defaulted if nothing is entered.\n");
@@ -155,41 +155,6 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
                     servicesHelper.CheckIfFinsihedOrExceptionIsThrown(exceptionIsThrown, finished);
                 }
             }
-        }
-
-        /// <summary>
-        /// Shows the initial messages for adding a theme park.
-        /// </summary>
-        private void InitialMessages()
-        {
-            _console.ForegroundColor(DisColors.Cyan);
-            _console.WriteLine("\n===== Adding Theme Park =====");
-
-            _console.ForegroundColor(DisColors.Yellow);
-            _console.TypeString("Provide the information below to add a theme park to the database.\n");
-
-            _console.ForegroundColor(DisColors.DarkGray);
-            _console.WriteLine("If you do not provide any information for the data fields, you will lose your inputs.");
-        }
-
-        /// <summary>
-        /// Retrieves the transportation to the theme park.
-        /// </summary>
-        /// <returns>Transportation string.</returns>
-        private string RetrieveTransportationToThemePark()
-        {
-            _console.ForegroundColor(DisColors.Yellow);
-            _console.WriteLine("\nFor transportation, separate each type of transportation by a comma.");
-            _console.WriteLine("NOTE: Not providing anything will set it to 'Car' only.");
-
-            _console.ForegroundColor(DisColors.White);
-            var transportation = _console.Prompt("Transportation: ");
-            if (string.IsNullOrWhiteSpace(transportation))
-            {
-                transportation = "Car";
-            }
-
-            return transportation;
         }
     }
 }
