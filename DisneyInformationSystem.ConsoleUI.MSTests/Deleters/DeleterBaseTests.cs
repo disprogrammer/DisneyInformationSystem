@@ -49,7 +49,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
         {
             // Arrange
             var themeParks = DatabaseMockers.MockSetupListOfThemeParks();
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfThemeParks()).Returns(themeParks);
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID("DLR")).Returns(new List<ThemePark>());
             var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
             // Act
@@ -64,7 +64,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
         {
             // Arrange
             var themeParks = DatabaseMockers.MockSetupListOfThemeParks();
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfThemeParks()).Returns(themeParks);
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID("WDW")).Returns(themeParks);
             var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
             // Act

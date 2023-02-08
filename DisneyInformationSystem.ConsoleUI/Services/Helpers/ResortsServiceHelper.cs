@@ -92,5 +92,15 @@ namespace DisneyInformationSystem.ConsoleUI.Services.Helpers
                 "3. Delete\n" +
                 ">> ");
         }
+
+        /// <summary>
+        /// Prints message that not a valid record was selected.
+        /// </summary>
+        /// <param name="type">Record type.</param>
+        public void NotValidMessage(string type)
+        {
+            _console.ForegroundColor(DisColors.Red);
+            _console.WriteLine($"A valid {type} was not selected. Please try again.");
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Dapper;
+using System.Collections.Generic;
 using System.Data;
 
 namespace DisneyInformationSystem.Business.Database.Wrappers
@@ -28,5 +29,16 @@ namespace DisneyInformationSystem.Business.Database.Wrappers
         /// <param name="commandType">Command Type.</param>
         /// <returns>List of items.</returns>
         public IEnumerable<T> Query<T>(IDbConnection connection, string sqlQuery, CommandType commandType);
+
+        /// <summary>
+        /// Uses database connection and command type to run the sql query for reading data from the database.
+        /// </summary>
+        /// <typeparam name="T">Record.</typeparam>
+        /// <param name="connection">Db connection.</param>
+        /// <param name="sqlQuery">SQL Query.</param>
+        /// <param name="commandType">Command type.</param>
+        /// <param name="parameters">Parameters.</param>
+        /// <returns>List of items.</returns>
+        public IEnumerable<T> QueryWithParameters<T>(IDbConnection connection, string sqlQuery, CommandType commandType, object parameters);
     }
 }

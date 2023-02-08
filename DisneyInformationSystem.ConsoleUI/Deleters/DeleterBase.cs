@@ -54,7 +54,7 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
         /// <inheritdoc />
         public void DeleteThemeParks(string resortPin)
         {
-            var listOfThemeParks = _databaseReaderGateway.RetrieveListOfThemeParks().Where(themePark => themePark.ResortID == resortPin).ToList();
+            var listOfThemeParks = _databaseReaderGateway.RetrieveThemeParksByResortID(resortPin);
             foreach (var themePark in listOfThemeParks)
             {
                 DeleteThemePark(themePark);

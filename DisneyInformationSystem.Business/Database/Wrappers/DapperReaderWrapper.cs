@@ -16,6 +16,12 @@ namespace DisneyInformationSystem.Business.Database.Wrappers
         }
 
         /// <inheritdoc />
+        public IEnumerable<T> QueryWithParameters<T>(IDbConnection connection, string sqlQuery, CommandType commandType, object parameters)
+        {
+            return connection.Query<T>(sqlQuery, param: parameters, null, false, null, commandType);
+        }
+
+        /// <inheritdoc />
         public T QuerySingle<T>(IDbConnection connection, string sqlQuery, CommandType commandType, object parameters)
         {
             return connection.QuerySingleOrDefault<T>(sqlQuery, parameters, null, null, commandType);

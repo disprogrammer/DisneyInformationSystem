@@ -38,5 +38,13 @@ namespace DisneyInformationSystem.Business.Database.Readers
         /// <param name="storedProcedureName">Stored procedure name.</param>
         /// <returns>List of objects.</returns>
         List<T> GetAll(string storedProcedureName);
+
+        /// <summary>
+        /// Connects to the database and reads the stored procedure to get all from a certain table based on the resort id.
+        /// </summary>
+        /// <param name="storedProcedureName">Stored procedure name.</param>
+        /// <param name="parameter">Parameter.</param>
+        /// <returns>List of records.</returns>
+        List<T> GetRecordsByResortID(string storedProcedureName, string parameter);
     }
 }

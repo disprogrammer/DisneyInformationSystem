@@ -62,5 +62,13 @@ namespace DisneyInformationSystem.Business.Database.Readers
             using IDbConnection connection = new SqlConnection(_connectionString);
             return _dapperReaderWrapper.Query<T>(connection, storedProcedureName, CommandType.StoredProcedure).AsList();
         }
+
+        /// <inheritdoc />
+        public List<T> GetRecordsByResortID(string storedProcedureName, string parameter)
+        {
+            using IDbConnection connection = new SqlConnection(_connectionString);
+            var parameters = new { PIN = parameter };
+            return _dapperReaderWrapper.QueryWithParameters<T>(connection, storedProcedureName, CommandType.StoredProcedure, parameters).AsList();
+        }
     }
 }

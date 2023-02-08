@@ -59,6 +59,7 @@ namespace DisneyInformationSystem.Business.Database.Gateways
             return databaseReader.GetAll(StoredProcedureNames.AllUsers);
         }
 
+        /// <inheritdoc />
         public User RetrieveUserByEmail(string email)
         {
             var databaseReader = new DatabaseReader<User>(_connectionString, _dapperReaderWrapper);
@@ -98,6 +99,13 @@ namespace DisneyInformationSystem.Business.Database.Gateways
         {
             var databaseReader = new DatabaseReader<ThemePark>(_connectionString, _dapperReaderWrapper);
             return databaseReader.GetAll(StoredProcedureNames.AllThemeParks);
+        }
+
+        /// <inheritdoc />
+        public List<ThemePark> RetrieveThemeParksByResortID(string resortId)
+        {
+            var databaseReader = new DatabaseReader<ThemePark>(_connectionString, _dapperReaderWrapper);
+            return databaseReader.GetRecordsByResortID(StoredProcedureNames.ThemeParksByResortID, resortId);
         }
     }
 }

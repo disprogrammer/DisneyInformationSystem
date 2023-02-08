@@ -88,8 +88,8 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfAdmins);
 
             // Act
-            var adminDatabaseReader = new DatabaseReader<Admin>(_connectionString, _mockDapperReaderWrapper.Object);
-            var actualListOfAdmins = adminDatabaseReader.GetAll(storedProcedureName);
+            var databaseReader = new DatabaseReader<Admin>(_connectionString, _mockDapperReaderWrapper.Object);
+            var actualListOfAdmins = databaseReader.GetAll(storedProcedureName);
 
             // Assert
             Assert.AreEqual(expectedListOfAdmins, actualListOfAdmins, AssertMessage.ExpectValuesToBeEqual);
@@ -105,8 +105,8 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfAdminTypes);
 
             // Act
-            var adminDatabaseReader = new DatabaseReader<AdminTypes>(_connectionString, _mockDapperReaderWrapper.Object);
-            var actualListOfAdminTypes = adminDatabaseReader.GetAll(storedProcedureName);
+            var databaseReader = new DatabaseReader<AdminTypes>(_connectionString, _mockDapperReaderWrapper.Object);
+            var actualListOfAdminTypes = databaseReader.GetAll(storedProcedureName);
 
             // Assert
             Assert.AreEqual(expectedListOfAdminTypes, actualListOfAdminTypes, AssertMessage.ExpectValuesToBeEqual);
@@ -122,8 +122,8 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfUsers);
 
             // Act
-            var adminDatabaseReader = new DatabaseReader<User>(_connectionString, _mockDapperReaderWrapper.Object);
-            var actualListOfUsers = adminDatabaseReader.GetAll(storedProcedureName);
+            var databaseReader = new DatabaseReader<User>(_connectionString, _mockDapperReaderWrapper.Object);
+            var actualListOfUsers = databaseReader.GetAll(storedProcedureName);
 
             // Assert
             Assert.AreEqual(expectedListOfUsers, actualListOfUsers, AssertMessage.ExpectValuesToBeEqual);
@@ -139,8 +139,8 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfResorts);
 
             // Act
-            var adminDatabaseReader = new DatabaseReader<Resort>(_connectionString, _mockDapperReaderWrapper.Object);
-            var actualListOfResorts = adminDatabaseReader.GetAll(storedProcedureName);
+            var databaseReader = new DatabaseReader<Resort>(_connectionString, _mockDapperReaderWrapper.Object);
+            var actualListOfResorts = databaseReader.GetAll(storedProcedureName);
 
             // Assert
             Assert.AreEqual(expectedListOfResorts, actualListOfResorts, AssertMessage.ExpectValuesToBeEqual);
@@ -156,8 +156,25 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfThemeParks);
 
             // Act
-            var adminDatabaseReader = new DatabaseReader<ThemePark>(_connectionString, _mockDapperReaderWrapper.Object);
-            var actualListOfThemeParks = adminDatabaseReader.GetAll(storedProcedureName);
+            var databaseReader = new DatabaseReader<ThemePark>(_connectionString, _mockDapperReaderWrapper.Object);
+            var actualListOfThemeParks = databaseReader.GetAll(storedProcedureName);
+
+            // Assert
+            Assert.AreEqual(expectedListOfThemeParks, actualListOfThemeParks, AssertMessage.ExpectValuesToBeEqual);
+            Assert.IsTrue(actualListOfThemeParks.Count > 0, AssertMessage.ExpectTrue);
+        }
+
+        [TestMethod, TestCategory("Business Test")]
+        public void DatabaseReader_GetRecordsByResortID_WhenCallingDatabaseForThemeParksByResortId_ShouldReturnListOfThemeParks()
+        {
+            // Arrange
+            var expectedListOfThemeParks = DatabaseMockers.MockSetupListOfThemeParks();
+            var storedProcedureName = "ThemeParksByResortID";
+            SetupMockDapperReaderWrapperForGettingRecordsByResortId(storedProcedureName, expectedListOfThemeParks);
+
+            // Act
+            var databaseReader = new DatabaseReader<ThemePark>(_connectionString, _mockDapperReaderWrapper.Object);
+            var actualListOfThemeParks = databaseReader.GetRecordsByResortID(storedProcedureName, "WDW");
 
             // Assert
             Assert.AreEqual(expectedListOfThemeParks, actualListOfThemeParks, AssertMessage.ExpectValuesToBeEqual);
@@ -168,6 +185,12 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         {
             _ = _mockDapperReaderWrapper.Setup(wrapper => wrapper.Query<T>(It.Is<IDbConnection>(db => db.ConnectionString == _connectionString), query, CommandType.StoredProcedure))
                                     .Returns(listOfItems);
+        }
+
+        private void SetupMockDapperReaderWrapperForGettingRecordsByResortId<T>(string query, List<T> listOfItems)
+        {
+            _ = _mockDapperReaderWrapper.Setup(wrapper => wrapper.QueryWithParameters<T>(It.Is<IDbConnection>(db => db.ConnectionString == _connectionString), query, CommandType.StoredProcedure, It.IsAny<object>()))
+                .Returns(listOfItems);
         }
 
         private void SetupMockDapperReaderWrapperForSingleRows<T>(string query, T item)
