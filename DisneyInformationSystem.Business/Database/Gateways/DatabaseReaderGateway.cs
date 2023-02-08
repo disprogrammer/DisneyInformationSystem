@@ -107,5 +107,12 @@ namespace DisneyInformationSystem.Business.Database.Gateways
             var databaseReader = new DatabaseReader<ThemePark>(_connectionString, _dapperReaderWrapper);
             return databaseReader.GetRecordsByResortID(StoredProcedureNames.ThemeParksByResortID, resortId);
         }
+
+        /// <inheritdoc />
+        public List<ResortHotel> RetrieveResortHotelsByResortID(string resortId)
+        {
+            var databaseReader = new DatabaseReader<ResortHotel>(_connectionString, _dapperReaderWrapper);
+            return databaseReader.GetRecordsByResortID(StoredProcedureNames.ResortHotelsByResortID, resortId);
+        }
     }
 }

@@ -26,6 +26,7 @@ namespace DisneyInformationSystem.Business.Database.Constants
         public const string AllResortHotels = "AllResortHotels";
         public const string InsertNewResortHotel = "InsertNewResortHotel";
         public const string ResortHotelByName = "ResortHotelByName";
+        public const string ResortHotelsByResortID = "ResortHotelsByResortID";
         public const string UpdateResortHotel = "UpdateResortHotel";
 
         public const string AllResorts = "AllResorts";

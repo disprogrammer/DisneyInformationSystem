@@ -86,5 +86,12 @@ namespace DisneyInformationSystem.Business.Database.Gateways
         /// <param name="resortId">Resort id.</param>
         /// <returns>List of theme parks.</returns>
         List<ThemePark> RetrieveThemeParksByResortID(string resortId);
+
+        /// <summary>
+        /// Retrieves a list of resort hotels from the database by resort id.
+        /// </summary>
+        /// <param name="resortId">Resort id.</param>
+        /// <returns>List of resort hotels.</returns>
+        List<ResortHotel> RetrieveResortHotelsByResortID(string resortId);
     }
 }
