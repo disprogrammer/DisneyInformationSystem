@@ -50,7 +50,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var consoleInput = new[] { "9", "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
-            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
 
             // Act
             themeParkService.Options(DatabaseMockers.MockSetupListOfResorts().First());
@@ -66,7 +66,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var input = new[] { "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
 
-            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
 
             // Act
             themeParkService.Options(DatabaseMockers.MockSetupListOfResorts().First());
@@ -82,7 +82,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var consoleInput = new[] { "1", "", "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
-            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfThemeParks()).Returns(DatabaseMockers.MockSetupListOfThemeParks());
 
             // Act
@@ -99,7 +99,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var consoleInput = new[] { "2", "Vikings", "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
-            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID("WDW")).Returns(DatabaseMockers.MockSetupListOfThemeParks());
 
             // Act
@@ -118,7 +118,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var consoleInput = new[] { option, park, "", "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
-            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID("WDW")).Returns(DatabaseMockers.MockSetupListOfThemeParks());
 
             // Act
@@ -135,7 +135,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var consoleInput = new[] { "3", "Orlando", "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
-            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var themeParkService = new ThemeParkService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID("WDW")).Returns(DatabaseMockers.MockSetupListOfThemeParks());
 
             // Act

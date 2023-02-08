@@ -51,7 +51,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var consoleInput = new[] { option, "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
-            var resortHotelsService = new ResortHotelsService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var resortHotelsService = new ResortHotelsService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
 
             // Act
             resortHotelsService.Options(DatabaseMockers.MockSetupListOfResorts().First());
@@ -67,7 +67,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             var consoleInput = new[] { "1", "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
 
-            var resortHotelsService = new ResortHotelsService(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
+            var resortHotelsService = new ResortHotelsService(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
 
             // Act
             resortHotelsService.Options(DatabaseMockers.MockSetupListOfResorts().First());

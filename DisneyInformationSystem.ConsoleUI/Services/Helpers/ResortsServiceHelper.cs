@@ -53,12 +53,12 @@ namespace DisneyInformationSystem.ConsoleUI.Services.Helpers
             switch (decision)
             {
                 case "1":
-                    var themeParkService = new ThemeParkService(_console, new DatabaseReaderGateway(), new DatabaseWriterGateway());
+                    var themeParkService = new ThemeParkService(_console, new DatabaseReaderGateway());
                     themeParkService.Options(_resort);
                     break;
 
                 case "2":
-                    var resortHotelsService = new ResortHotelsService(_console, new DatabaseReaderGateway(), new DatabaseWriterGateway());
+                    var resortHotelsService = new ResortHotelsService(_console, new DatabaseReaderGateway());
                     resortHotelsService.Options(_resort);
                     break;
 
@@ -70,37 +70,6 @@ namespace DisneyInformationSystem.ConsoleUI.Services.Helpers
                     _console.WriteLine("This is not a valid option. Please try again.");
                     break;
             }
-        }
-
-        /// <summary>
-        /// Retrieves the service decision to add, update, or delete a certain record.
-        /// </summary>
-        /// <param name="title">Title.</param>
-        /// <returns>User input.</returns>
-        public string RetrieveServiceDecision(string title)
-        {
-            _console.Clear();
-            _console.ForegroundColor(DisColors.Cyan);
-            _console.WriteLine(title);
-
-            _console.ForegroundColor(DisColors.Yellow);
-            _console.WriteLine("Select an option below that you would like to do.");
-
-            _console.ForegroundColor(DisColors.White);
-            return _console.Prompt("1. Add\n" +
-                "2. Update\n" +
-                "3. Delete\n" +
-                ">> ");
-        }
-
-        /// <summary>
-        /// Prints message that not a valid record was selected.
-        /// </summary>
-        /// <param name="type">Record type.</param>
-        public void NotValidMessage(string type)
-        {
-            _console.ForegroundColor(DisColors.Red);
-            _console.WriteLine($"A valid {type} was not selected. Please try again.");
         }
     }
 }

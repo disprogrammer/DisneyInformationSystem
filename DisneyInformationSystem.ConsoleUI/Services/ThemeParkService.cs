@@ -4,9 +4,8 @@ using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Deleters;
+using DisneyInformationSystem.ConsoleUI.Helpers;
 using DisneyInformationSystem.ConsoleUI.Inserters;
-using DisneyInformationSystem.ConsoleUI.Services.Helpers;
-using DisneyInformationSystem.ConsoleUI.Updaters;
 using System.Linq;
 
 namespace DisneyInformationSystem.ConsoleUI.Services
@@ -27,19 +26,13 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         private readonly IDatabaseReaderGateway _databaseReaderGateway;
 
         /// <summary>
-        /// Use of the <see cref="DatabaseWriterGateway"/> class.
-        /// </summary>
-        private readonly IDatabaseWriterGateway _databaseWriterGateway;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ThemeParkService"/> class.
         /// </summary>
         /// <param name="console">Console interface.</param>
-        public ThemeParkService(IConsole console, IDatabaseReaderGateway databaseReaderGateway, IDatabaseWriterGateway databaseWriterGateway)
+        public ThemeParkService(IConsole console, IDatabaseReaderGateway databaseReaderGateway)
         {
             _console = console;
             _databaseReaderGateway = databaseReaderGateway;
-            _databaseWriterGateway = databaseWriterGateway;
         }
 
         /// <inheritdoc />
@@ -48,22 +41,31 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             var finished = false;
             while (!finished)
             {
-                var resortsServiceHelper = new ResortsServiceHelper(_console, resort);
-                var decision = resortsServiceHelper.RetrieveServiceDecision("===== Theme Park Service =====");
+                var servicesHelper = new ServicesHelper(_console);
+                var decision = servicesHelper.RetrieveServiceDecision("===== Theme Park Service =====");
 
                 switch (decision)
                 {
                     case "1":
-                        var themeParkInserter = new ThemeParkInserter(_console, _databaseReaderGateway, _databaseWriterGateway, resort.PIN);
+                        var themeParkInserter = new ThemeParkInserter(_console, _databaseReaderGateway, new DatabaseWriterGateway(), resort.PIN);
                         themeParkInserter.Add();
                         break;
 
                     case "2":
-                        UpdateThemePark(resort, resortsServiceHelper);
+                        var themeParkToUpdate = RetrieveThemePark(resort);
+                        if (themeParkToUpdate != null)
+                        {
+                            var recordPropertiesAndValues = RecordHelper<ThemePark>.RetrieveListOfPropertiesAndValues(themeParkToUpdate);
+                            servicesHelper.UpdateRecord(themeParkToUpdate, recordPropertiesAndValues);
+                        }
+                        else
+                        {
+                            servicesHelper.NotValidMessage("theme park");
+                        }
                         break;
 
                     case "3":
-                        DeleteThemePark(resort, resortsServiceHelper);
+                        DeleteThemePark(resort, servicesHelper);
                         break;
 
                     case "":
@@ -82,43 +84,18 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         /// Deletes theme park by setting Operating to False.
         /// </summary>
         /// <param name="resort">Resort.</param>
-        /// <param name="resortsServiceHelper">Resorts service helper.</param>
-        private void DeleteThemePark(Resort resort, ResortsServiceHelper resortsServiceHelper)
+        /// <param name="servicesHelper">Service helper.</param>
+        private void DeleteThemePark(Resort resort, ServicesHelper servicesHelper)
         {
             var themeParkToDelete = RetrieveThemePark(resort);
             if (themeParkToDelete != null)
             {
-                var deleter = new DeleterBase(_console, _databaseReaderGateway, _databaseWriterGateway);
+                var deleter = new DeleterBase(_console, _databaseReaderGateway, new DatabaseWriterGateway());
                 deleter.DeleteThemePark(themeParkToDelete);
             }
             else
             {
-                resortsServiceHelper.NotValidMessage("theme park");
-            }
-        }
-
-        /// <summary>
-        /// Updates theme park properties.
-        /// </summary>
-        /// <param name="resort">Resort.</param>
-        /// <param name="resortsServiceHelper">Resorts service helper.</param>
-        private void UpdateThemePark(Resort resort, ResortsServiceHelper resortsServiceHelper)
-        {
-            var themeParkToUpdate = RetrieveThemePark(resort);
-            if (themeParkToUpdate != null)
-            {
-                _console.ForegroundColor(DisColors.White);
-                foreach (var propertyValuePair in RecordHelper<ThemePark>.RetrieveListOfPropertiesAndValues(themeParkToUpdate))
-                {
-                    _console.WriteLine(propertyValuePair);
-                }
-
-                var updater = new Updater(_console, themeParkToUpdate, _databaseWriterGateway);
-                updater.Update();
-            }
-            else
-            {
-                resortsServiceHelper.NotValidMessage("theme park");
+                servicesHelper.NotValidMessage("theme park");
             }
         }
 

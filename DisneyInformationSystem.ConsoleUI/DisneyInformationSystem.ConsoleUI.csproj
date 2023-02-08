@@ -3,12 +3,20 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
+    <PackageIcon>Mickey21.ico</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Providers\**" />
     <EmbeddedResource Remove="Providers\**" />
     <None Remove="Providers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Vintage Disney Icons\Mickey21.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

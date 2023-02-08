@@ -1,7 +1,11 @@
-﻿using DisneyInformationSystem.Business.Utilities;
+﻿using DisneyInformationSystem.Business.Database.Gateways;
+using DisneyInformationSystem.Business.Database.Records;
+using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
+using DisneyInformationSystem.ConsoleUI.Updaters;
 using System;
+using System.Collections.Generic;
 
 namespace DisneyInformationSystem.ConsoleUI.Helpers
 {
@@ -93,6 +97,54 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
                 _console.ForegroundColor(DisColors.Green);
                 _console.WriteLine("Thank you for your contributions to the Disney Information System!");
             }
+        }
+
+        /// <summary>
+        /// Retrieves the service decision to add, update, or delete a certain record.
+        /// </summary>
+        /// <param name="title">Title.</param>
+        /// <returns>User input.</returns>
+        public string RetrieveServiceDecision(string title)
+        {
+            _console.Clear();
+            _console.ForegroundColor(DisColors.Cyan);
+            _console.WriteLine(title);
+
+            _console.ForegroundColor(DisColors.Yellow);
+            _console.WriteLine("Select an option below that you would like to do.");
+
+            _console.ForegroundColor(DisColors.White);
+            return _console.Prompt("1. Add\n" +
+                "2. Update\n" +
+                "3. Delete\n" +
+                ">> ");
+        }
+
+        /// <summary>
+        /// Updates theme park properties.
+        /// </summary>
+        /// <param name="recordToUpdate">Record to update.</param>
+        /// <param name="recordPropertiesAndValues">List of record properties and values..</param>
+        public void UpdateRecord(GenericRecord recordToUpdate, List<string> recordPropertiesAndValues)
+        {
+            _console.ForegroundColor(DisColors.White);
+            foreach (var propertyValuePair in recordPropertiesAndValues)
+            {
+                _console.WriteLine(propertyValuePair);
+            }
+
+            var updater = new Updater(_console, recordToUpdate, new DatabaseWriterGateway());
+            updater.Update();
+        }
+
+        /// <summary>
+        /// Prints message that not a valid record was selected.
+        /// </summary>
+        /// <param name="type">Record type.</param>
+        public void NotValidMessage(string type)
+        {
+            _console.ForegroundColor(DisColors.Red);
+            _console.WriteLine($"A valid {type} was not selected. Please try again.");
         }
     }
 }

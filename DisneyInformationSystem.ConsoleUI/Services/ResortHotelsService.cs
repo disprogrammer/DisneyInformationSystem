@@ -2,7 +2,8 @@
 using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
-using DisneyInformationSystem.ConsoleUI.Services.Helpers;
+using DisneyInformationSystem.ConsoleUI.Helpers;
+using System.Linq;
 
 namespace DisneyInformationSystem.ConsoleUI.Services
 {
@@ -22,19 +23,13 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         private readonly IDatabaseReaderGateway _databaseReaderGateway;
 
         /// <summary>
-        /// Use of the <see cref="DatabaseWriterGateway"/> class.
-        /// </summary>
-        private readonly IDatabaseWriterGateway _databaseWriterGateway;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ResortHotelsService"/> class.
         /// </summary>
         /// <param name="console">Console interface.</param>
-        public ResortHotelsService(IConsole console, IDatabaseReaderGateway databaseReaderGateway, IDatabaseWriterGateway databaseWriterGateway)
+        public ResortHotelsService(IConsole console, IDatabaseReaderGateway databaseReaderGateway)
         {
             _console = console;
             _databaseReaderGateway = databaseReaderGateway;
-            _databaseWriterGateway = databaseWriterGateway;
         }
 
         /// <inheritdoc />
@@ -43,8 +38,8 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             var finished = false;
             while (!finished)
             {
-                var resortsServiceHelper = new ResortsServiceHelper(_console, resort);
-                var decision = resortsServiceHelper.RetrieveServiceDecision("===== Resort Hotels Service =====");
+                var servicesHelper = new ServicesHelper(_console);
+                var decision = servicesHelper.RetrieveServiceDecision("===== Resort Hotels Service =====");
 
                 switch (decision)
                 {
@@ -77,7 +72,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         /// <param name="resort">Resort record.</param>
         private void UpdateResortHotel(Resort resort)
         {
-            
+            var resortHotelToDelete = RetrieveResortHotel(resort);
         }
 
         /// <summary>
@@ -96,7 +91,17 @@ namespace DisneyInformationSystem.ConsoleUI.Services
         /// <returns>Resort hotel record.</returns>
         private ResortHotel RetrieveResortHotel(Resort resort)
         {
-            return new ResortHotel();
+            var resortHotels = _databaseReaderGateway.RetrieveResortHotelsByResortID(resort.PIN);
+            _console.ForegroundColor(DisColors.Yellow);
+            _console.WriteLine("\nSelect a resort hotel below.");
+            _console.ForegroundColor(DisColors.White);
+            foreach (var resortHotel in resortHotels)
+            {
+                _console.WriteLine($"- {resortHotel.ResortHotelName}");
+            }
+
+            var resortHotelDedcision = _console.Prompt(">> ").ToLower();
+            return resortHotels.FirstOrDefault(resortHotel => resortHotel.ResortHotelName.ToLower().Contains(resortHotelDedcision));
         }
     }
 }
