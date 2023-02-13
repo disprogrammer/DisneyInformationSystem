@@ -21,9 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.Shared", "Testing.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisneyInformationSystem.ConsoleUI.MSTests", "DisneyInformationSystem.ConsoleUI.MSTests\DisneyInformationSystem.ConsoleUI.MSTests.csproj", "{CFFF780F-21CE-4946-A78A-DEEDD44FFC4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyInformationSystem.WindowsForm", "DisneyInformationSystem.WindowsForm\DisneyInformationSystem.WindowsForm.csproj", "{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisneyInformationSystem.WindowsForm", "DisneyInformationSystem.WindowsForm\DisneyInformationSystem.WindowsForm.csproj", "{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyInformationSystem.WindowsForm.MSTests", "DisneyInformationSystem.WindowsForm.MSTests\DisneyInformationSystem.WindowsForm.MSTests.csproj", "{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisneyInformationSystem.WindowsForm.MSTests", "DisneyInformationSystem.WindowsForm.MSTests\DisneyInformationSystem.WindowsForm.MSTests.csproj", "{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpecFlow", "SpecFlow", "{265E5742-3F04-475C-88F0-100801212C73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyInformationSystem.Business.Specs", "DisneyInformationSystem.Business.Specs\DisneyInformationSystem.Business.Specs.csproj", "{5434C7E7-4A5F-4221-85E2-26E53BE9A6EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,10 @@ Global
 		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5434C7E7-4A5F-4221-85E2-26E53BE9A6EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5434C7E7-4A5F-4221-85E2-26E53BE9A6EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5434C7E7-4A5F-4221-85E2-26E53BE9A6EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5434C7E7-4A5F-4221-85E2-26E53BE9A6EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +80,8 @@ Global
 		{CFFF780F-21CE-4946-A78A-DEEDD44FFC4F} = {3B787139-B6EE-4B1F-AEB6-780765D8473C}
 		{3B6C1EB8-97D7-4FB1-8E3F-56C0ABB7C67D} = {A795C173-80F0-4581-B615-7E8E89660455}
 		{95DBC7AA-3C65-4A0A-A843-72BDF18A146E} = {3B787139-B6EE-4B1F-AEB6-780765D8473C}
+		{265E5742-3F04-475C-88F0-100801212C73} = {2A81E8EA-9453-4BE4-A932-5C8490F0DB74}
+		{5434C7E7-4A5F-4221-85E2-26E53BE9A6EF} = {265E5742-3F04-475C-88F0-100801212C73}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {14EFA380-460A-409F-81D6-507AE9489D59}
