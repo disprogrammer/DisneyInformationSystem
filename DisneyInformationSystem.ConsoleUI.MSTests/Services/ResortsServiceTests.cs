@@ -397,8 +397,10 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             // Arrange
             var resort = DatabaseMockers.MockSetupListOfResorts().First();
             var listOfThemeParks = DatabaseMockers.MockSetupListOfThemeParks();
+            var listOfResortHotels = DatabaseMockers.MockSetupListOfResortHotels();
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortByPin(resort.PIN)).Returns(resort);
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID(resort.PIN)).Returns(listOfThemeParks);
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortHotelsByResortID(resort.PIN)).Returns(listOfResortHotels);
             var resortsService = new ResortsService(_mockConsole.Object, resort, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
             // Act

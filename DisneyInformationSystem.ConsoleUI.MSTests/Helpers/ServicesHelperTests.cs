@@ -226,6 +226,8 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         public void ServicesHelper_UpdateRecord_WhenCalled_ShouldDisplayRecordPropertiesAndValues()
         {
             // Arrange
+            var consoleInput = new[] { "" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
             var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
             var propertiesAndValues = RecordHelper<ThemePark>.RetrieveListOfPropertiesAndValues(themePark);
             var servicesHelper = new ServicesHelper(_mockConsole.Object);
@@ -251,6 +253,53 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
 
             // Assert
             StringAssert.Contains(_outputString, "A valid theme park was not selected. Please try again.", ConsoleUiTestHelper.ExpectStringInOutput);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_InitialMessages_WhenCalled_ShouldPrintMessages()
+        {
+            // Arrange
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            servicesHelper.InitialMessages("Theme Park");
+
+            // Assert
+            StringAssert.Contains(_outputString, "===== Adding Theme Park =====", ConsoleUiTestHelper.ExpectStringInOutput);
+            StringAssert.Contains(_outputString, "Provide the information below to add a theme park to the database.", ConsoleUiTestHelper.ExpectStringInOutput);
+            StringAssert.Contains(_outputString, "If you do not provide any information for the data fields, you will lose your inputs.", ConsoleUiTestHelper.ExpectStringInOutput);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_RetrieveTransportation_WhenNoInputIsProvided_ShouldOnlyReturnCar()
+        {
+            // Arrange
+            var expectedReturnValue = "Car";
+            var consoleInput = new[] { "" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            var actualReturnValue = servicesHelper.RetrieveTransportation();
+
+            // Assert
+            Assert.AreEqual(expectedReturnValue, actualReturnValue, AssertMessage.ExpectValuesToBeEqual);
+        }
+
+        [TestMethod, TestCategory("Console User Interface Test")]
+        public void ServicesHelper_RetrieveTransportation_WhenTransportationIsProvided_ShouldReturnAppropriateString()
+        {
+            // Arrange
+            var expectedReturnValue = "Car, Monorail, Boat";
+            var consoleInput = new[] { "Car, Monorail, Boat" };
+            ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
+            var servicesHelper = new ServicesHelper(_mockConsole.Object);
+
+            // Act
+            var actualReturnValue = servicesHelper.RetrieveTransportation();
+
+            // Assert
+            Assert.AreEqual(expectedReturnValue, actualReturnValue, AssertMessage.ExpectValuesToBeEqual);
         }
     }
 }

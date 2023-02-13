@@ -1,12 +1,14 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DisneyInformationSystem.Business.Database.Wrappers
 {
     /// <summary>
     /// Dapper Reader Wrapper that queries data for reading data from the database.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class DapperReaderWrapper : IDapperReaderWrapper
     {
         /// <inheritdoc />
