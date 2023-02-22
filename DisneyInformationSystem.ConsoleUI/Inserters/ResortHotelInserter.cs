@@ -1,5 +1,7 @@
 ﻿using DisneyInformationSystem.Business.Database.Gateways;
+using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.Business.Exceptions.Technical;
+using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Helpers;
@@ -60,8 +62,25 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
                     servicesHelper.InitialMessages("Resort Hotel");
 
                     _console.ForegroundColor(DisColors.White);
-                    var themeParkAcronym = _console.Prompt("Resort Hotel Acronym (3 letters): ").ToUpper();
-                    if (string.IsNullOrWhiteSpace(themeParkAcronym))
+                    var resortHotelAcronym = _console.Prompt("Resort Hotel Acronym (3 letters): ").ToUpper();
+                    if (string.IsNullOrWhiteSpace(resortHotelAcronym))
+                    {
+                        finished = true;
+                        break;
+                    }
+
+                    var acronymAlreadyInUse = RecordHelper<ResortHotel>.AcronymIsAlreadyInUse(_databaseReaderGateway.RetrieveListOfResortHotels(), resortHotelAcronym);
+                    if (acronymAlreadyInUse)
+                    {
+                        _console.ForegroundColor(DisColors.Red);
+                        _console.WriteLine("The provided acronym is already used for another resort hotel. Please try again.");
+                        continue;
+                    }
+
+                    ExceptionHandler.CheckIfAcronymIsValid(resortHotelAcronym);
+
+                    var resortHotelName = _console.Prompt("Resort Hotel Name: ");
+                    if (string.IsNullOrWhiteSpace(resortHotelName))
                     {
                         finished = true;
                         break;
