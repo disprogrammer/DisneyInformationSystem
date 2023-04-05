@@ -5,6 +5,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Database.Records
 {
+    /// <summary>
+    /// <see cref="User"/> record tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class UserTests
     {

@@ -1,6 +1,5 @@
 ﻿using DisneyInformationSystem.Business.Database.Wrappers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.CodeAnalysis;
@@ -8,6 +7,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Database.Wrappers
 {
+    /// <summary>
+    /// <see cref="DapperWriterWrapper"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class DapperWriterWrapperTests
     {

@@ -5,6 +5,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Utilities
 {
+    /// <summary>
+    /// <see cref="ConfigurationHelper"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class ConfigurationHelperTests
     {

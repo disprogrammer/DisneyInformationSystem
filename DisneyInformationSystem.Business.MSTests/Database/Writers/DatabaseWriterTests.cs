@@ -1,15 +1,17 @@
-﻿using DisneyInformationSystem.Business.Database.Records;
+﻿using AutoFixture;
+using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.Business.Database.Wrappers;
 using DisneyInformationSystem.Business.Database.Writers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Database.Writers
 {
+    /// <summary>
+    /// <see cref="DatabaseWriter"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class DatabaseWriterTests
     {
@@ -28,9 +30,15 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         /// </summary>
         private DatabaseWriter _databaseWriter;
 
+        /// <summary>
+        /// Fixture object.
+        /// </summary>
+        private Fixture _fixture;
+
         [TestInitialize]
         public void Initialize()
         {
+            _fixture = new Fixture();
             _connectionString = ConfigurationTestingHelper.GetTestingConfigurationFile();
             _mockDapperWriterWrapper = new Mock<IDapperWriterWrapper>();
             _databaseWriter = new DatabaseWriter(_connectionString, _mockDapperWriterWrapper.Object);
@@ -40,7 +48,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Delete_WhenProvidedWithAdmin_ShouldDeleteAdminInDatabase()
         {
             // Arrange
-            var admin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var admin = _fixture.Create<Admin>();
             MockDapperWriterWrapperSetup("DeleteAdmin", admin);
 
             // Act
@@ -54,7 +62,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Delete_WhenProvidedWithUser_ShouldDeleteUserInDatabase()
         {
             // Arrange
-            var user = DatabaseMockers.MockSetupListOfUsers().First();
+            var user = _fixture.Create<User>();
             MockDapperWriterWrapperSetup("DeleteUser", user);
 
             // Act
@@ -81,7 +89,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Insert_WhenProvidedWithAdmin_ShouldAddToDatabase()
         {
             // Arrange
-            var admin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var admin = _fixture.Create<Admin>();
             MockDapperWriterWrapperSetup("InsertNewAdmin", admin);
 
             // Act
@@ -95,7 +103,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Insert_WhenProvidedWithResort_ShouldAddToDatabase()
         {
             // Arrange
-            var resort = DatabaseMockers.MockSetupListOfResorts().First();
+            var resort = _fixture.Create<Resort>();
             MockDapperWriterWrapperSetup("InsertNewResort", resort);
 
             // Act
@@ -109,7 +117,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Insert_WhenProvidedWithThemePark_ShouldAddToDatabase()
         {
             // Arrange
-            var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
+            var themePark = _fixture.Create<ThemePark>();
             MockDapperWriterWrapperSetup("InsertNewThemePark", themePark);
 
             // Act
@@ -123,7 +131,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Insert_WhenProvidedWithUser_ShouldAddToDatabase()
         {
             // Arrange
-            var user = DatabaseMockers.MockSetupListOfUsers().First();
+            var user = _fixture.Create<User>();
             MockDapperWriterWrapperSetup("InsertNewUser", user);
 
             // Act
@@ -150,7 +158,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Update_WhenProvidedWithAdmin_ShouldUpdateAdminInDatabase()
         {
             // Arrange
-            var admin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var admin = _fixture.Create<Admin>();
             MockDapperWriterWrapperSetup("UpdateAdmin", admin);
 
             // Act
@@ -164,7 +172,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Update_WhenProvidedWithResort_ShouldUpdateResortInDatabase()
         {
             // Arrange
-            var resort = DatabaseMockers.MockSetupListOfResorts().First();
+            var resort = _fixture.Create<Resort>();
             MockDapperWriterWrapperSetup("UpdateResort", resort);
 
             // Act
@@ -178,7 +186,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Update_WhenProvidedWithThemePark_ShouldUpdateThemeParkInDatabase()
         {
             // Arrange
-            var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
+            var themePark = _fixture.Create<ThemePark>();
             MockDapperWriterWrapperSetup("UpdateThemePark", themePark);
 
             // Act
@@ -192,7 +200,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         public void DatabaseWriter_Update_WhenProvidedWithUser_ShouldUpdateUserInDatabase()
         {
             // Arrange
-            var user = DatabaseMockers.MockSetupListOfUsers().First();
+            var user = _fixture.Create<User>();
             MockDapperWriterWrapperSetup("UpdateUser", user);
 
             // Act
@@ -218,7 +226,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         /// <summary>
         /// Sets up the mock dapper writer wrapper.
         /// </summary>
-        /// <param name="query">Query.</param>
+        /// <param name="query">Stored procedure name.</param>
         /// <param name="record">Record.</param>
         private void MockDapperWriterWrapperSetup(string query, GenericRecord record)
         {

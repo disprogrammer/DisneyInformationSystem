@@ -6,6 +6,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Utilities
 {
+    /// <summary>
+    /// <see cref="SecurePasswordHasher"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class SecurePasswordHasherTests
     {

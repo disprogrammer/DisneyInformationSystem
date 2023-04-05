@@ -7,6 +7,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Database.Records
 {
+    /// <summary>
+    /// <see cref="ResortHotel"/> record tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class ResortHotelTests
     {

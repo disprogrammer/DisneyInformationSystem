@@ -1,3 +1,4 @@
+using AutoFixture;
 using DisneyInformationSystem.Business.Database.Readers;
 using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.Business.Database.Wrappers;
@@ -11,6 +12,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Database.Readers
 {
+    /// <summary>
+    /// <see cref="DatabaseReader{T}"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class DatabaseReaderTests
     {
@@ -24,9 +28,15 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         /// </summary>
         private Mock<IDapperReaderWrapper> _mockDapperReaderWrapper;
 
+        /// <summary>
+        /// Fixture object.
+        /// </summary>
+        private Fixture _fixture;
+
         [TestInitialize]
         public void Initialize()
         {
+            _fixture = new Fixture();
             _connectionString = ConfigurationTestingHelper.GetTestingConfigurationFile();
             _mockDapperReaderWrapper = new Mock<IDapperReaderWrapper>();
         }
@@ -35,7 +45,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseHelper_GetByEmailAddress_WhenCallingMethod_ShouldReturnObject()
         {
             // Arrange
-            var expectedAdmin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var expectedAdmin = _fixture.Create<Admin>();
             var storedProcedureName = "AdminByEmail";
             SetupMockDapperReaderWrapperForSingleRows(storedProcedureName, expectedAdmin);
             var databaseReader = new DatabaseReader<Admin>(_connectionString, _mockDapperReaderWrapper.Object);
@@ -51,7 +61,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseHelper_GetByName_WhenCallingMethod_ShouldReturnObject()
         {
             // Arrange
-            var expectedResort = DatabaseMockers.MockSetupListOfResorts().First();
+            var expectedResort = _fixture.Create<Resort>();
             var storedProcedureName = "ResortByName";
             SetupMockDapperReaderWrapperForSingleRows(storedProcedureName, expectedResort);
             var databaseReader = new DatabaseReader<Resort>(_connectionString, _mockDapperReaderWrapper.Object);
@@ -67,7 +77,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseHelper_GetById_WhenCallingMethod_ShouldReturnObject()
         {
             // Arrange
-            var expectedResort = DatabaseMockers.MockSetupListOfResorts().First();
+            var expectedResort = _fixture.Create<Resort>();
             var storedProcedureName = "ResortByPin";
             SetupMockDapperReaderWrapperForSingleRows(storedProcedureName, expectedResort);
             var databaseReader = new DatabaseReader<Resort>(_connectionString, _mockDapperReaderWrapper.Object);
@@ -83,7 +93,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseReader_GetAll_WhenCallingDatabaseForAdmins_ShouldReturnListOfAdmins()
         {
             // Arrange
-            var expectedListOfAdmins = DatabaseMockers.MockSetupListOfAdmins();
+            var expectedListOfAdmins = _fixture.CreateMany<Admin>().ToList();
             var storedProcedureName = "AllAdmins";
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfAdmins);
 
@@ -100,7 +110,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseReader_GetAll_WhenCallingDatabaseForAdminTypes_ShouldReturnListOfAdminTypes()
         {
             // Arrange
-            var expectedListOfAdminTypes = ListOfAdminTypes();
+            var expectedListOfAdminTypes = _fixture.CreateMany<AdminTypes>().ToList();
             var storedProcedureName = "AllAdminTypes";
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfAdminTypes);
 
@@ -117,7 +127,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseReader_GetAll_WhenCallingDatabaseForUsers_ShouldReturnListOfUsers()
         {
             // Arrange
-            var expectedListOfUsers = DatabaseMockers.MockSetupListOfUsers();
+            var expectedListOfUsers = _fixture.CreateMany<User>().ToList();
             var storedProcedureName = "AllUsers";
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfUsers);
 
@@ -134,7 +144,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseReader_GetAll_WhenCallingDatabaseForResorts_ShouldReturnListOfResorts()
         {
             // Arrange
-            var expectedListOfResorts = DatabaseMockers.MockSetupListOfResorts();
+            var expectedListOfResorts = _fixture.CreateMany<Resort>().ToList();
             var storedProcedureName = "AllResorts";
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfResorts);
 
@@ -151,7 +161,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseReader_GetAll_WhenCallingDatabaseForThemeParks_ShouldReturnListOfThemeParks()
         {
             // Arrange
-            var expectedListOfThemeParks = DatabaseMockers.MockSetupListOfThemeParks();
+            var expectedListOfThemeParks = _fixture.CreateMany<ThemePark>().ToList();
             var storedProcedureName = "AllThemeParks";
             SetupMockDapperReaderWrapperForGetAll(storedProcedureName, expectedListOfThemeParks);
 
@@ -168,7 +178,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
         public void DatabaseReader_GetRecordsByResortID_WhenCallingDatabaseForThemeParksByResortId_ShouldReturnListOfThemeParks()
         {
             // Arrange
-            var expectedListOfThemeParks = DatabaseMockers.MockSetupListOfThemeParks();
+            var expectedListOfThemeParks = _fixture.CreateMany<ThemePark>().ToList();
             var storedProcedureName = "ThemeParksByResortID";
             SetupMockDapperReaderWrapperForGettingRecordsByResortId(storedProcedureName, expectedListOfThemeParks);
 
@@ -181,31 +191,41 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Readers
             Assert.IsTrue(actualListOfThemeParks.Count > 0, AssertMessage.ExpectTrue);
         }
 
+        /// <summary>
+        /// Mock setup of the dapper reader for get all rows from database.
+        /// </summary>
+        /// <typeparam name="T">Record type.</typeparam>
+        /// <param name="query">Stored procedure name.</param>
+        /// <param name="listOfItems">List of records.</param>
         private void SetupMockDapperReaderWrapperForGetAll<T>(string query, List<T> listOfItems)
         {
             _ = _mockDapperReaderWrapper.Setup(wrapper => wrapper.Query<T>(It.Is<IDbConnection>(db => db.ConnectionString == _connectionString), query, CommandType.StoredProcedure))
                                     .Returns(listOfItems);
         }
 
+        /// <summary>
+        /// Mock setup of the dapper reader for getting database rows by resort id.
+        /// </summary>
+        /// <typeparam name="T">Record type.</typeparam>
+        /// <param name="query">Stored procedure name.</param>
+        /// <param name="listOfItems">List of records.</param>
         private void SetupMockDapperReaderWrapperForGettingRecordsByResortId<T>(string query, List<T> listOfItems)
         {
             _ = _mockDapperReaderWrapper.Setup(wrapper => wrapper.QueryWithParameters<T>(It.Is<IDbConnection>(db => db.ConnectionString == _connectionString), query, CommandType.StoredProcedure, It.IsAny<object>()))
                 .Returns(listOfItems);
         }
 
+        /// <summary>
+        /// Mock setup of the dapper reader for getting single rows from database.
+        /// </summary>
+        /// <typeparam name="T">Record type.</typeparam>
+        /// <param name="query">Stored procedure name.</param>
+        /// <param name="item">Record.</param>
         private void SetupMockDapperReaderWrapperForSingleRows<T>(string query, T item)
         {
             _ = _mockDapperReaderWrapper
                 .Setup(wrapper => wrapper.QuerySingle<T>(It.Is<IDbConnection>(db => db.ConnectionString == _connectionString), query, CommandType.StoredProcedure, It.IsAny<object>()))
                 .Returns(item);
-        }
-
-        private static List<AdminTypes> ListOfAdminTypes()
-        {
-            return new List<AdminTypes>
-            {
-                new AdminTypes("TST", "Test Admin")
-            };
         }
     }
 }

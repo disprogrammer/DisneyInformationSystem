@@ -1,4 +1,5 @@
-﻿using DisneyInformationSystem.Business.Database.Records;
+﻿using AutoFixture;
+using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.Business.Exceptions.Business;
 using DisneyInformationSystem.Business.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,6 +9,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Utilities
 {
+    /// <summary>
+    /// <see cref="RecordHelper{T}"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class RecordHelperTests
     {
@@ -15,7 +19,8 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void ServicesHelper_AcronymIsAlreadyInUse_WhenAcronymIsAlreadyUsed_ShouldReturnTrue()
         {
             // Arrange
-            var listOfThemeParks = DatabaseMockers.MockSetupListOfThemeParks();
+            var fixture = new Fixture();
+            var listOfThemeParks = fixture.CreateMany<ThemePark>().ToList();
             var pin = listOfThemeParks.First().PIN;
 
             // Act
@@ -29,7 +34,8 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void ServicesHelper_AcronymIsAlreadyInUse_WhenAcronymIsNotAlreadyUsed_ShouldReturnFalse()
         {
             // Arrange
-            var listOfThemeParks = DatabaseMockers.MockSetupListOfThemeParks();
+            var fixture = new Fixture();
+            var listOfThemeParks = fixture.CreateMany<ThemePark>().ToList();
             var pin = "DLR";
 
             // Act
@@ -133,7 +139,8 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void RecordHelper_RetrieveListOfPropertiesAndValues_WhenProvidedWithRecord_ShouldReturnListOfStrings()
         {
             // Arrange
-            var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
+            var fixture = new Fixture();
+            var themePark = fixture.Create<ThemePark>();
             var expectedNumberOfValues = 13;
 
             // Act

@@ -7,6 +7,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Utilities
 {
+    /// <summary>
+    /// <see cref="StringHelper"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class StringHelperTests
     {

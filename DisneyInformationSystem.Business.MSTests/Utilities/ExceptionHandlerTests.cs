@@ -10,6 +10,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.Business.MSTests.Utilities
 {
+    /// <summary>
+    /// <see cref="ExceptionHandler"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class ExceptionHandlerTests
     {
