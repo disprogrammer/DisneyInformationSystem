@@ -6,6 +6,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.ConsoleUI.MSTests.ConsoleSetup
 {
+    /// <summary>
+    /// <see cref="DisColors"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class DisColorsTests
     {

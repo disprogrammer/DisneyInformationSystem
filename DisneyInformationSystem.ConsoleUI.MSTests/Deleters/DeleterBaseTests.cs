@@ -12,6 +12,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
 {
+    /// <summary>
+    /// <see cref="DeleterBase"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class DeleterBaseTests
     {
@@ -145,6 +148,11 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
                 ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
+        /// <summary>
+        /// Checks if the Operating property is set to False.
+        /// </summary>
+        /// <param name="themeParks">List of theme parks.</param>
+        /// <returns>False if operating value is set to true; false otherwise.</returns>
         private static bool ThemeParksAreSetToFalse(List<ThemePark> themeParks)
         {
             foreach (var themePark in themeParks)
@@ -158,6 +166,11 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
             return true;
         }
 
+        /// <summary>
+        /// Checks if the Operating property is set to False.
+        /// </summary>
+        /// <param name="resortHotels">List of resort hotels.</param>
+        /// <returns>False if operating value is set to true; false otherwise.</returns>
         private static bool ResortHotelsAreSetToFalse(List<ResortHotel> resortHotels)
         {
             foreach (var resortHotel in resortHotels)

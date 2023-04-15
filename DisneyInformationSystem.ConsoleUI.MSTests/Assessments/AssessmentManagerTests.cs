@@ -7,6 +7,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.ConsoleUI.MSTests.Assessments
 {
+    /// <summary>
+    /// <see cref="AssessmentManager"/> tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class AssessmentManagerTests
     {

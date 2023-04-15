@@ -6,6 +6,9 @@ using Testing.Shared;
 
 namespace DisneyInformationSystem.ConsoleUI.MSTests.ConsoleSetup.Interfaces
 {
+    /// <summary>
+    /// <see cref="IConsole"/> extension method tests.
+    /// </summary>
     [TestClass, ExcludeFromCodeCoverage]
     public class ExtensionMethodsForIConsoleTests
     {

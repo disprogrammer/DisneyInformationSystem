@@ -96,6 +96,10 @@ namespace Testing.Shared
             };
         }
 
+        /// <summary>
+        /// Creates a testable list of resort hotels.
+        /// </summary>
+        /// <returns>List of resort hotels.</returns>
         public static List<ResortHotel> MockSetupListOfResortHotels()
         {
             return new List<ResortHotel>
