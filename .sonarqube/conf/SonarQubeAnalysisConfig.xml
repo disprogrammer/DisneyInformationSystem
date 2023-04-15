@@ -81,7 +81,7 @@
     <Property Name="sonar.dbcleaner.weeksBeforeKeepingOnlyOneSnapshotByWeek">4</Property>
     <Property Name="sonaranalyzer-vbnet.analyzerId">SonarAnalyzer.VisualBasic</Property>
     <Property Name="email.prefix">[SONARQUBE]</Property>
-    <Property Name="sonar.cs.roslyn.ignoreIssues">false</Property>
+    <Property Name="sonar.cs.roslyn.ignoreIssues">true</Property>
     <Property Name="sonaranalyzer-cs.pluginKey">csharp</Property>
     <Property Name="sonar.auth.saml.providerName">SAML</Property>
     <Property Name="sonar.ruby.coverage.reportPaths">coverage/.resultset.json</Property>
@@ -101,7 +101,7 @@
     <Property Name="sonaranalyzer-vbnet.pluginKey">vbnet</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
     <Property Name="sonar.core.id">BF41A1F2-AX0Wz96oKzzkEg0EsqZr</Property>
-    <Property Name="sonar.core.startTime">12/23/2022 3:35:00 PM</Property>
+    <Property Name="sonar.core.startTime">4/15/2023 4:07:04 PM</Property>
     <Property Name="sonar.cs.vscoveragexml.reportsPaths">C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.Business.MSTests\bin\Debug\net7.0\fine-code-coverage\coverage-tool-output\DisneyInformationSystem.Business.MSTests.coverage.xml,C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.ConsoleUI.MSTests\bin\Debug\net7.0\fine-code-coverage\coverage-tool-output\DisneyInformationSystem.ConsoleUI.MSTests.coverage.xml,C:\Users\mckin\OneDrive\Documents\Visual Studio 2022\Projects\DisneyInformationSystem\DisneyInformationSystem.WindowsForm.MSTests\bin\Debug\net7.0-windows10.0.22621.0\fine-code-coverage\coverage-tool-output\DisneyInformationSystem.WindowsForm.MSTests.coverage.xml</Property>
   </ServerSettings>
   <LocalSettings>
@@ -117,18 +117,20 @@
       <AnalyzerPlugins>
         <AnalyzerPlugin Key="csharp" Version="8.29.0.36737" StaticResourceName="SonarAnalyzer-8.29.0.36737.zip">
           <AssemblyPaths>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\Google.Protobuf.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\Newtonsoft.Json.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CFG.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CSharp.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\Google.Protobuf.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\Newtonsoft.Json.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\SonarAnalyzer.CFG.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\SonarAnalyzer.CSharp.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
         <AnalyzerPlugin Key="vbnet" Version="8.29.0.36737" StaticResourceName="SonarAnalyzer-8.29.0.36737.zip">
           <AssemblyPaths>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\3\Google.Protobuf.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.VisualBasic.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\Google.Protobuf.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\SonarAnalyzer.VisualBasic.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
       </AnalyzerPlugins>
@@ -143,18 +145,20 @@
       <AnalyzerPlugins>
         <AnalyzerPlugin Key="csharp" Version="8.29.0.36737" StaticResourceName="SonarAnalyzer-8.29.0.36737.zip">
           <AssemblyPaths>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\Google.Protobuf.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\Newtonsoft.Json.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CFG.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CSharp.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\Google.Protobuf.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\Newtonsoft.Json.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\SonarAnalyzer.CFG.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\SonarAnalyzer.CSharp.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\0\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
         <AnalyzerPlugin Key="vbnet" Version="8.29.0.36737" StaticResourceName="SonarAnalyzer-8.29.0.36737.zip">
           <AssemblyPaths>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\3\Google.Protobuf.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.dll</Path>
-            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.VisualBasic.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\Google.Protobuf.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\SonarAnalyzer.VisualBasic.dll</Path>
+            <Path>C:\Users\mckin\AppData\Local\Temp\.sonarqube\resources\1\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
       </AnalyzerPlugins>

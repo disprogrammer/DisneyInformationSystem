@@ -1,5 +1,4 @@
 ﻿using DisneyInformationSystem.Business.Database.Records;
-using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -17,8 +16,8 @@ namespace DisneyInformationSystem.Business.Utilities
         /// <returns>Split exception type string.</returns>
         public static string SplitObjectsAndPropertiesWords(string name)
         {
-            var regexCapitalLetters = RetrievesCapitalWordsFromString();
-            return regexCapitalLetters.Replace(name, " ");
+            var splitWords = Regex.Split(name, @"(?<!^)(?=[A-Z])");
+            return string.Join(" ", splitWords).Trim();
         }
 
         /// <summary>
@@ -55,12 +54,5 @@ namespace DisneyInformationSystem.Business.Utilities
 
             return signInTitleString;
         }
-
-        /// <summary>
-        /// Retrieves the words with capital letters.
-        /// </summary>
-        /// <returns>String of capital words.</returns>
-        [GeneratedRegex("(?<=[A-Z])(?=[A-Z][a-z]) | (?<=[^A-Z])(?=[A-Z]) | (?<=[A-Za-z])(?=[^A-Za-z])", RegexOptions.IgnorePatternWhitespace)]
-        private static partial Regex RetrievesCapitalWordsFromString();
     }
 }

@@ -14,7 +14,6 @@ namespace DisneyInformationSystem.WindowsForm
         [STAThread]
         private static void Main()
         {
-            ApplicationConfiguration.Initialize();
             Application.Run(new Home());
         }
     }
