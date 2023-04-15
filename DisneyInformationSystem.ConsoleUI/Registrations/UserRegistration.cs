@@ -5,6 +5,7 @@ using DisneyInformationSystem.Business.Utilities;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Helpers;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -50,6 +51,7 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
         }
 
         /// <inheritdoc />
+        [SuppressMessage("GeneratedRegex", "SYSLIB1045:Convert to 'GeneratedRegexAttribute'.", Justification = "Causes a Sonar error.")]
         public User Register()
         {
             User user = null;
@@ -89,7 +91,7 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
                 }
 
                 ExceptionHandler.CheckIfPhoneNumberIsValid(phoneNumber);
-                var formattedPhoneNumber = PlaceDashesIntoPhoneNumber().Replace(phoneNumber, "$1-$2-$3");
+                var formattedPhoneNumber = Regex.Replace(phoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
 
                 var emailAddress = _console.Prompt("Email Address: ");
                 if (string.IsNullOrWhiteSpace(emailAddress))
@@ -146,8 +148,5 @@ namespace DisneyInformationSystem.ConsoleUI.Registrations
 
             return user;
         }
-
-        [GeneratedRegex("(\\d{3})(\\d{3})(\\d{4})")]
-        private static partial Regex PlaceDashesIntoPhoneNumber();
     }
 }
