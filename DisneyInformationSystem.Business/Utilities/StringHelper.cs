@@ -1,4 +1,5 @@
 ﻿using DisneyInformationSystem.Business.Database.Records;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -14,6 +15,7 @@ namespace DisneyInformationSystem.Business.Utilities
         /// </summary>
         /// <param name="exception">Exception</param>
         /// <returns>Split exception type string.</returns>
+        [SuppressMessage("GeneratedRegex", "SYSLIB1045:Convert to 'GeneratedRegexAttribute'.", Justification = "Causes a Sonar error.")]
         public static string SplitObjectsAndPropertiesWords(string name)
         {
             var splitWords = Regex.Split(name, @"(?<!^)(?=[A-Z])");
