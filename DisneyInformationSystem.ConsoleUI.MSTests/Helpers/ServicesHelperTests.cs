@@ -184,26 +184,26 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ServicesHelper_CheckIfFinsihedOrExceptionIsThrown_WhenExceptionIsThrown_ShouldSetFinishedToFalseAndDisplayMessage()
+        public void ServicesHelper_CheckIfFinishedOrExceptionIsThrown_WhenExceptionIsThrown_ShouldSetFinishedToFalseAndDisplayMessage()
         {
             // Arrange
             var servicesHelper = new ServicesHelper(_mockConsole.Object);
 
             // Act
-            servicesHelper.CheckIfFinsihedOrExceptionIsThrown(true, false);
+            servicesHelper.CheckIfFinishedOrExceptionIsThrown(true, false);
 
             // Assert
             StringAssert.Contains(_outputString, "Please try again", ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ServicesHelper_CheckIfFinishedOrExceptionIsThrown_WhenFinsihedIsTrue_ShouldDisplayAppropriateMessage()
+        public void ServicesHelper_CheckIfFinishedOrExceptionIsThrown_WhenFinishedIsTrue_ShouldDisplayAppropriateMessage()
         {
             // Arrange
             var servicesHelper = new ServicesHelper(_mockConsole.Object);
 
             // Act
-            servicesHelper.CheckIfFinsihedOrExceptionIsThrown(false, true);
+            servicesHelper.CheckIfFinishedOrExceptionIsThrown(false, true);
 
             // Assert
             StringAssert.Contains(_outputString, "Thank you for your contributions to the Disney Information System!", ConsoleUiTestHelper.ExpectStringInOutput);

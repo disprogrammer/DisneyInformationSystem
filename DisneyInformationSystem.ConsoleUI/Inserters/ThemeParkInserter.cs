@@ -152,7 +152,7 @@ namespace DisneyInformationSystem.ConsoleUI.Inserters
                 }
                 finally
                 {
-                    servicesHelper.CheckIfFinsihedOrExceptionIsThrown(exceptionIsThrown, finished);
+                    servicesHelper.CheckIfFinishedOrExceptionIsThrown(exceptionIsThrown, finished);
                 }
             }
         }

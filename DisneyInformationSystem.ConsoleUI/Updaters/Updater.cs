@@ -73,7 +73,7 @@ namespace DisneyInformationSystem.ConsoleUI.Updaters
                 finally
                 {
                     var servicesHelper = new ServicesHelper(_console);
-                    servicesHelper.CheckIfFinsihedOrExceptionIsThrown(exceptionIsThrown, doneUpdating);
+                    servicesHelper.CheckIfFinishedOrExceptionIsThrown(exceptionIsThrown, doneUpdating);
                 }
             }
         }

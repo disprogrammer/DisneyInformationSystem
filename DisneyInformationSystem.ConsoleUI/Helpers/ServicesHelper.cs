@@ -84,7 +84,7 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
         /// </summary>
         /// <param name="exceptionIsThrown">Exception is thrown exception.</param>
         /// <param name="finished">Finished boolean.</param>
-        public void CheckIfFinsihedOrExceptionIsThrown(bool exceptionIsThrown, bool finished)
+        public void CheckIfFinishedOrExceptionIsThrown(bool exceptionIsThrown, bool finished)
         {
             if (exceptionIsThrown)
             {

@@ -5,6 +5,6 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Uses constructor for initialization.", Scope = "member", Target = "~M:DisneyInformationSystem.ConsoleUI.Registrations.RegistrationHelper.CheckIfEmailContainsAddressSign(System.String)")]
-[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Uses constructor for initialization.", Scope = "member", Target = "~M:DisneyInformationSystem.ConsoleUI.Registrations.RegistrationHelper.RetrieveRandomGeneratedAdminPin(System.Collections.Generic.List{System.String})~System.String")]
-[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Uses constructor for initialization.", Scope = "member", Target = "~M:DisneyInformationSystem.ConsoleUI.Registrations.RegistrationHelper.CheckThatEmailDoesNotAlreadyExist(System.String,System.Collections.Generic.List{System.String})")]
+[assembly: SuppressMessage("Naming", "VSSpell001:Spell Check", Justification = "Word is spelled correctly.", Scope = "namespace", Target = "~N:DisneyInformationSystem.ConsoleUI.Inserters")]
+[assembly: SuppressMessage("Naming", "VSSpell001:Spell Check", Justification = "Word is spelled correctly.", Scope = "namespace", Target = "~N:DisneyInformationSystem.ConsoleUI.Deleters")]
+[assembly: SuppressMessage("Naming", "VSSpell001:Spell Check", Justification = "Word is spelled correctly.", Scope = "namespace", Target = "~N:DisneyInformationSystem.ConsoleUI.Updaters")]

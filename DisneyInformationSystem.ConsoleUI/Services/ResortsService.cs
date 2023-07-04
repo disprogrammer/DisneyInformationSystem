@@ -131,7 +131,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
                 }
                 finally
                 {
-                    servicesHelper.CheckIfFinsihedOrExceptionIsThrown(exceptionIsThrown, finished);
+                    servicesHelper.CheckIfFinishedOrExceptionIsThrown(exceptionIsThrown, finished);
                 }
             }
         }
