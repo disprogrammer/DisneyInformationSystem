@@ -13,7 +13,7 @@ namespace Marvel.Api
         /// <summary>
         /// Events URI.
         /// </summary>
-        private readonly string EventsUrlSegment = ConfigurationManager.AppSettings["EventsUrl"];
+        private readonly string? EventsUrlSegment = ConfigurationManager.AppSettings["EventsUrl"];
 
         /// <summary>
         /// Fetches lists of events with optional filters.

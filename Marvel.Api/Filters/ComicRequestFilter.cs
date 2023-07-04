@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Marvel.Api.Filters
 {
@@ -167,13 +165,13 @@ namespace Marvel.Api.Filters
         /// <summary>
         /// Return only issues in series whose title matches the input.
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// Return only issues in series whose title starts with the input.
         /// </summary>
 
-        public string TitleStartsWith { get; set; }
+        public string TitleStartsWith { get; set; } = string.Empty;
 
         /// <summary>
         /// Return only issues in series whose start year matches the input.
@@ -188,7 +186,7 @@ namespace Marvel.Api.Filters
         /// <summary>
         /// Filter by diamond code.
         /// </summary>
-        public string DiamondCode { get; set; }
+        public string DiamondCode { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by digital comic id.
@@ -198,22 +196,22 @@ namespace Marvel.Api.Filters
         /// <summary>
         /// Filter by UPC.
         /// </summary>
-        public string UPC { get; set; }
+        public string UPC { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by ISBN.
         /// </summary>
-        public string ISBN { get; set; }
+        public string ISBN { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by EAN.
         /// </summary>
-        public string EAN { get; set; }
+        public string EAN { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by ISSN.
         /// </summary>
-        public string ISSN { get; set; }
+        public string ISSN { get; set; } = string.Empty;
 
         /// <summary>
         /// Include only results which are available digitally.

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Marvel.Api.Model.Lists
+﻿namespace Marvel.Api.Model.Lists
 {
     /// <summary>
     /// TypeList model.
@@ -11,21 +9,21 @@ namespace Marvel.Api.Model.Lists
         /// <summary>
         /// Gets or sets Available.
         /// </summary>
-        public string Available { get; set; }
+        public string Available { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets Returned.
         /// </summary>
-        public string Returned { get; set; }
+        public string Returned { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets CollectionURI.
         /// </summary>
-        public string CollectionURI { get; set; }
+        public string CollectionURI { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets Items.
         /// </summary>
-        public List<T> Items { get; set; }
+        public List<T> Items { get; set; } = new List<T>();
     }
 }

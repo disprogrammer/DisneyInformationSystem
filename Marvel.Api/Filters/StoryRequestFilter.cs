@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Marvel.Api.Filters
+﻿namespace Marvel.Api.Filters
 {
     public class StoryRequestFilter : BaseFilter
     {

@@ -13,7 +13,7 @@ namespace Marvel.Api
         /// <summary>
         /// Series uri.
         /// </summary>
-        private readonly string SeriesUrlSegment = ConfigurationManager.AppSettings["SeriesUrl"];
+        private readonly string? SeriesUrlSegment = ConfigurationManager.AppSettings["SeriesUrl"];
 
         /// <summary>
         /// Fetches lists of comic series with optional filters.

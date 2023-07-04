@@ -53,12 +53,12 @@ namespace Marvel.Api.Filters
         /// <summary>
         /// Return only characters matching the specified full name
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Return characters with names that begin with the specified string (e.g. Sp).
         /// </summary>
-        public string NameStartsWith { get; set; }
+        public string NameStartsWith { get; set; } = string.Empty;
 
         /// <summary>
         /// Return only characters which have been modified since the specified date.

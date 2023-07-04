@@ -10,13 +10,13 @@ namespace Marvel.Api.Filters
         /// <summary>
         /// Ordering results.
         /// </summary>
-        private OrderResult _orderBy;
+        private OrderResults _orderBy;
 
         /// <summary>
         /// Orders models by the order result.
         /// </summary>
         /// <param name="order">Order result.</param>
-        public void OrderBy(OrderResult order)
+        public void OrderBy(OrderResults order)
         {
             if ((order & _orderBy) == 0)
                 _orderBy |= order;
@@ -30,7 +30,7 @@ namespace Marvel.Api.Filters
             get
             {
                 var result = new List<string>();
-                foreach (OrderResult order in Enum.GetValues(typeof(OrderResult)))
+                foreach (OrderResults order in Enum.GetValues(typeof(OrderResults)))
                 {
                     if ((_orderBy & order) != 0)
                         result.Add(order.GetDescription());

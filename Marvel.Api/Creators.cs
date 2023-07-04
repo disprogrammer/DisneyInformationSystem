@@ -13,7 +13,7 @@ namespace Marvel.Api
         /// <summary>
         /// Creators URI.
         /// </summary>
-        private readonly string CreatorsUrlSegment = ConfigurationManager.AppSettings["CreatorsUrl"];
+        private readonly string? CreatorsUrlSegment = ConfigurationManager.AppSettings["CreatorsUrl"];
 
         /// <summary>
         /// Fetches lists of comic creators with optional filters.

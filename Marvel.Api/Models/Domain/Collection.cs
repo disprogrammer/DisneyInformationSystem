@@ -1,4 +1,4 @@
-﻿namespace Marvel.Api.Model.DomainObjects
+﻿namespace Marvel.Api.Models.Domain
 {
     /// <summary>
     /// Collection model.
@@ -8,11 +8,11 @@
         /// <summary>
         /// Gets or sets ResourceURI.
         /// </summary>
-        public string ResourceURI { get; set; }
+        public string ResourceURI { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets NAme.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }

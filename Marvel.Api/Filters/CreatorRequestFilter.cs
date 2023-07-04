@@ -42,42 +42,42 @@
         /// <summary>
         /// Filter by creator first name (e.g. Brian).
         /// </summary>
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by creator middle name (e.g. Michael).
         /// </summary>
-        public string MiddleName { get; set; }
+        public string MiddleName { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by creator last name (e.g. Bendis).
         /// </summary>
-        public string LastName { get; set; }
+        public string LastName { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by suffix or honorific (e.g. Jr., Sr.).
         /// </summary>
-        public string Suffix { get; set; }
+        public string Suffix { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by creator names that match critera (e.g. B, St L).
         /// </summary>
-        public string NameStartsWith { get; set; }
+        public string NameStartsWith { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by creator first names that match critera (e.g. B, St L).
         /// </summary>
-        public string FirstNameStartsWith { get; set; }
+        public string FirstNameStartsWith { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by creator middle names that match critera (e.g. Mi).
         /// </summary>
-        public string MiddleNameStartsWith { get; set; }
+        public string MiddleNameStartsWith { get; set; } = string.Empty;
 
         /// <summary>
         /// Filter by creator last names that match critera (e.g. Ben).
         /// </summary>
-        public string LastNameStartsWith { get; set; }
+        public string LastNameStartsWith { get; set; } = string.Empty;
 
         /// <summary>
         /// Return only characters which have been modified since the specified date.

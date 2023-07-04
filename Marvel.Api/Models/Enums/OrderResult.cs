@@ -6,25 +6,25 @@ namespace Marvel.Api.Models.Enums
     /// OrderResult enum.
     /// </summary>
     [Flags]
-    public enum OrderResult
+    public enum OrderResults
     {
         /// <summary>
         /// NameAscending
         /// </summary>
         [Description("name")]
-        NameAscending = 0x00,
+        NameAscending = 0x01,
 
         /// <summary>
         /// ModifiedAscending
         /// </summary>
         [Description("modified")]
-        ModifiedAscending = 0x01,
+        ModifiedAscending = 0x02,
 
         /// <summary>
         /// NameDescending
         /// </summary>
         [Description("-name")]
-        NameDescending = 0x02,
+        NameDescending = 0x03,
 
         /// <summary>
         /// ModifiedDescending

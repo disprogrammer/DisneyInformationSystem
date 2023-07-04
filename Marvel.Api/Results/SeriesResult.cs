@@ -1,4 +1,4 @@
-﻿using Marvel.Api.Model.DomainObjects;
+﻿using Marvel.Api.Models.Domain;
 
 namespace Marvel.Api.Results
 {

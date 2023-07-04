@@ -9,26 +9,26 @@
         /// <summary>
         /// Gets or sets Offset.
         /// </summary>
-        public string Offset { get; set; }
+        public string Offset { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets Limit.
         /// </summary>
-        public string Limit { get; set; }
+        public string Limit { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets Total.
         /// </summary>
-        public string Total { get; set; }
+        public string Total { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets Count.
         /// </summary>
-        public string Count { get; set; }
+        public string Count { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets Results.
         /// </summary>
-        public List<T> Results { get; set; }
+        public List<T> Results { get; set; } = new List<T>();
     }
 }

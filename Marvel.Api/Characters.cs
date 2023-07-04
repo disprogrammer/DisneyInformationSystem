@@ -13,7 +13,7 @@ namespace Marvel.Api
         /// <summary>
         /// Character URI.
         /// </summary>
-        private readonly string CharactersUrlSegment = ConfigurationManager.AppSettings["CharacterUrl"];
+        private readonly string? CharactersUrlSegment = ConfigurationManager.AppSettings["CharacterUrl"];
 
         /// <summary>
         /// Fetches lists of comic characters with optional filters.

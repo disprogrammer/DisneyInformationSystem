@@ -1,4 +1,4 @@
-﻿namespace Marvel.Api.Model.DomainObjects
+﻿namespace Marvel.Api.Models.Domain
 {
     /// <summary>
     /// Url model.
@@ -8,11 +8,11 @@
         /// <summary>
         /// Gets or sets Type.
         /// </summary>
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets URL.
         /// </summary>
-        public string URL { get; set; }
+        public string URL { get; set; } = string.Empty;
     }
 }

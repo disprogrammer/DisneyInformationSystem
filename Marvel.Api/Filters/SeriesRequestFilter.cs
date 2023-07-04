@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Marvel.Api.Filters
 {
@@ -20,16 +18,16 @@ namespace Marvel.Api.Filters
     }
 
     [Flags]
-    public enum ComicFormatType
+    public enum ComicFormatTypes
     {
         [Description("comic")]
-        Comic = 0x00,
+        Comic = 0x01,
 
         [Description("magazine")]
-        Magazine = 0x01,
+        Magazine = 0x02,
 
         [Description("trade paperback")]
-        TradePaperback = 0x02,
+        TradePaperback = 0x03,
 
         [Description("hardcover")]
         Hardcover = 0x04
@@ -37,7 +35,7 @@ namespace Marvel.Api.Filters
 
     public class SeriesRequestFilter : BaseFilter
     {
-        private ComicFormatType _comicFormatType;
+        private ComicFormatTypes _comicFormatType;
         private readonly List<int> _comics;
         private readonly List<int> _stories;
         private readonly List<int> _events;
@@ -53,7 +51,7 @@ namespace Marvel.Api.Filters
             _characters = new List<int>();
         }
 
-        public void ComicFormatType(ComicFormatType format)
+        public void ComicFormatType(ComicFormatTypes format)
         {
             if ((format & _comicFormatType) == 0)
                 _comicFormatType |= format;
@@ -62,12 +60,12 @@ namespace Marvel.Api.Filters
         /// <summary>
         /// Return only issues in series whose title matches the input.
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// Return only issues in series whose title starts with the input.
         /// </summary>
-        public string TitleStartsWith { get; set; }
+        public string TitleStartsWith { get; set; } = string.Empty;
 
         /// <summary>
         /// Return only series matching the specified start year.
@@ -167,7 +165,7 @@ namespace Marvel.Api.Filters
             get
             {
                 var result = new List<string>();
-                foreach (ComicFormatType format in Enum.GetValues(typeof(ComicFormatType)))
+                foreach (ComicFormatTypes format in Enum.GetValues(typeof(ComicFormatTypes)))
                 {
                     if ((_comicFormatType & format) != 0)
                         result.Add(format.GetDescription());

@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,9 +16,8 @@ namespace Marvel.Api
         /// <returns>Input md5 digest</returns>
         public static string CalculateMd5Hash(string input)
         {
-            var md5 = MD5.Create();
             var inputBytes = Encoding.ASCII.GetBytes(input);
-            var hash = md5.ComputeHash(inputBytes);
+            var hash = MD5.HashData(inputBytes);
 
             var sb = new StringBuilder();
             foreach (byte t in hash)
@@ -50,18 +48,17 @@ namespace Marvel.Api
                 throw new ArgumentException("EnumerationValue must be of Enum type", nameof(enumerationValue));
             }
 
-            var memberInfo = type.GetMember(enumerationValue.ToString());
+            var memberInfo = type.GetMember(enumerationValue.ToString() ?? string.Empty);
             if (memberInfo.Length > 0)
             {
                 var attrs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-
                 if (attrs.Length > 0)
                 {
                     return ((DescriptionAttribute)attrs[0]).Description;
                 }
             }
 
-            return enumerationValue.ToString();
+            return enumerationValue.ToString() ?? string.Empty;
         }
     }
 }

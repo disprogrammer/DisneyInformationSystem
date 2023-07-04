@@ -1,4 +1,4 @@
-﻿namespace Marvel.Api.Model.DomainObjects
+﻿namespace Marvel.Api.Models.Domain
 {
     /// <summary>
     /// Image model.
@@ -8,11 +8,11 @@
         /// <summary>
         /// Gets or sets Path.
         /// </summary>
-        public string Path { get; set; }
+        public string Path { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets Extensions.
         /// </summary>
-        public string Extension { get; set; }
+        public string Extension { get; set; } = string.Empty;
     }
 }

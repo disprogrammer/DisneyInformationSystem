@@ -95,7 +95,7 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
                 $"- The operating value is now {operatingProperty.GetValue(themePark, null)}.\n" +
                 $"- The closing date value is not {closingProperty.GetValue(themePark, null)}.");
 
-            // TODO: Delete attractions, restaurants, guest services, etc.
+            // Delete attractions, restaurants, guest services, etc.
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace DisneyInformationSystem.ConsoleUI.Deleters
                 $"- The operating value is now {operatingProperty.GetValue(resortHotel, null)}.\n" +
                 $"- The closing date value is now {closingProperty.GetValue(resortHotel, null)}.");
 
-            // TODO: Delete restaurants, shops, guest services, etc.
+            // Delete restaurants, shops, guest services, etc.
         }
     }
 }
