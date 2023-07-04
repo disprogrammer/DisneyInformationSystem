@@ -21,7 +21,7 @@ namespace Testing.Shared
         {
             return new List<Admin>
             {
-                new Admin()
+                new Admin
                 {
                     PIN = "A1234567890",
                     AdminTypeCode = "TAD",
@@ -42,7 +42,7 @@ namespace Testing.Shared
         {
             return new List<User>
             {
-                new User()
+                new User
                 {
                     PIN = "U1234567890",
                     FirstName = "Test",
@@ -75,7 +75,7 @@ namespace Testing.Shared
         {
             return new List<ThemePark>
             {
-                new ThemePark()
+                new ThemePark
                 {
                     PIN = "MKP",
                     ResortID = "WDW",
