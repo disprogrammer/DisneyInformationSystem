@@ -63,7 +63,19 @@ namespace Testing.Shared
         {
             return new List<Resort>
             {
-                new Resort("WDW", "Walt Disney World Resort", "123 World Drive, Orlando, FL", "123-456-7890", 4, 30, 50, 2, 2, true, new DateTime(1971, 10, 1), DateTime.MaxValue)
+                new Resort(
+                    "WDW",
+                    "Walt Disney World Resort",
+                    "123 World Drive, Orlando, FL",
+                    "123-456-7890",
+                    4,
+                    30,
+                    50,
+                    2,
+                    2,
+                    true,
+                    new DateTime(1971, 10, 1, 0, 0, 0, DateTimeKind.Local),
+                    DateTime.MaxValue)
             };
         }
 
@@ -90,7 +102,7 @@ namespace Testing.Shared
                     NumberOfTours = 7,
                     NumberOfRestrooms = 14,
                     Operating = true,
-                    OpeningDate = new DateTime(1971, 10, 01),
+                    OpeningDate = new DateTime(1971, 10, 01, 0, 0, 0, DateTimeKind.Local),
                     ClosingDate = DateTime.MaxValue
                 }
             };
@@ -131,7 +143,7 @@ namespace Testing.Shared
                     HasShoppingDelivery = true,
                     HasChildCenter = false,
                     IsConventionResort = false,
-                    OpeningDate = new DateTime(1994, 05, 28),
+                    OpeningDate = new DateTime(1994, 05, 28, 0, 0, 0, DateTimeKind.Local),
                     ClosingDate = DateTime.MaxValue,
                     Operating = true
                 }

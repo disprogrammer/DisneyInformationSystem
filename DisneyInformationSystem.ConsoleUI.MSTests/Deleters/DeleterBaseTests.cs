@@ -82,7 +82,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
         public void DeleterBase_DeleteThemePark_WhenProvidingWithThemePark_ShouldSetOperatingAndClosingDate()
         {
             // Arrange
-            var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
+            var themePark = DatabaseMockers.MockSetupListOfThemeParks()[0];
             _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Update(themePark));
             var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 
@@ -132,7 +132,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Deleters
         public void DeleterBase_DeleteResortHotel_WhenProvidingWithResortHotel_ShouldSetOperatingAndClosingDate()
         {
             // Arrange
-            var resortHotel = DatabaseMockers.MockSetupListOfResortHotels().First();
+            var resortHotel = DatabaseMockers.MockSetupListOfResortHotels()[0];
             _ = _mockDatabaseWriterGateway.Setup(gateway => gateway.Update(resortHotel));
             var deleterBase = new DeleterBase(_mockConsole.Object, _mockDatabaseReaderGateway.Object, _mockDatabaseWriterGateway.Object);
 

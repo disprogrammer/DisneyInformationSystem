@@ -248,7 +248,7 @@ namespace DisneyInformationSystem.ConsoleUI
             }
             else
             {
-                if (PersonSignedIn.PIN.StartsWith("A"))
+                if (PersonSignedIn.PIN.StartsWith('A'))
                 {
                     Admin admin = (Admin)PersonSignedIn;
                     _console.ForegroundColor(DisColors.Green);

@@ -117,7 +117,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             }
 
             var resortHotelDedcision = _console.Prompt(">> ").ToLower();
-            return resortHotels.FirstOrDefault(resortHotel => resortHotel.ResortHotelName.ToLower().Contains(resortHotelDedcision));
+            return resortHotels.Find(resortHotel => resortHotel.ResortHotelName.ToLower().Contains(resortHotelDedcision));
         }
     }
 }

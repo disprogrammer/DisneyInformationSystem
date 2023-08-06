@@ -156,7 +156,7 @@ namespace DisneyInformationSystem.ConsoleUI.Managers.Admins
                 }
 
                 var resortDecision = _console.Prompt("Resort: ").ToLower();
-                if (listOfResorts.Any(resort => resort.ResortName.ToLower().Contains(resortDecision)))
+                if (listOfResorts.Exists(resort => resort.ResortName.ToLower().Contains(resortDecision)))
                 {
                     var resort = listOfResorts.First(resort => resort.ResortName.ToLower().Contains(resortDecision));
                     var resortsService = new ResortsService(_console, resort, _databaseReaderGateway, new DatabaseWriterGateway());
