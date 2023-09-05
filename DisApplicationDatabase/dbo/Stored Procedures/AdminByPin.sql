@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE [dbo].[AdminByPin] (@PIN NCHAR(10))
+AS
+BEGIN
+	SELECT * FROM Admins
+	WHERE PIN = @PIN
+END

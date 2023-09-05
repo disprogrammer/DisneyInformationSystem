@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE AllAdmins
+AS
+BEGIN
+SELECT * FROM Admins
+END
