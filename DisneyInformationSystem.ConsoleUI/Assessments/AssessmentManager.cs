@@ -70,7 +70,7 @@ namespace DisneyInformationSystem.ConsoleUI.Assessments
         /// <param name="assessmentFiles">Array of assessment files.</param>
         private void RetrieveFileAndReadLinesForUserToCompleteAssessment(string adminType, string[] assessmentFiles)
         {
-            var assessmentFilePath = assessmentFiles.FirstOrDefault(assessmentName => assessmentName.Contains(adminType));
+            var assessmentFilePath = assessmentFiles.ToList().Find(assessmentName => assessmentName.Contains(adminType));
             var lines = File.ReadLines(assessmentFilePath).ToList();
             decimal numberOfQuestions = lines.Count;
             decimal correctAnswers = 0;

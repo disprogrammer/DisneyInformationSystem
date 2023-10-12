@@ -3,5 +3,5 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 	DELETE FROM Admins
-	WHERE Pin = @Pin
+	WHERE Pin = @PIN
 END
