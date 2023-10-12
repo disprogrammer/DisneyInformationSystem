@@ -6,7 +6,6 @@ using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Deleters;
 using DisneyInformationSystem.ConsoleUI.Helpers;
 using DisneyInformationSystem.ConsoleUI.Inserters;
-using System.Linq;
 
 namespace DisneyInformationSystem.ConsoleUI.Services
 {

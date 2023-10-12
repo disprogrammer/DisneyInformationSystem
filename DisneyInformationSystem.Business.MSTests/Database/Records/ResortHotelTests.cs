@@ -30,7 +30,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Records
             Assert.IsNull(resortHotel.Theme, AssertMessage.ExpectNullValue);
             Assert.IsNull(resortHotel.Description, AssertMessage.ExpectNullValue);
             Assert.IsNull(resortHotel.Address, AssertMessage.ExpectNullValue);
-            Assert.IsNull(resortHotel.PhoneNumber, AssertMessage.ExpectNullValue);
+            Assert.IsNull(resortHotel.Phone, AssertMessage.ExpectNullValue);
             Assert.IsNull(resortHotel.CheckInTime, AssertMessage.ExpectNullValue);
             Assert.IsNull(resortHotel.CheckOutTime, AssertMessage.ExpectNullValue);
             Assert.IsNull(resortHotel.RoomTypes, AssertMessage.ExpectNullValue);
@@ -39,11 +39,11 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Records
             Assert.IsTrue(resortHotel.ValetCost == 0.00m, AssertMessage.ExpectTrue);
             Assert.IsFalse(resortHotel.HasInRoomDining, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.HasBeach, AssertMessage.ExpectFalse);
-            Assert.IsFalse(resortHotel.HasPetServices, AssertMessage.ExpectFalse);
+            Assert.IsFalse(resortHotel.HasPetService, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.HasFishing, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.HasCampfire, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.HasShoppingDelivery, AssertMessage.ExpectFalse);
-            Assert.IsFalse(resortHotel.HasChildCenter, AssertMessage.ExpectFalse);
+            Assert.IsFalse(resortHotel.HasChildCare, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.IsConventionResort, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.Operating, AssertMessage.ExpectFalse);
             Assert.That.ValueIsZero(resortHotel.NumberOfRooms);
@@ -73,7 +73,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Records
             var numberOfBusStops = 1;
             var parkingCost = 25.00m;
             var valetCost = 33.00m;
-            var openingDate = new DateTime(1994, 05, 28);
+            var openingDate = new DateTime(1994, 05, 28, 0, 0, 0, DateTimeKind.Local);
             var closingDate = DateTime.MaxValue;
 
             // Act
@@ -116,7 +116,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Records
             Assert.IsNotNull(resortHotel.Theme, AssertMessage.ExpectNotNullValue);
             Assert.IsNotNull(resortHotel.Description, AssertMessage.ExpectNotNullValue);
             Assert.IsNotNull(resortHotel.Address, AssertMessage.ExpectNotNullValue);
-            Assert.IsNotNull(resortHotel.PhoneNumber, AssertMessage.ExpectNotNullValue);
+            Assert.IsNotNull(resortHotel.Phone, AssertMessage.ExpectNotNullValue);
             Assert.IsTrue(resortHotel.NumberOfRooms > 0, AssertMessage.ExpectTrue);
             Assert.IsNotNull(resortHotel.CheckInTime, AssertMessage.ExpectNotNullValue);
             Assert.IsNotNull(resortHotel.CheckOutTime, AssertMessage.ExpectNotNullValue);
@@ -127,11 +127,11 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Records
             Assert.IsTrue(resortHotel.ValetCost > 0, AssertMessage.ExpectTrue);
             Assert.IsTrue(resortHotel.HasInRoomDining, AssertMessage.ExpectTrue);
             Assert.IsTrue(resortHotel.HasBeach, AssertMessage.ExpectTrue);
-            Assert.IsFalse(resortHotel.HasPetServices, AssertMessage.ExpectFalse);
+            Assert.IsFalse(resortHotel.HasPetService, AssertMessage.ExpectFalse);
             Assert.IsFalse(resortHotel.HasFishing, AssertMessage.ExpectFalse);
             Assert.IsTrue(resortHotel.HasCampfire, AssertMessage.ExpectTrue);
             Assert.IsTrue(resortHotel.HasShoppingDelivery, AssertMessage.ExpectTrue);
-            Assert.IsTrue(resortHotel.HasChildCenter, AssertMessage.ExpectTrue);
+            Assert.IsTrue(resortHotel.HasChildCare, AssertMessage.ExpectTrue);
             Assert.IsFalse(resortHotel.IsConventionResort, AssertMessage.ExpectFalse);
             Assert.IsTrue(resortHotel.OpeningDate != DateTime.MinValue, AssertMessage.ExpectTrue);
             Assert.IsTrue(resortHotel.ClosingDate == DateTime.MaxValue, AssertMessage.ExpectTrue);

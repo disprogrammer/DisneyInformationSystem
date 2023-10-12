@@ -13,7 +13,7 @@ namespace DisneyInformationSystem.Business.Database.Records
     /// <param name="Theme">Theme.</param>
     /// <param name="Description">Description.</param>
     /// <param name="Address">Address.</param>
-    /// <param name="PhoneNumber">Phone number.</param>
+    /// <param name="Phone">Phone number.</param>
     /// <param name="NumberOfRooms">Number of rooms.</param>
     /// <param name="CheckInTime">Check in time.</param>
     /// <param name="CheckOutTime">Check out time.</param>
@@ -24,11 +24,11 @@ namespace DisneyInformationSystem.Business.Database.Records
     /// <param name="ValetCost">Valet cost.</param>
     /// <param name="HasInRoomDining">Has in room dining.</param>
     /// <param name="HasBeach">Has beach.</param>
-    /// <param name="HasPetServices">Has pet services.</param>
+    /// <param name="HasPetService">Has pet services.</param>
     /// <param name="HasFishing">Has fishing.</param>
     /// <param name="HasCampfire">Has campfire.</param>
     /// <param name="HasShoppingDelivery">Has shopping delivery.</param>
-    /// <param name="HasChildCenter">Has child center.</param>
+    /// <param name="HasChildCare">Has child center.</param>
     /// <param name="IsConventionResort">Is convention resort.</param>
     /// <param name="OpeningDate">Opening date.</param>
     /// <param name="ClosingDate">Closing date.</param>
@@ -42,7 +42,7 @@ namespace DisneyInformationSystem.Business.Database.Records
         string Theme,
         string Description,
         string Address,
-        string PhoneNumber,
+        string Phone,
         int NumberOfRooms,
         string CheckInTime,
         string CheckOutTime,
@@ -53,11 +53,11 @@ namespace DisneyInformationSystem.Business.Database.Records
         decimal ValetCost,
         bool HasInRoomDining,
         bool HasBeach,
-        bool HasPetServices,
+        bool HasPetService,
         bool HasFishing,
         bool HasCampfire,
         bool HasShoppingDelivery,
-        bool HasChildCenter,
+        bool HasChildCare,
         bool IsConventionResort,
         DateTime OpeningDate,
         DateTime ClosingDate,
