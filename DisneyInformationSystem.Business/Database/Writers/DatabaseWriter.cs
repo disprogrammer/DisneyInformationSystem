@@ -36,22 +36,9 @@ namespace DisneyInformationSystem.Business.Database.Writers
         public void Delete(GenericRecord record)
         {
             using IDbConnection dbConnection = new SqlConnection(_connectionString);
+            var storedProcedureName = StoredProcedureNames.DeleteStoredProcedures.Find(s => s[6..].Equals(record.GetType().Name));
             _dapperWriterWrapper.Connect(dbConnection);
-
-            switch (record.GetType().Name)
-            {
-                case "Admin":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.DeleteAdmin, record, CommandType.StoredProcedure);
-                    break;
-
-                case "User":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.DeleteUser, record, CommandType.StoredProcedure);
-                    break;
-
-                default:
-                    break;
-            }
-
+            _ = _dapperWriterWrapper.Execute(dbConnection, storedProcedureName, record, CommandType.StoredProcedure);
             _dapperWriterWrapper.Disconnect(dbConnection);
         }
 
@@ -59,30 +46,9 @@ namespace DisneyInformationSystem.Business.Database.Writers
         public void Insert(GenericRecord record)
         {
             using IDbConnection dbConnection = new SqlConnection(_connectionString);
+            var storedProcedureName = StoredProcedureNames.InsertStoredProcedures.Find(s => s[9..].Equals(record.GetType().Name));
             _dapperWriterWrapper.Connect(dbConnection);
-
-            switch (record.GetType().Name)
-            {
-                case "Admin":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.InsertNewAdmin, record, CommandType.StoredProcedure);
-                    break;
-
-                case "Resort":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.InsertNewResort, record, CommandType.StoredProcedure);
-                    break;
-
-                case "ThemePark":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.InsertNewThemePark, record, CommandType.StoredProcedure);
-                    break;
-
-                case "User":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.InsertNewUser, record, CommandType.StoredProcedure);
-                    break;
-
-                default:
-                    break;
-            }
-
+            _ = _dapperWriterWrapper.Execute(dbConnection, storedProcedureName, record, CommandType.StoredProcedure);
             _dapperWriterWrapper.Disconnect(dbConnection);
         }
 
@@ -90,30 +56,9 @@ namespace DisneyInformationSystem.Business.Database.Writers
         public void Update(GenericRecord record)
         {
             using IDbConnection dbConnection = new SqlConnection(_connectionString);
+            var storedProcedureName = StoredProcedureNames.UpdateStoredProcedures.Find(s => s[6..].Equals(record.GetType().Name));
             _dapperWriterWrapper.Connect(dbConnection);
-
-            switch (record.GetType().Name)
-            {
-                case "Admin":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.UpdateAdmin, record, CommandType.StoredProcedure);
-                    break;
-
-                case "Resort":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.UpdateResort, record, CommandType.StoredProcedure);
-                    break;
-
-                case "ThemePark":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.UpdateThemePark, record, CommandType.StoredProcedure);
-                    break;
-
-                case "User":
-                    _ = _dapperWriterWrapper.Execute(dbConnection, StoredProcedureNames.UpdateUser, record, CommandType.StoredProcedure);
-                    break;
-
-                default:
-                    break;
-            }
-
+            _ = _dapperWriterWrapper.Execute(dbConnection, storedProcedureName, record, CommandType.StoredProcedure);
             _dapperWriterWrapper.Disconnect(dbConnection);
         }
     }

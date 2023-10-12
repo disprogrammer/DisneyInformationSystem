@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DisneyInformationSystem.Business.Database.Constants
 {
@@ -40,5 +41,38 @@ namespace DisneyInformationSystem.Business.Database.Constants
         public const string ThemeParkByName = "ThemeParkByName";
         public const string ThemeParksByResortID = "ThemeParksByResortID";
         public const string UpdateThemePark = "UpdateThemePark";
+
+        /// <summary>
+        /// List of delete stored procedures.
+        /// </summary>
+        public static List<string> DeleteStoredProcedures => new()
+        {
+            DeleteAdmin,
+            DeleteUser
+        };
+
+        /// <summary>
+        /// List of insert stored procedures.
+        /// </summary>
+        public static List<string> InsertStoredProcedures => new()
+        {
+            InsertNewAdmin,
+            InsertNewUser,
+            InsertNewResortHotel,
+            InsertNewResort,
+            InsertNewThemePark
+        };
+
+        /// <summary>
+        /// List of update stored procedures.
+        /// </summary>
+        public static List<string> UpdateStoredProcedures => new()
+        {
+            UpdateAdmin,
+            UpdateUser,
+            UpdateResortHotel,
+            UpdateResort,
+            UpdateThemePark
+        };
     }
 }
