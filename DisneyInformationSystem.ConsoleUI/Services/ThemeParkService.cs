@@ -6,7 +6,6 @@ using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Deleters;
 using DisneyInformationSystem.ConsoleUI.Helpers;
 using DisneyInformationSystem.ConsoleUI.Inserters;
-using System.Linq;
 
 namespace DisneyInformationSystem.ConsoleUI.Services
 {
@@ -117,7 +116,7 @@ namespace DisneyInformationSystem.ConsoleUI.Services
             }
 
             var parkDecision = _console.Prompt(">> ").ToLower();
-            return themeParks.FirstOrDefault(themePark => themePark.ParkName.ToLower().Contains(parkDecision));
+            return themeParks.Find(themePark => themePark.ParkName.ToLower().Contains(parkDecision));
         }
     }
 }

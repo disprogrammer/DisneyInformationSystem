@@ -43,12 +43,12 @@ namespace DisneyInformationSystem.Business.Utilities
             {
                 return "No one signed in.";
             }
-            else if (personSignedIn.PIN.StartsWith("A"))
+            else if (personSignedIn.PIN.StartsWith('A'))
             {
                 Admin admin = (Admin)personSignedIn;
                 signInTitleString = $"{admin.PIN}: {admin.FirstName} {admin.LastName}";
             }
-            else if (personSignedIn.PIN.StartsWith("U"))
+            else if (personSignedIn.PIN.StartsWith('U'))
             {
                 User user = (User)personSignedIn;
                 signInTitleString = $"{user.PIN}: {user.FirstName} {user.LastName}";

@@ -62,7 +62,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void StringHelper_PersonTitleString_WhenPersonIsUser_ShouldReturnAppropriateString()
         {
             // Arrange
-            var user = DatabaseMockers.MockSetupListOfUsers().First();
+            var user = DatabaseMockers.MockSetupListOfUsers()[0];
             var expectedString = $"{user.PIN}: {user.FirstName} {user.LastName}";
 
             // Act
@@ -76,7 +76,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void StringHelper_PersonTitleString_WhenPersonIsAdmin_ShouldReturnAppropriateString()
         {
             // Arrange
-            var admin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var admin = DatabaseMockers.MockSetupListOfAdmins()[0];
             var expectedString = $"{admin.PIN}: {admin.FirstName} {admin.LastName}";
 
             // Act

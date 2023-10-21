@@ -53,7 +53,7 @@ namespace DisneyInformationSystem.Business.Utilities
                 throw new AdminTypeInvalidException("Code entered contains a character that is not a letter.");
             }
 
-            if (!listOfAdminTypes.Any(adminType => adminType.ID == adminTypeCode))
+            if (!listOfAdminTypes.Exists(adminType => adminType.ID == adminTypeCode))
             {
                 throw new AdminTypeInvalidException("Code provided is not found in our database.");
             }

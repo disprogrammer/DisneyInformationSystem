@@ -1,5 +1,4 @@
-﻿using DisneyInformationSystem.Business.Database.Gateways;
-using DisneyInformationSystem.Business.Database.Records;
+﻿using DisneyInformationSystem.Business.Database.Records;
 using DisneyInformationSystem.Business.Exceptions.Business;
 using System;
 using System.Collections.Generic;

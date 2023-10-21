@@ -36,7 +36,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         }
 
         [TestMethod, TestCategory("Business Test")]
-        public void SecurePasswordHasher_Verify_WhenHashPasswordContainsPerfixSubstringAndMatchesPasswordString_ShouldReturnTrue()
+        public void SecurePasswordHasher_Verify_WhenHashPasswordContainsPrefixSubstringAndMatchesPasswordString_ShouldReturnTrue()
         {
             // Arrange
             var password = "MagicKingdom1971";
@@ -50,7 +50,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         }
 
         [TestMethod, TestCategory("Business Test")]
-        public void SecurePasswordHasher_Verify_WhenHashPasswordContainsPerfixSubstringAndDoesNotMatchPasswordString_ShouldReturnTrue()
+        public void SecurePasswordHasher_Verify_WhenHashPasswordContainsPrefixSubstringAndDoesNotMatchPasswordString_ShouldReturnTrue()
         {
             // Arrange
             var password = "MagicKingdom1971";

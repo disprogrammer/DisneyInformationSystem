@@ -21,7 +21,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
             // Arrange
             var fixture = new Fixture();
             var listOfThemeParks = fixture.CreateMany<ThemePark>().ToList();
-            var pin = listOfThemeParks.First().PIN;
+            var pin = listOfThemeParks[0].PIN;
 
             // Act
             var value = RecordHelper<ThemePark>.AcronymIsAlreadyInUse(listOfThemeParks, pin);
@@ -64,7 +64,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void RecordHelper_AdminSignIn_WhenPasswordIsIncorrect_ShouldThrowInvalidPasswordException()
         {
             // Arrange
-            var admin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var admin = DatabaseMockers.MockSetupListOfAdmins()[0];
             var emailAddress = "abc@gmail.com";
             var password = "TestPassword1";
 
@@ -78,7 +78,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void RecordHelper_AdminSignIn_WhenValidAdmin_ShouldReturnCorrectTuple()
         {
             // Arrange
-            var expectedAdmin = DatabaseMockers.MockSetupListOfAdmins().First();
+            var expectedAdmin = DatabaseMockers.MockSetupListOfAdmins()[0];
             var emailAddress = expectedAdmin.EmailAddress;
             var password = "TestPassword";
 
@@ -108,7 +108,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void RecordHelper_UserSignIn_WhenPasswordIsIncorrect_ShouldThrowInvalidPasswordException()
         {
             // Arrange
-            var user = DatabaseMockers.MockSetupListOfUsers().First();
+            var user = DatabaseMockers.MockSetupListOfUsers()[0];
             var emailAddress = "abc@gmail.com";
             var password = "TestPassword1";
 
@@ -122,7 +122,7 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
         public void RecordHelper_UserSignIn_WhenValidUser_ShouldReturnCorrectTuple()
         {
             // Arrange
-            var expectedUser = DatabaseMockers.MockSetupListOfUsers().First();
+            var expectedUser = DatabaseMockers.MockSetupListOfUsers()[0];
             var emailAddress = expectedUser.EmailAddress;
             var password = "TestPassword";
 
@@ -148,8 +148,8 @@ namespace DisneyInformationSystem.Business.MSTests.Utilities
 
             // Assert
             Assert.AreEqual(expectedNumberOfValues, listOfStrings.Count, AssertMessage.ExpectValuesToBeEqual);
-            Assert.IsTrue(listOfStrings.First().Contains("Name"), AssertMessage.ExpectTrue);
-            Assert.IsTrue(listOfStrings.Last().Contains("Closing"), AssertMessage.ExpectTrue);
+            Assert.IsTrue(listOfStrings[0].Contains("Name"), AssertMessage.ExpectTrue);
+            Assert.IsTrue(listOfStrings[^1].Contains("Closing"), AssertMessage.ExpectTrue);
         }
     }
 }

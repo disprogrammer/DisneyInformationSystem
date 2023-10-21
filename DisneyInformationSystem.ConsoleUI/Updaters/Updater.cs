@@ -61,7 +61,7 @@ namespace DisneyInformationSystem.ConsoleUI.Updaters
 
                     var upperCaseWordsInDecsion = decision.ToTitleCase();
                     var decisionWithoutSpaces = upperCaseWordsInDecsion.Replace(" ", "");
-                    var recordHasProperty = _record.GetType().GetProperties().Any(property => property.Name == decisionWithoutSpaces);
+                    var recordHasProperty = _record.GetType().GetProperties().ToList().Exists(property => property.Name == decisionWithoutSpaces);
 
                     doneUpdating = CheckIfPropertyIsValid(recordHasProperty, decisionWithoutSpaces);
                 }

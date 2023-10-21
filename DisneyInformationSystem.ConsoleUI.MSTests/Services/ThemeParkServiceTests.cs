@@ -28,24 +28,18 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
         /// </summary>
         private Mock<IDatabaseReaderGateway> _mockDatabaseReaderGateway;
 
-        /// <summary>
-        /// Mock of the database writer gateway.
-        /// </summary>
-        private Mock<IDatabaseWriterGateway> _mockDatabaseWriterGateway;
-
         [TestInitialize]
         public void Initialize()
         {
             _mockConsole = new Mock<IConsole>();
             _mockDatabaseReaderGateway = new Mock<IDatabaseReaderGateway>();
-            _mockDatabaseWriterGateway = new Mock<IDatabaseWriterGateway>();
             _ = _mockConsole.Setup(console => console.TypeString(It.IsAny<string>())).Callback<string>(str => _outputString += str);
             _ = _mockConsole.Setup(console => console.WriteLine(It.IsAny<string>())).Callback<string>(str => _outputString += str + "\r\n");
             _ = _mockConsole.Setup(console => console.Write(It.IsAny<string>())).Callback<string>(str => _outputString += str);
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ThemeParkService_Options_WhenOptionProvidedIsInvalid_ShouldDispalyMessage()
+        public void ThemeParkService_Options_WhenOptionProvidedIsInvalid_ShouldDisplayMessage()
         {
             // Arrange
             var consoleInput = new[] { "9", "" };

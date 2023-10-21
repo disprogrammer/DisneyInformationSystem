@@ -155,7 +155,7 @@ namespace DisneyInformationSystem.ConsoleUI.Helpers
         private void DisplayPersonSignedInMessage(Person personSigningIn)
         {
             _console.ForegroundColor(DisColors.Green);
-            if (personSigningIn.PIN.StartsWith("A"))
+            if (personSigningIn.PIN.StartsWith('A'))
             {
                 Admin admin = (Admin)personSigningIn;
                 _console.WriteLine($"{admin.GetType().Name}, {admin.FirstName} {admin.LastName}, was successfully signed in.");

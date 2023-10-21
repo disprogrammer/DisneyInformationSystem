@@ -142,7 +142,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         }
 
         [TestMethod, TestCategory("Business Test")]
-        public void DatabaseWriter_Insert_WhenProvidedWithUnvalidType_ShouldNotAddToDatabase()
+        public void DatabaseWriter_Insert_WhenProvidedWithInvalidType_ShouldNotAddToDatabase()
         {
             // Arrange
             var genericRecord = new GenericRecord();
@@ -211,7 +211,7 @@ namespace DisneyInformationSystem.Business.MSTests.Database.Writers
         }
 
         [TestMethod, TestCategory("Business Test")]
-        public void DatabaseWriter_Update_WhenProvidedWithUnvalidType_ShouldNotUpdateDatabase()
+        public void DatabaseWriter_Update_WhenProvidedWithInvalidType_ShouldNotUpdateDatabase()
         {
             // Arrange
             var genericRecord = new GenericRecord();

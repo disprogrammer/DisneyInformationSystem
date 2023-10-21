@@ -1,5 +1,4 @@
-﻿using Dapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 
 namespace DisneyInformationSystem.Business.Database.Wrappers

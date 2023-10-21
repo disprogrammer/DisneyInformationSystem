@@ -103,7 +103,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
         public void ServicesHelper_RetrieveClosingDate_WhenNotOperatingAndValidClosingDate_ShouldReturnDate()
         {
             // Arrange
-            var expectedClosingDate = new DateTime(2060, 12, 31);
+            var expectedClosingDate = new DateTime(2060, 12, 31, 0, 0, 0, DateTimeKind.Local);
             var closingDateString = "2060-12-31";
             var input = new[] { closingDateString };
             ConsoleUiTestHelper.SpecifyConsoleInput(input, _mockConsole);
@@ -228,7 +228,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers
             // Arrange
             var consoleInput = new[] { "" };
             ConsoleUiTestHelper.SpecifyConsoleInput(consoleInput, _mockConsole);
-            var themePark = DatabaseMockers.MockSetupListOfThemeParks().First();
+            var themePark = DatabaseMockers.MockSetupListOfThemeParks()[0];
             var propertiesAndValues = RecordHelper<ThemePark>.RetrieveListOfPropertiesAndValues(themePark);
             var servicesHelper = new ServicesHelper(_mockConsole.Object);
 

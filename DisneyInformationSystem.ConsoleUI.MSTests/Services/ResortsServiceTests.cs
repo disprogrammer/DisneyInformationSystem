@@ -245,7 +245,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
         }
 
         [TestMethod, TestCategory("Console User Interface Test")]
-        public void ResortsService_Add_WhenNumberOfEntertinamentVenuesIsNotProvided_ShouldNotAddResortToDatabase()
+        public void ResortsService_Add_WhenNumberOfEntertainmentVenuesIsNotProvided_ShouldNotAddResortToDatabase()
         {
             // Arrange
             var input = new[] { "DLR", "Disneyland Resort", "123 Disneyland Drive, Anaheim, CA 92802", "1234567890", "2", "3", "40", "0", "asdf", "" };
@@ -410,6 +410,9 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Services
             StringAssert.Contains(_outputString, "Resort has successfully been updated. The operating value is now FALSE.", ConsoleUiTestHelper.ExpectStringInOutput);
         }
 
+        /// <summary>
+        /// Mock setup of the database reader gateway.
+        /// </summary>
         private void DatabaseReaderGatewaySetup()
         {
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfResorts()).Returns(DatabaseMockers.MockSetupListOfResorts());

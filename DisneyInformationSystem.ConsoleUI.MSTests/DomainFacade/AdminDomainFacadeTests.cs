@@ -85,7 +85,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.DomainFacade
             // Arrange
             var listOfResorts = DatabaseMockers.MockSetupListOfResorts();
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfResorts()).Returns(listOfResorts);
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortByName("Walt Disney")).Returns(listOfResorts.First());
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortByName("Walt Disney")).Returns(listOfResorts[0]);
             var adminDomainFacade = new AdminDomainFacade(_mockConsole.Object, "WDW", _mockDatabaseReaderGateway.Object);
 
             var input = new[] { "y", "", "y" };
@@ -104,7 +104,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.DomainFacade
             // Arrange
             var listOfResorts = DatabaseMockers.MockSetupListOfResorts();
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfResorts()).Returns(listOfResorts);
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortByName("Walt Disney")).Returns(listOfResorts.First());
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortByName("Walt Disney")).Returns(listOfResorts[0]);
             var adminDomainFacade = new AdminDomainFacade(_mockConsole.Object, "WDW", _mockDatabaseReaderGateway.Object);
 
             var input = new[] { "y", "", "n", "y", "", "y" };

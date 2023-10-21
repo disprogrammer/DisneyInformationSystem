@@ -1,14 +1,11 @@
 ﻿using DisneyInformationSystem.Business.Database.Gateways;
 using DisneyInformationSystem.Business.Database.Records;
-using DisneyInformationSystem.Business.Exceptions.Business;
 using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Net.Mail;
 using Testing.Shared;
 
 namespace DisneyInformationSystem.ConsoleUI.MSTests.Helpers

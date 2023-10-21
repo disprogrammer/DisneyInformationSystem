@@ -1,5 +1,4 @@
-﻿using DisneyInformationSystem.Business.Database.Gateways;
-using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
+﻿using DisneyInformationSystem.ConsoleUI.ConsoleSetup.Interfaces;
 using DisneyInformationSystem.ConsoleUI.Services.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

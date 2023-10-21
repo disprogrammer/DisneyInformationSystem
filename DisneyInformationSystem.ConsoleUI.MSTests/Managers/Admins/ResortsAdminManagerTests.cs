@@ -85,12 +85,12 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Managers.Admins
         {
             return new List<Resort>
             {
-                new Resort("ABC", "Disneyland Resort", "123 Disneyland Way, Anaheim, CA", "123-456-7890", 2, 3, 50, 0, 1, true, new DateTime(), DateTime.MaxValue),
-                new Resort("DEF", "Disneyland Paris Resort", "123 Paris Way, Paris, France", "123-456-7890", 2, 3, 50, 0, 1, true, new DateTime(), DateTime.MaxValue),
-                new Resort("GHI", "Hong Kong Disneyland Resort", "123 Hong Kong Way, Hong Kong", "123-456-7890", 2, 3, 50, 0, 1, true, new DateTime(), DateTime.MaxValue),
-                new Resort("JKL", "Shanghai Disney Resort", "123 Shanghai Way, Shanghai, China", "123-456-7890", 2, 3, 50, 0, 1, true, new DateTime(), DateTime.MaxValue),
-                new Resort("MNO", "Tokyo Disney Resort", "123 Tokyo Way, Tokyo, China", "123-456-7890", 2, 3, 50, 0, 1, true, new DateTime(), DateTime.MaxValue),
-                new Resort("PQR", "Walt Disney World Resort", "123 Walt Way, Orlando, FL", "123-456-7890", 2, 3, 50, 0, 1, true, new DateTime(), DateTime.MaxValue),
+                new Resort("ABC", "Disneyland Resort", "123 Disneyland Way, Anaheim, CA", "123-456-7890", 2, 3, 50, 0, 1, true, DateTime.MinValue, DateTime.MaxValue),
+                new Resort("DEF", "Disneyland Paris Resort", "123 Paris Way, Paris, France", "123-456-7890", 2, 3, 50, 0, 1, true, DateTime.MinValue, DateTime.MaxValue),
+                new Resort("GHI", "Hong Kong Disneyland Resort", "123 Hong Kong Way, Hong Kong", "123-456-7890", 2, 3, 50, 0, 1, true, DateTime.MinValue, DateTime.MaxValue),
+                new Resort("JKL", "Shanghai Disney Resort", "123 Shanghai Way, Shanghai, China", "123-456-7890", 2, 3, 50, 0, 1, true, DateTime.MinValue, DateTime.MaxValue),
+                new Resort("MNO", "Tokyo Disney Resort", "123 Tokyo Way, Tokyo, China", "123-456-7890", 2, 3, 50, 0, 1, true, DateTime.MinValue, DateTime.MaxValue),
+                new Resort("PQR", "Walt Disney World Resort", "123 Walt Way, Orlando, FL", "123-456-7890", 2, 3, 50, 0, 1, true, DateTime.MinValue, DateTime.MaxValue),
             };
         }
     }

@@ -29,12 +29,12 @@ namespace DisneyInformationSystem.ConsoleUI.Managers.Admins
         /// Initializes a new instance of <see cref="ResortsAdminManager"/>.
         /// </summary>
         /// <param name="console">Console interface object.</param>
-        /// <param name="adminTypecode">Admin type code of the admin that is currently signed in.</param>
+        /// <param name="adminTypeCode">Admin type code of the admin that is currently signed in.</param>
         /// <param name="databaseReaderGateway">Database reader gateway.</param>
-        public ResortsAdminManager(IConsole console, string adminTypecode, IDatabaseReaderGateway databaseReaderGateway)
+        public ResortsAdminManager(IConsole console, string adminTypeCode, IDatabaseReaderGateway databaseReaderGateway)
         {
             _console = console;
-            _adminTypeCode = adminTypecode;
+            _adminTypeCode = adminTypeCode;
             _databaseReaderGateway = databaseReaderGateway;
         }
 

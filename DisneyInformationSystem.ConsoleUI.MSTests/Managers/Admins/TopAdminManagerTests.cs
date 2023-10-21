@@ -310,7 +310,7 @@ namespace DisneyInformationSystem.ConsoleUI.MSTests.Managers.Admins
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveListOfResorts()).Returns(listOfResorts);
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveThemeParksByResortID("WDW")).Returns(DatabaseMockers.MockSetupListOfThemeParks());
             _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortHotelsByResortID("WDW")).Returns(DatabaseMockers.MockSetupListOfResortHotels());
-            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortByPin("WDW")).Returns(listOfResorts.First());
+            _ = _mockDatabaseReaderGateway.Setup(gateway => gateway.RetrieveResortByPin("WDW")).Returns(listOfResorts[0]);
             var topAdminManager = new TopAdminManager(_mockConsole.Object, _mockDatabaseReaderGateway.Object);
 
             // Act
